@@ -4,15 +4,9 @@ import styles from "../styles/NavBar.module.css";
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 
 const NavBar = () => {
-
-
-
-
-return (
-    <Navbar className={styles.NavBar} fixed="top">
-        <Container>
-        <h1>Bug Alert</h1>
-    <Router>
+    const loggedOutUser = (
+<>
+<Router>
         <NavLink
         to="/signup"
         className={styles.NavLink}
@@ -27,9 +21,37 @@ return (
         activeClassName={styles.Active}
         to="/signin"
       >
-        <i class="fa-solid fa-right-to-bracket"></i>Sign in
+        <i className="fa-solid fa-right-to-bracket"></i>Sign in
       </NavLink>
 </Router>
+
+</>
+    )
+
+
+    const addProject = (
+        <Router>
+        <NavLink
+          className={styles.NavLink}
+          activeClassName={styles.Active}
+          to="/posts/create"
+        >
+          <i className="fa-solid fa-folder-plus"></i>Add a Project
+        </NavLink>
+        </Router>
+      );
+
+return (
+    <Navbar className={styles.NavBar} fixed="top">
+        <Container>
+           
+                
+                <h1>Bug Alert</h1>
+                
+       
+                {addProject}
+        
+
 </Container>
     </Navbar>
 )

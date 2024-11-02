@@ -9,3 +9,8 @@ h1 {
 .Active i {
     color: #dde1f0;
   }
+
+  i {
+    color:antiquewhite;
+    margin: .3rem;
+  }
