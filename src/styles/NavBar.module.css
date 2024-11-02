@@ -1,0 +1,11 @@
+.NavBar {
+    background-color: rgb(41, 39, 56);
+    border: 1px solid gray;
+}
+h1 {
+    color: aliceblue;
+}
+
+.Active i {
+    color: #dde1f0;
+  }
