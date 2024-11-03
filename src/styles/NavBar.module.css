@@ -1,16 +1,25 @@
+h1 {
+    color: aliceblue;
+}
+
+i {
+  color:antiquewhite;
+  margin: .3rem;
+}
+p {
+   font-size: 3rem;
+}
+
 .NavBar {
     background-color: rgb(41, 39, 56);
     border: 1px solid gray;
-}
-h1 {
-    color: aliceblue;
+    
 }
 
 .Active i {
     color: #dde1f0;
   }
 
-  i {
-    color:antiquewhite;
-    margin: .3rem;
+  .navbarUser {
+    color: aliceblue;
   }

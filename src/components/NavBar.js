@@ -4,6 +4,10 @@ import styles from "../styles/NavBar.module.css";
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 
 const NavBar = () => {
+
+const currentUser = "Marz Creeper";
+
+
     const loggedOutUser = (
 <>
 <Router>
@@ -36,7 +40,7 @@ const NavBar = () => {
           activeClassName={styles.Active}
           to="/posts/create"
         >
-          <i className="fa-solid fa-folder-plus"></i>Add a Project
+          <i className="fa-solid fa-folder-plus"></i>Add a Project to Track
         </NavLink>
         </Router>
       );
@@ -47,10 +51,9 @@ return (
            
                 
                 <h1>Bug Alert</h1>
-                
-       
                 {addProject}
-        
+                <h5 className="badge badge-secondary">USER: {currentUser}</h5>
+                
 
 </Container>
     </Navbar>
