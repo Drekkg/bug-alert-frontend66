@@ -2,8 +2,13 @@ h1 {
     color: aliceblue;
 }
 
+span {
+  font-size: large;
+ 
+}
+
 i {
-  color:antiquewhite;
+  color:rgb(223, 30, 30);
   margin: .3rem;
 }
 
