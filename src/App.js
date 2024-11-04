@@ -1,13 +1,17 @@
-
-import './App.css';
-import NavBar from './components/NavBar';
-import ProjectList from './components/project/ProjectList';
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import ProjectList from "./components/project/ProjectList";
+import AddProject from "./components/project/AddProject";
 
 function App() {
   return (
     <div className="App">
-<NavBar />
-  <ProjectList/>
+      <NavBar />
+      <Switch>
+        <Route exact path="/addProject" render={() => <AddProject />} />
+        <Route exact path="/home" render={() => <ProjectList />} />
+      </Switch>
     </div>
   );
 }

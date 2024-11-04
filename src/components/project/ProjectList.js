@@ -6,6 +6,7 @@ import ProjectIssues from "./ProjectIssues";
 
 function ProjectList() {
   const [issues, setIssues] = useState(false);
+  const issuesPanelButton = issues ? "Close the issues Panel" : "Open the issues Panel";
 
   const handleClick = () => {
     setIssues(!issues);
@@ -18,7 +19,7 @@ function ProjectList() {
           <Card.Title>Raptor health Tracker</Card.Title>
           <Card.Text>Freedom for Eric the accidentaly dentist</Card.Text>
           <Button variant="primary" onClick={handleClick}>
-            Open the issues Panel
+            {issuesPanelButton}
           </Button>
         </Card.Body>
       </Card>
