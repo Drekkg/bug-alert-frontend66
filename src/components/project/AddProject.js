@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { Form, Container, Button, Modal } from "react-bootstrap";
+import { Form, Container, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import styles from "../../styles/AddProject.module.css";
 
-function AddProject() {
+function AddProject({ addProject }) {
   const [project, setProject] = useState({
     id: "",
-    projectTitle: "",
+    projecttitle: "",
     description: "",
     priorityLevel: "",
   });
-
+  const history = useHistory();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProject((prev) => ({
@@ -20,22 +21,21 @@ function AddProject() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (project.description && project.priorityLevel && project.projectTitle) {
-      setProject((prev) => [...prev, project]);
+    if (project.description && project.priorityLevel && project.projecttitle) {
       alert("Project added successfully.");
+      addProject(project);
       setProject({
         id: "",
-        commentary: "",
-        additionalInfo: "",
-        repeatable: false,
+        projecttitle: "",
+        description: "",
         priorityLevel: "",
-        resolved: false,
       });
+      history.push("/");
     } else {
       alert("Please fill out the required fields.");
     }
   };
-
+  console.log(project);
   return (
     <div>
       <Container className={styles.AddProject}>
@@ -43,11 +43,11 @@ function AddProject() {
           <Form.Group controlId="add-project">
             <Form.Label>Project Title </Form.Label>
             <Form.Control
-              type="Text"
+              type="text"
               maxLength="35"
               onChange={handleChange}
               placeholder="Project Name"
-              name="project-title"
+              name="projecttitle"
               value={project.projectTitle}
             />
             <Form.Text className="text-muted">

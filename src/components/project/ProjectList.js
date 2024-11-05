@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
 import styles from "../../styles/Project.module.css";
 import { Container, Button, Card } from "react-bootstrap";
 import ProjectIssues from "./ProjectIssues";
 
-function ProjectList() {
+function ProjectList({ projects }) {
   const [issues, setIssues] = useState(false);
   const issuesPanelButton = issues ? "Close the issues Panel" : "Open the issues Panel";
 
@@ -12,18 +12,39 @@ function ProjectList() {
     setIssues(!issues);
   };
 
+  //   return projects.map((project) => (
+  //     <Container className={styles.Project}>
+  //       <Card>
+  //         <Card.Body>
+  //           <Card.Title>{project.title}</Card.Title>
+  //           <Card.Text>{project.description}</Card.Text>
+  //           <Button variant="primary" onClick={handleClick}>
+  //             {issuesPanelButton}
+  //           </Button>
+  //         </Card.Body>
+  //       </Card>
+  //       {issues && <ProjectIssues />}
+  //     </Container>
+  //   ));
+  // }
   return (
     <Container className={styles.Project}>
-      <Card>
-        <Card.Body>
-          <Card.Title>Raptor health Tracker</Card.Title>
-          <Card.Text>Freedom for Eric the accidentaly dentist</Card.Text>
-          <Button variant="primary" onClick={handleClick}>
-            {issuesPanelButton}
-          </Button>
-        </Card.Body>
-      </Card>
-      {issues && <ProjectIssues />}
+      <h2>
+        Bug Alert<i className="fa-solid fa-crosshairs"></i>
+      </h2>
+      {projects.map((project, index) => (
+        <Card key={index} className={styles.projectCard}>
+          <Card.Body>
+            <Card.Title>project: {project.projecttitle}</Card.Title>
+            <Card.Text>Issue: {project.description}</Card.Text>
+            <Card.Text>priority: {project.priorityLevel}</Card.Text>
+            <Button variant="primary" onClick={handleClick}>
+              {issuesPanelButton}
+            </Button>
+            {issues && <ProjectIssues />}
+          </Card.Body>
+        </Card>
+      ))}
     </Container>
   );
 }
