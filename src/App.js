@@ -10,7 +10,7 @@ function App() {
       <NavBar />
       <ProjectList />
       <Switch>
-        <Route  path="/addProject" render={() => <AddProject />} />
+        <Route path="/addProject" render={() => <AddProject />} />
         {/* <Route exact path="/home" render={() => <ProjectList />} /> */}
       </Switch>
     </div>

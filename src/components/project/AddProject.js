@@ -86,7 +86,7 @@ function AddProject() {
           <Button variant="success" type="submit">
             Submit
           </Button>
-          <Button variant="warning" type="submit" href="/home">
+          <Button variant="warning" href="/home">
             Close
           </Button>
         </Form>

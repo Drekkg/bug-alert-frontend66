@@ -15,7 +15,7 @@ const NavBar = () => {
         </NavLink>
 
         <Nav.Item>
-          <NavLink to="/home" className={styles.NavLink}>
+          <NavLink to="" className={styles.NavLink}>
             Log Out
           </NavLink>
         </Nav.Item>
