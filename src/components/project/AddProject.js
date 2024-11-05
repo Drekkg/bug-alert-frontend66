@@ -83,8 +83,11 @@ function AddProject() {
             <Form.File id="image" label="Upload a Screenshot" />
           </Form.Group>
 
-          <Button variant="primary" type="submit" href="/home">
+          <Button variant="success" type="submit">
             Submit
+          </Button>
+          <Button variant="warning" type="submit" href="/home">
+            Close
           </Button>
         </Form>
       </Container>

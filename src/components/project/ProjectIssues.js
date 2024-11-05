@@ -42,7 +42,7 @@ function ProjectIssues() {
   return (
     <div>
       <Button
-        variant="primary"
+        variant="secondary"
         className={styles.responseButton}
         onClick={() => setShowRespondForm(!showRespondForm)}
       >
@@ -110,7 +110,7 @@ function ProjectIssues() {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="success" type="submit">
             Submit
           </Button>
         </Form>
