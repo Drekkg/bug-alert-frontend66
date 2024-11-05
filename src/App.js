@@ -8,10 +8,10 @@ function App() {
   return (
     <div>
       <NavBar />
-      <ProjectList />
       <Switch>
         <Route path="/addProject" render={() => <AddProject />} />
         {/* <Route exact path="/home" render={() => <ProjectList />} /> */}
+      <ProjectList />
       </Switch>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Container, Button } from "react-bootstrap";
+import { Form, Container, Button, Modal } from "react-bootstrap";
 import styles from "../../styles/AddProject.module.css";
 
 function AddProject() {
@@ -39,6 +39,8 @@ function AddProject() {
   return (
     <div>
       <Container className={styles.AddProject}>
+      
+        
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="add-project">
             <Form.Label>Project Title </Form.Label>
@@ -90,6 +92,8 @@ function AddProject() {
             Close
           </Button>
         </Form>
+       
+
       </Container>
     </div>
   );
