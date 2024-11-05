@@ -25,3 +25,8 @@ i {
   .navbarUser {
     color: aliceblue;
   }
+
+  .navBarLinks {
+    margin: 0 2rem;
+    color: pink;
+  }

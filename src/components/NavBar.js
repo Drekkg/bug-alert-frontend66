@@ -8,18 +8,15 @@ const NavBar = () => {
 
   const loggedInUser = (
     <>
-      <Nav className="mr-auto">
+      <Nav.Item className={styles.navBarLinks}>
+        <NavLink to="/addProject">Add Project to Track</NavLink>
+      </Nav.Item>
 
-        <NavLink to="/addProject" className={styles.NavLink}>
-          Add Project to Track
+      <Nav.Item>
+        <NavLink to="" className={styles.NavLink}>
+          Log Out
         </NavLink>
-
-        <Nav.Item>
-          <NavLink to="" className={styles.NavLink}>
-            Log Out
-          </NavLink>
-        </Nav.Item>
-      </Nav>
+      </Nav.Item>
     </>
   );
 
@@ -28,7 +25,7 @@ const NavBar = () => {
       <Nav.Link
         to="/signup"
         className={styles.NavLink}
-      // activeClassName={styles.Active}
+        // activeClassName={styles.Active}
       >
         Sign up
       </Nav.Link>

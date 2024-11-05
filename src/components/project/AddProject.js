@@ -39,8 +39,6 @@ function AddProject() {
   return (
     <div>
       <Container className={styles.AddProject}>
-      
-        
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="add-project">
             <Form.Label>Project Title </Form.Label>
@@ -88,12 +86,10 @@ function AddProject() {
           <Button variant="success" type="submit">
             Submit
           </Button>
-          <Button variant="warning" href="/home">
+          <Button variant="warning" className={styles.CloseButton} href="/home">
             Close
           </Button>
         </Form>
-       
-
       </Container>
     </div>
   );
