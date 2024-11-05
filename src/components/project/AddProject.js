@@ -4,6 +4,9 @@ import { useHistory } from "react-router-dom";
 import styles from "../../styles/AddProject.module.css";
 
 function AddProject({ addProject }) {
+  const closeForm = () => {
+    history.push("/");
+  }; // This is a new function that closes the form and redirects to the home page.
   const [project, setProject] = useState({
     id: "",
     projecttitle: "",
@@ -35,7 +38,7 @@ function AddProject({ addProject }) {
       alert("Please fill out the required fields.");
     }
   };
-  console.log(project);
+
   return (
     <div>
       <Container className={styles.AddProject}>
@@ -86,7 +89,7 @@ function AddProject({ addProject }) {
           <Button variant="success" type="submit">
             Submit
           </Button>
-          <Button variant="warning" className={styles.CloseButton} href="/home">
+          <Button variant="warning" className={styles.CloseButton} onClick={closeForm}>
             Close
           </Button>
         </Form>

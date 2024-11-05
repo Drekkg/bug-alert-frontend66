@@ -34,7 +34,7 @@ function ProjectList({ projects }) {
       </h2>
       {projects.map((project, index) => (
         <Card key={index} className={styles.projectCard}>
-          <Card.Body>
+          <Card.Body className={styles.projectCardBody}>
             <Card.Title>project: {project.projecttitle}</Card.Title>
             <Card.Text>Issue: {project.description}</Card.Text>
             <Card.Text>priority: {project.priorityLevel}</Card.Text>
