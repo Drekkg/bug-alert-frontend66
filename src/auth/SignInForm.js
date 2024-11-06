@@ -3,19 +3,18 @@ import { Form, Container, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import styles from "../styles/SignInForm.module.css";
 
-function SignInForm() {
+function SignInForm({ addUser }) {
   const history = useHistory();
   const closeForm = () => {
     history.push("/");
   };
-  const [newUser, setNewUser] = useState({
+  const [user, setUser] = useState({
     username: "",
-    email: "",
     password: "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setNewUser((prev) => ({
+    setUser((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -23,12 +22,13 @@ function SignInForm() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (newUser.username && newUser.password) {
-      setNewUser({
-        username: "",
-        email: "",
-        password: "",
-      });
+    if (user.username && user.password) {
+      addUser(user);
+
+      // setUser({
+      //   username: "",
+      //   password: "",
+      // });
       history.push("/");
     } else {
       alert("Please fill out the required fields.");
@@ -38,6 +38,7 @@ function SignInForm() {
   return (
     <div>
       <Container className={styles.SignInForm}>
+        <h2>Sign In</h2>
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="userName">
             <Form.Label>Username</Form.Label>
@@ -46,7 +47,7 @@ function SignInForm() {
               onChange={handleChange}
               placeholder="Enter you username"
               name="username"
-              value={newUser.username}
+              value={user.username}
             />
             <Form.Text className="text-muted">Please enter Your username.</Form.Text>
           </Form.Group>
@@ -57,8 +58,8 @@ function SignInForm() {
               type="password"
               onChange={handleChange}
               placeholder="Password"
-              name="password1"
-              value={newUser.password}
+              name="password"
+              value={user.password}
             />
           </Form.Group>
           <Form.Text className="text-muted">Please enter Your password.</Form.Text>

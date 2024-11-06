@@ -13,14 +13,21 @@ function App() {
     setProjects((prevProjects) => [...prevProjects, project]);
   };
 
+  const [currentUser, setCurrentUser] = useState({
+    username: "",
+  });
+  const addUser = (user) => {
+    setCurrentUser(user);
+  };
+
   return (
     <div>
-      <NavBar />
+      <NavBar currentUser={currentUser} />
       <Switch>
         <Route exact path="/" render={() => <ProjectList projects={projects} />} />
         <Route path="/addProject" render={() => <AddProject addProject={addProject} />} />
         <Route path="/signupform" render={() => <SignUpForm />} />
-        <Route path="/signinform" render={() => <SignInForm />} />
+        <Route path="/signinform" render={() => <SignInForm addUser={addUser} />} />
         <ProjectList />
       </Switch>
     </div>

@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
-const NavBar = () => {
-  const currentUser = "";
-
+const NavBar = ({ currentUser }) => {
   const loggedInUser = (
     <>
       <Nav.Item className={styles.navBarLinks}>
@@ -49,10 +47,12 @@ const NavBar = () => {
           <Navbar.Brand href="#home">
             Bug Alert<i className="fa-solid fa-crosshairs"></i>
           </Navbar.Brand>
-          {currentUser ? <Nav.Link href="#home">User: {currentUser}</Nav.Link> : null}
+          {currentUser.username ? (
+            <Nav.Link href="#home">User: {currentUser.username}</Nav.Link>
+          ) : null}
           <Navbar.Toggle />
           <Navbar.Collapse id="basic-navbar-nav">
-            {currentUser ? loggedInUser : loggedOutUser}
+            {currentUser.username ? loggedInUser : loggedOutUser}
             <div className="ml-auto">
               <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
