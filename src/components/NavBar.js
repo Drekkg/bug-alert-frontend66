@@ -3,7 +3,8 @@ import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstr
 import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
-const NavBar = ({ currentUser }) => {
+const NavBar = ({ currentUser1 }) => {
+  const currentUser = { username: "Fred andstairsa" }; // must change this back to accept the currentUser prop not currentUser1
   const loggedInUser = (
     <>
       <Nav.Item className={styles.navBarLinks}>

@@ -41,6 +41,7 @@ function AddProject({ addProject }) {
   return (
     <div>
       <Container className={styles.AddProject}>
+        <h2>Add a Project</h2>
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="add-project">
             <Form.Label>Project Title </Form.Label>

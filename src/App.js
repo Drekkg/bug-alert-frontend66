@@ -24,7 +24,11 @@ function App() {
     <div>
       <NavBar currentUser={currentUser} />
       <Switch>
-        <Route exact path="/" render={() => <ProjectList projects={projects} />} />
+        <Route
+          exact
+          path="/"
+          render={() => <ProjectList projects={projects} currentUser={currentUser} />}
+        />
         <Route path="/addProject" render={() => <AddProject addProject={addProject} />} />
         <Route path="/signupform" render={() => <SignUpForm />} />
         <Route path="/signinform" render={() => <SignInForm addUser={addUser} />} />
