@@ -4,6 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import ProjectList from "./components/project/ProjectList";
 import AddProject from "./components/project/AddProject";
+import SignUpForm from "./auth/SignUpForm";
+import SignInForm from "./auth/SignInForm";
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -17,6 +19,8 @@ function App() {
       <Switch>
         <Route exact path="/" render={() => <ProjectList projects={projects} />} />
         <Route path="/addProject" render={() => <AddProject addProject={addProject} />} />
+        <Route path="/signupform" render={() => <SignUpForm />} />
+        <Route path="/signinform" render={() => <SignInForm />} />
         <ProjectList />
       </Switch>
     </div>

@@ -25,7 +25,6 @@ function AddProject({ addProject }) {
   const submitHandler = (e) => {
     e.preventDefault();
     if (project.description && project.priorityLevel && project.projecttitle) {
-      alert("Project added successfully.");
       addProject(project);
       setProject({
         id: "",

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
 const NavBar = () => {
-  const currentUser = "marz Barz";
+  const currentUser = "";
 
   const loggedInUser = (
     <>
@@ -22,20 +22,20 @@ const NavBar = () => {
 
   const loggedOutUser = (
     <>
-      <Nav.Link
-        to="/signup"
+      <NavLink
+        to="/signupform"
         className={styles.NavLink}
         // activeClassName={styles.Active}
       >
         Sign up
-      </Nav.Link>
-      <Nav.Link
+      </NavLink>
+      <NavLink
         className={styles.NavLink}
         // activeClassName={styles.Active}
-        to="/signin"
+        to="/signinform"
       >
         Sign in
-      </Nav.Link>
+      </NavLink>
     </>
   );
 
