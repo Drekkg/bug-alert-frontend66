@@ -13,7 +13,7 @@ const NavBar = () => {
       </Nav.Item>
 
       <Nav.Item>
-        <NavLink to="" className={styles.NavLink}>
+        <NavLink to="" className={styles.navBarLinks}>
           Log Out
         </NavLink>
       </Nav.Item>
@@ -22,20 +22,17 @@ const NavBar = () => {
 
   const loggedOutUser = (
     <>
-      <NavLink
-        to="/signupform"
-        className={styles.NavLink}
-        // activeClassName={styles.Active}
-      >
-        Sign up
-      </NavLink>
-      <NavLink
-        className={styles.NavLink}
-        // activeClassName={styles.Active}
-        to="/signinform"
-      >
-        Sign in
-      </NavLink>
+      <Nav.Item>
+        <NavLink to="/signupform" className={styles.navBarLinks}>
+          Sign up
+        </NavLink>
+      </Nav.Item>
+
+      <Nav.Item>
+        <NavLink className={styles.navBarLinks} to="/signinform">
+          Sign in
+        </NavLink>
+      </Nav.Item>
     </>
   );
 
