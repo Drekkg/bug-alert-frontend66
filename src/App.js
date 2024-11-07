@@ -6,6 +6,7 @@ import ProjectList from "./components/project/ProjectList";
 import AddProject from "./components/project/AddProject";
 import SignUpForm from "./auth/SignUpForm";
 import SignInForm from "./auth/SignInForm";
+import './api/axiosDefaults';
 
 function App() {
   const [projects, setProjects] = useState([]);
