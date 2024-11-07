@@ -6,11 +6,16 @@ import ProjectIssues from "./ProjectIssues";
 
 function ProjectList({ projects, currentUser }) {
   const [issues, setIssues] = useState(false);
+  const [resolved, setResolved] = useState(false);
+
   const issuesPanelButton = issues ? "Close the issues Panel" : "Open the issues Panel";
   const date = new Date().toLocaleDateString();
 
   const handleClick = () => {
     setIssues(!issues);
+  };
+  const handleResolvedChange = (resolved) => {
+    setResolved(resolved);
   };
 
   //   return projects.map((project) => (
@@ -37,14 +42,16 @@ function ProjectList({ projects, currentUser }) {
         <Card key={index} className={styles.projectCard}>
           <Card.Body className={styles.projectCardBody}>
             <Card.Title>project: {project.projecttitle}</Card.Title>
+            {resolved && <Card.Title>RESOLVED</Card.Title>}
             <Card.Text>Issue: {project.description}</Card.Text>
+
             <Card.Text>Logged By: {currentUser.username}</Card.Text>
             <Card.Text>priority: {project.priorityLevel}</Card.Text>
             <Card.Text>Date Logged {date}</Card.Text>
             <Button variant="primary" onClick={handleClick}>
               {issuesPanelButton}
             </Button>
-            {issues && <ProjectIssues />}
+            {issues && <ProjectIssues onResolvedChange={handleResolvedChange} />}
           </Card.Body>
         </Card>
       ))}

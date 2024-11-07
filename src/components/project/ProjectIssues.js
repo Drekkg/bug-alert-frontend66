@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import styles from "../../styles/ProjectIssues.module.css";
 
-function ProjectIssues() {
+function ProjectIssues({ onResolvedChange }) {
   const [showRespondForm, setShowRespondForm] = useState(false);
   const [response, setResponse] = useState({
     id: "",
@@ -13,6 +13,7 @@ function ProjectIssues() {
     resolved: false,
   });
   const [issues, setIssues] = useState([]);
+
   const showResponseFormButton = showRespondForm ? "Close Response Form" : "Open Response Form";
 
   const handleChange = (e) => {
@@ -27,6 +28,10 @@ function ProjectIssues() {
     if (response.commentary && response.priorityLevel) {
       setIssues((prev) => [...prev, response]);
       setShowRespondForm(false);
+
+      if (response.resolved === true) {
+        onResolvedChange(true);
+      }
       setResponse({
         id: "",
         commentary: "",

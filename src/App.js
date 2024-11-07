@@ -13,11 +13,9 @@ function App() {
     setProjects((prevProjects) => [...prevProjects, project]);
   };
 
-  const [currentUser, setCurrentUser] = useState({
-    username: "",
-  });
+  const [currentUser, setCurrentUser] = useState([]);
   const addUser = (user) => {
-    setCurrentUser(user);
+    setCurrentUser((prevuser) => [...prevuser], user);
   };
 
   return (
