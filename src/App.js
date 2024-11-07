@@ -15,7 +15,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState([]);
   const addUser = (user) => {
-    setCurrentUser((prevuser) => [...prevuser], user);
+    setCurrentUser(user);
   };
 
   return (

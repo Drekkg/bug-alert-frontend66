@@ -3,8 +3,11 @@ import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstr
 import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
-const NavBar = ({ currentUser1 }) => {
-  const currentUser = { username: "Fred andstairsa" }; // must change this back to accept the currentUser prop not currentUser1
+const NavBar = ({ currentUser }) => {
+  // const currentUser = { username: "Fred andstairsa" }; // must change this back to accept the currentUser prop not currentUser1
+
+  const handleLogout = () => {};
+
   const loggedInUser = (
     <>
       <Nav.Item className={styles.navBarLinks}>
@@ -12,7 +15,7 @@ const NavBar = ({ currentUser1 }) => {
       </Nav.Item>
 
       <Nav.Item>
-        <NavLink to="" className={styles.navBarLinks}>
+        <NavLink to="" className={styles.navBarLinks} onClick={handleLogout}>
           Log Out
         </NavLink>
       </Nav.Item>
