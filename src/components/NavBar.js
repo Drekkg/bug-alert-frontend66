@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
 const NavBar = ({ currentUser }) => {
   // const currentUser = { username: "Fred andstairsa" }; // must change this back to accept the currentUser prop not currentUser1
+  const [newUser, setNewUser] = useState(currentUser);
+  useEffect(() => {
+    setNewUser(currentUser);
+  }, [currentUser]);
 
-  const handleLogout = () => {};
+  console.log("newUser", newUser);
+  const handleLogout = () => {
+    alert("are you sure you want to log out?");
+    setNewUser({});
+  };
 
   const loggedInUser = (
     <>
@@ -51,12 +59,10 @@ const NavBar = ({ currentUser }) => {
           <Navbar.Brand href="#home">
             Bug Alert<i className="fa-solid fa-crosshairs"></i>
           </Navbar.Brand>
-          {currentUser.username ? (
-            <Nav.Link href="#home">User: {currentUser.username}</Nav.Link>
-          ) : null}
+          {newUser.username ? <Nav.Link href="#home">User: {newUser.username}</Nav.Link> : null}
           <Navbar.Toggle />
           <Navbar.Collapse id="basic-navbar-nav">
-            {currentUser.username ? loggedInUser : loggedOutUser}
+            {newUser.username ? loggedInUser : loggedOutUser}
             <div className="ml-auto">
               <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
