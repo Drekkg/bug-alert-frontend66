@@ -48,11 +48,13 @@ function SignUpForm() {
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="userName">
             <Form.Label>Username</Form.Label>
+            <Form.Text className="text-muted">Please enter a username.</Form.Text>
             {errors.username?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
             ))}
+
             <Form.Control
               type="text"
               onChange={handleChange}
@@ -60,11 +62,11 @@ function SignUpForm() {
               name="username"
               value={username}
             />
-            <Form.Text className="text-muted">Please enter a username.</Form.Text>
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
+            <Form.Text className="text-muted">Please create a password.</Form.Text>
             {errors.password1?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}
@@ -78,11 +80,9 @@ function SignUpForm() {
               value={password1}
             />
           </Form.Group>
-
-          <Form.Text className="text-muted">Please create a password.</Form.Text>
           <Form.Group controlId="formBasicPassword1">
             <Form.Label>Confirm Password</Form.Label>
-
+            <Form.Text className="text-muted">Please confirm your password.</Form.Text>
             {errors.password2?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}
@@ -96,7 +96,7 @@ function SignUpForm() {
               value={password2}
             />
           </Form.Group>
-          <Form.Text className="text-muted">Please confirm your password.</Form.Text>
+
           <Button variant="success" type="submit">
             Submit
           </Button>
