@@ -117,9 +117,14 @@ function ProjectIssues({ onResolvedChange }) {
             />
           </Form.Group> */}
           <Form.Group>
-            <Form.File id="image" label="Upload an Image" />
+            <Form.File
+              id="image"
+              label="Upload an Image"
+              onChange={handleChange}
+              name="issueImage"
+              value={issue.issueImage}
+            />
           </Form.Group>
-
           <Button variant="success" type="submit">
             Submit
           </Button>
@@ -134,25 +139,23 @@ function ProjectIssues({ onResolvedChange }) {
                 <Card.Text>
                   <strong>Logged By:</strong> {issue.loggedby}
                 </Card.Text>
-                <strong>Issue Information:</strong> {issue.issueInformation}
+                <Card.Text>
+                  <strong>Date:</strong> {date}
+                  <strong>Issue Information:</strong> {issue.issueInformation}
+                </Card.Text>
+                <Card.Text>
+                  <strong>Image:</strong>
+                  <img src={issue.issueImage} alt="Issue" />
+                </Card.Text>
                 <Card.Text>
                   <strong>Repeatable:</strong> {issue.repeatable ? "Yes" : "No"}
                 </Card.Text>
                 <Card.Text>
                   <strong>Priority Level:</strong> {issue.priorityLevel}
                 </Card.Text>
-                {/* <Form.Group>
-                  <Form.File
-                    id="image"
-                    label="Upload an Image"
-                    onChange={handleChange}
-                    name="issueImage"
-                    value={issue.issueImage}
-                  />
-                </Form.Group> */}
-                <Card.Text>
+                {/* <Card.Text>
                   <strong>Resolved:</strong> {issue.resolved ? "Yes" : "No"}
-                </Card.Text>
+                </Card.Text> */}
               </Card.Body>
             </Card>
           ))}
