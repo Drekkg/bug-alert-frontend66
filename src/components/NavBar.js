@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
 const NavBar = ({ currentUser }) => {
-  // const currentUser = { username: "Fred andstairsa" }; // must change this back to accept the currentUser prop not currentUser1
   const [newUser, setNewUser] = useState(currentUser);
   useEffect(() => {
     setNewUser({ username: currentUser.username });
@@ -56,10 +55,12 @@ const NavBar = ({ currentUser }) => {
     <div>
       <Navbar bg="light" expand="xl">
         <Container>
-          <Navbar.Brand href="#home">
-            Bug Alert<i className="fa-solid fa-crosshairs"></i>
+          <Navbar.Brand>
+            <NavLink to="/">
+              Bug Alert<i className="fa-solid fa-crosshairs"></i>
+            </NavLink>
           </Navbar.Brand>
-          {newUser.username ? <Nav.Link href="#home">User: {newUser.username}</Nav.Link> : null}
+          {newUser.username ? <Nav.Link to="/">User: {newUser.username}</Nav.Link> : null}
           <Navbar.Toggle />
           <Navbar.Collapse id="basic-navbar-nav">
             {newUser.username ? loggedInUser : loggedOutUser}
