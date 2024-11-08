@@ -11,7 +11,8 @@ function AddProject({ addProject }) {
     id: "",
     projecttitle: "",
     description: "",
-    priorityLevel: "",
+    headerImage: "",
+    projectUrl: "",
   });
   const history = useHistory();
   const handleChange = (e) => {
@@ -24,13 +25,12 @@ function AddProject({ addProject }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (project.description && project.priorityLevel && project.projecttitle) {
+    if (project.description && project.projecttitle) {
       addProject(project);
       setProject({
         id: "",
         projecttitle: "",
         description: "",
-        priorityLevel: "",
       });
       history.push("/");
     } else {
@@ -45,6 +45,9 @@ function AddProject({ addProject }) {
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="add-project">
             <Form.Label>Project Title </Form.Label>
+            <Form.Text className="text-muted">
+              Please enter the name of the project you want to track.
+            </Form.Text>
             <Form.Control
               type="text"
               maxLength="35"
@@ -53,24 +56,23 @@ function AddProject({ addProject }) {
               name="projecttitle"
               value={project.projectTitle}
             />
-            <Form.Text className="text-muted">
-              Please enter the name of the project you want to track.
-            </Form.Text>
           </Form.Group>
 
           <Form.Group controlId="description">
-            <Form.Label>Issue - Bug</Form.Label>
+            <Form.Label>Project Description</Form.Label>
+            <Form.Text className="text-muted">
+              Please give a brief description of the application..
+            </Form.Text>
             <Form.Control
               type="text"
               onChange={handleChange}
-              maxLength="100"
-              placeholder="Issue"
+              maxLength="150"
+              placeholder="Project Description"
               name="description"
               value={project.description}
             />
-            <Form.Text className="text-muted">Please describe the Issue you encountered.</Form.Text>
           </Form.Group>
-          <Form.Control
+          {/* <Form.Control
             as="select"
             name="priorityLevel"
             onChange={handleChange}
@@ -80,10 +82,25 @@ function AddProject({ addProject }) {
             <option value="High">High</option>
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
-          </Form.Control>
+          </Form.Control> */}
 
           <Form.Group>
-            <Form.File id="image" label="Upload a Screenshot" />
+            <Form.File id="image" label="Upload an Image" />
+          </Form.Group>
+
+          <Form.Group controlId="projectUrl">
+            <Form.Label>Project URL</Form.Label>
+            <Form.Text className="text-muted">
+              Please paste the Project's URL: https://www.example.com
+            </Form.Text>
+            <Form.Control
+              type="text"
+              onChange={handleChange}
+              maxLength="150"
+              placeholder="Project URL"
+              name="projectUrl"
+              value={project.projectUrl}
+            />
           </Form.Group>
 
           <Button variant="success" type="submit">

@@ -41,12 +41,23 @@ function ProjectList({ projects, currentUser }) {
       {projects.map((project, index) => (
         <Card key={index} className={styles.projectCard}>
           <Card.Body className={styles.projectCardBody}>
-            <Card.Title>project: {project.projecttitle}</Card.Title>
+            <Card.Title>Project: {project.projecttitle}</Card.Title>
             {resolved && <Card.Title>RESOLVED</Card.Title>}
-            <Card.Text>Issue: {project.description}</Card.Text>
+            <Card.Text>Project Description: {project.description}</Card.Text>
+            <Card.Text>
+              Project URL:{" "}
+              <a
+                href={project.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Link to Project"
+              >
+                {project.projectUrl}
+              </a>
+            </Card.Text>
+            <Card.Text>Header Image: {project.headerImage}</Card.Text>
 
-            <Card.Text>Logged By: {currentUser.username}</Card.Text>
-            <Card.Text>priority: {project.priorityLevel}</Card.Text>
+            <Card.Text>Added By: {currentUser.username}</Card.Text>
             <Card.Text>Date Logged {date}</Card.Text>
             <Button variant="primary" onClick={handleClick}>
               {issuesPanelButton}
