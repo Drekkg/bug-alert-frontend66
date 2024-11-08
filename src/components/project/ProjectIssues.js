@@ -3,36 +3,37 @@ import { Button, Card, Form } from "react-bootstrap";
 import styles from "../../styles/ProjectIssues.module.css";
 
 function ProjectIssues({ onResolvedChange }) {
-  const [showRespondForm, setShowRespondForm] = useState(false);
-  const [response, setResponse] = useState({
+  const [showIssueForm, setShowIssueForm] = useState(false);
+  const [issue, setIssue] = useState({
     id: "",
-    commentary: "",
-    additionalInfo: "",
+    loggedby: "",
+    issueInformation: "",
     repeatable: false,
     priorityLevel: "",
-    resolved: false,
+    issueImage: "",
   });
-  const [issues, setIssues] = useState([]);
+  const [issueToList, setIssueToList] = useState([]);
+  const date = new Date().toLocaleDateString();
 
-  const showResponseFormButton = showRespondForm ? "Close Response Form" : "Open Response Form";
-
+  const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Open Issue Form";
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setResponse((prev) => ({
+    setIssue((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (response.commentary && response.priorityLevel) {
-      setIssues((prev) => [...prev, response]);
-      setShowRespondForm(false);
+    if (issue.issueInformation && issue.priorityLevel) {
+      setIssueToList((prev) => [...prev, issue]);
+      setShowIssueForm(false);
 
-      if (response.resolved === true) {
+      if (issue.resolved === true) {
         onResolvedChange(true);
       }
-      setResponse({
+      setIssue({
         id: "",
         commentary: "",
         additionalInfo: "",
@@ -49,35 +50,36 @@ function ProjectIssues({ onResolvedChange }) {
       <Button
         variant="secondary"
         className={styles.responseButton}
-        onClick={() => setShowRespondForm(!showRespondForm)}
+        onClick={() => setShowIssueForm(!showIssueForm)}
       >
-        {showResponseFormButton}
+        {showIssueFormButton}
       </Button>
-      {showRespondForm && (
+      {showIssueForm && (
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="Commentary">
-            <Form.Label>Commentary</Form.Label>
+            <Form.Label>Issue:</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Your Comments"
-              name="commentary"
+              maxLength="200"
+              placeholder="Please describe the issue"
+              name="issueInformation"
               onChange={handleChange}
-              value={response.commentary}
+              value={issue.issueInformation}
               required
             />
           </Form.Group>
 
-          <Form.Group controlId="AdditionalInfo">
+          {/* <Form.Group controlId="AdditionalInfo">
             <Form.Label>Additional Info</Form.Label>
             <Form.Control
               type="text"
               placeholder="Additional Information"
               name="additionalInfo"
               onChange={handleChange}
-              value={response.additionalInfo}
+              value={issue.additionalInfo}
               required
             />
-          </Form.Group>
+          </Form.Group> */}
 
           <Form.Group controlId="Repeatable">
             <Form.Check
@@ -85,7 +87,7 @@ function ProjectIssues({ onResolvedChange }) {
               label="Repeatable"
               name="repeatable"
               onChange={handleChange}
-              checked={response.repeatable}
+              checked={issue.repeatable}
             />
           </Form.Group>
 
@@ -95,7 +97,7 @@ function ProjectIssues({ onResolvedChange }) {
               as="select"
               name="priorityLevel"
               onChange={handleChange}
-              value={response.priorityLevel}
+              value={issue.priorityLevel}
               required
             >
               <option value="">Choose...</option>
@@ -105,14 +107,17 @@ function ProjectIssues({ onResolvedChange }) {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="Resolved">
+          {/* <Form.Group controlId="Resolved">
             <Form.Check
               type="checkbox"
               label="Issue is Resolved"
               name="resolved"
               onChange={handleChange}
-              checked={response.resolved}
+              checked={issue.resolved}
             />
+          </Form.Group> */}
+          <Form.Group>
+            <Form.File id="image" label="Upload an Image" />
           </Form.Group>
 
           <Button variant="success" type="submit">
@@ -120,24 +125,31 @@ function ProjectIssues({ onResolvedChange }) {
           </Button>
         </Form>
       )}{" "}
-      {issues.length > 0 && (
+      {issueToList.length > 0 && (
         <div>
-          {issues.map((issue, index) => (
+          {issueToList.map((issue, index) => (
             <Card key={index} style={{ margin: "10px 0" }}>
               <Card.Body>
                 <Card.Title>Issue {index + 1}</Card.Title>
                 <Card.Text>
-                  <strong>Commentary:</strong> {issue.commentary}
+                  <strong>Logged By:</strong> {issue.loggedby}
                 </Card.Text>
-                <Card.Text>
-                  <strong>Additional Info:</strong> {issue.additionalInfo}
-                </Card.Text>
+                <strong>Issue Information:</strong> {issue.issueInformation}
                 <Card.Text>
                   <strong>Repeatable:</strong> {issue.repeatable ? "Yes" : "No"}
                 </Card.Text>
                 <Card.Text>
                   <strong>Priority Level:</strong> {issue.priorityLevel}
                 </Card.Text>
+                {/* <Form.Group>
+                  <Form.File
+                    id="image"
+                    label="Upload an Image"
+                    onChange={handleChange}
+                    name="issueImage"
+                    value={issue.issueImage}
+                  />
+                </Form.Group> */}
                 <Card.Text>
                   <strong>Resolved:</strong> {issue.resolved ? "Yes" : "No"}
                 </Card.Text>

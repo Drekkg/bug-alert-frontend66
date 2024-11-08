@@ -55,14 +55,20 @@ function ProjectList({ projects, currentUser }) {
                 {project.projectUrl}
               </a>
             </Card.Text>
-            <Card.Text>Header Image: {project.headerImage}</Card.Text>
+
+            <Card.Text>
+              Header Image:
+              <img src={project.headerImage} alt="Project header" />
+            </Card.Text>
 
             <Card.Text>Added By: {currentUser.username}</Card.Text>
             <Card.Text>Date Logged {date}</Card.Text>
             <Button variant="primary" onClick={handleClick}>
               {issuesPanelButton}
             </Button>
-            {issues && <ProjectIssues onResolvedChange={handleResolvedChange} />}
+            {issues && (
+              <ProjectIssues onResolvedChange={handleResolvedChange} currentUser={currentUser} />
+            )}
           </Card.Body>
         </Card>
       ))}

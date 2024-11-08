@@ -3,13 +3,16 @@ import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstr
 import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
-const NavBar = ({ currentUser }) => {
+const NavBar = ({ currentUser1 }) => {
+  const currentUser = {
+    username: "test",
+    password: "test",
+  };
   const [newUser, setNewUser] = useState(currentUser);
   useEffect(() => {
     setNewUser({ username: currentUser.username });
-  }, [currentUser]);
+  }, []); //add currentuser after testing
 
-  console.log("newUser", newUser);
   const handleLogout = () => {
     alert("are you sure you want to log out?");
     setNewUser({});

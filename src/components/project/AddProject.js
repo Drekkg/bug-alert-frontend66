@@ -85,7 +85,11 @@ function AddProject({ addProject }) {
           </Form.Control> */}
 
           <Form.Group>
-            <Form.File id="image" label="Upload an Image" />
+            <Form.File id="image" label="Upload an Image"
+            onChange={handleChange}
+            name="headerImage"
+            value={project.headerImage}
+             />
           </Form.Group>
 
           <Form.Group controlId="projectUrl">
