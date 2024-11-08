@@ -7,7 +7,7 @@ const NavBar = ({ currentUser }) => {
   // const currentUser = { username: "Fred andstairsa" }; // must change this back to accept the currentUser prop not currentUser1
   const [newUser, setNewUser] = useState(currentUser);
   useEffect(() => {
-    setNewUser({ username: "Fred andstairs" });
+    setNewUser({ username: currentUser.username });
   }, [currentUser]);
 
   console.log("newUser", newUser);

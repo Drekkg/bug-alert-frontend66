@@ -6,7 +6,7 @@ import ProjectList from "./components/project/ProjectList";
 import AddProject from "./components/project/AddProject";
 import SignUpForm from "./auth/SignUpForm";
 import SignInForm from "./auth/SignInForm";
-import './api/axiosDefaults';
+import "./api/axiosDefaults";
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -30,7 +30,7 @@ function App() {
         />
         <Route path="/addProject" render={() => <AddProject addProject={addProject} />} />
         <Route path="/signupform" render={() => <SignUpForm />} />
-        <Route path="/signinform" render={() => <SignInForm addUser={addUser} />} />
+        <Route exact path="/signinform" render={() => <SignInForm addUser={addUser} />} />
         <ProjectList />
       </Switch>
     </div>

@@ -1,17 +1,22 @@
 import React, { useState } from "react";
-import { Form, Container, Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { Form, Container, Button, Alert } from "react-bootstrap";
+import { useHistory, Link } from "react-router-dom";
 import styles from "../styles/SignInForm.module.css";
+import axios from "axios";
 
 function SignInForm({ addUser }) {
   const history = useHistory();
   const closeForm = () => {
     history.push("/");
   };
+
+  const [errors, setErrors] = useState({});
+
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
+  const { username, password } = user;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prev) => ({
@@ -19,19 +24,20 @@ function SignInForm({ addUser }) {
       [name]: value,
     }));
   };
+  console.log("user", user);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    if (user.username && user.password) {
-      addUser(user);
 
-      // setUser({
-      //   username: "",
-      //   password: "",
-      // });
+    try {
+      await axios.post("/dj-rest-auth/login/", user);
+      // setTokenTimestamp(data);
+      alert("You have successfully logged in.");
+      addUser(user); // Add user to the state
       history.push("/");
-    } else {
-      alert("Please fill out the required fields.");
+    } catch (err) {
+      console.log("err", err.response?.data);
+      setErrors(err.response?.data);
     }
   };
 
@@ -39,6 +45,12 @@ function SignInForm({ addUser }) {
     <div>
       <Container className={styles.SignInForm}>
         <h2>Sign In</h2>
+        {errors.username?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="userName">
             <Form.Label>Username</Form.Label>
@@ -47,7 +59,8 @@ function SignInForm({ addUser }) {
               onChange={handleChange}
               placeholder="Enter you username"
               name="username"
-              value={user.username}
+              value={username}
+              autoComplete="username"
             />
             <Form.Text className="text-muted">Please enter Your username.</Form.Text>
           </Form.Group>
@@ -59,7 +72,8 @@ function SignInForm({ addUser }) {
               onChange={handleChange}
               placeholder="Password"
               name="password"
-              value={user.password}
+              value={password}
+              autoComplete="current-password"
             />
           </Form.Group>
           <Form.Text className="text-muted">Please enter Your password.</Form.Text>
@@ -69,7 +83,17 @@ function SignInForm({ addUser }) {
           <Button variant="warning" className={styles.CloseButton} onClick={closeForm}>
             Close
           </Button>
+          {errors.non_field_errors?.map((message, idx) => (
+            <Alert key={idx} variant="warning" className="mt-3">
+              {message}
+            </Alert>
+          ))}
         </Form>
+        <Container>
+          <Link to="/signupform">
+            Don't have an account? <span>Sign Up</span>
+          </Link>
+        </Container>
       </Container>
     </div>
   );
