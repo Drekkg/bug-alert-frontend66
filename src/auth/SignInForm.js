@@ -24,7 +24,6 @@ function SignInForm({ addUser }) {
       [name]: value,
     }));
   };
-  console.log("user", user);
 
   const submitHandler = async (e) => {
     e.preventDefault();

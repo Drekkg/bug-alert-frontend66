@@ -9,7 +9,7 @@ function SignUpForm() {
   const closeForm = () => {
     history.push("/");
   };
-
+  const [alertShow, setAlertShow] = useState(false);
   const [newUser, setNewUser] = useState({
     username: "",
     password1: "",
@@ -17,7 +17,7 @@ function SignUpForm() {
   });
   const { username, password1, password2 } = newUser;
   const [errors, setErrors] = useState({});
-  let isMounted = true;
+  // let isMounted = true;
 
   // useEffect(() => {
   //   return () => {
@@ -37,17 +37,41 @@ function SignUpForm() {
     e.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", newUser);
-      alert("Sign up successful!");
-      history.push("/signinform");
+
+      setAlertShow(true);
     } catch (err) {
       setErrors(err.response?.data);
     }
   };
-
+  const alert = (
+    <>
+      <Alert variant="success" className={styles.AlertModal}>
+        <Alert.Heading>You have successfully Signed Up</Alert.Heading>
+        <p>
+          Thank you for <i className="fa-solid fa-crosshairs"></i>Bug Alert - Please sign in to
+          continue
+        </p>
+        <hr />
+        <div className="d-flex justify-content-center">
+          <Button
+            onClick={() => {
+              setAlertShow(false);
+              history.push("/signinform");
+            }}
+            variant="success"
+            block
+          >
+            Sign In
+          </Button>
+        </div>
+      </Alert>
+    </>
+  );
   return (
     <div>
       <Container className={styles.SignUpForm}>
         <h1>Sign Up</h1>
+        <h3>{alertShow && alert}</h3>
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="userName">
             <Form.Label>Username</Form.Label>
