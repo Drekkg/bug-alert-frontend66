@@ -13,3 +13,11 @@
 .CloseButton {
     margin: 0 2rem;
 }
+
+.AlertModal {
+    z-index: 1;
+    position: fixed;
+    height:50%;
+    width: 100%;    
+    
+}

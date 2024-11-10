@@ -11,7 +11,7 @@ function SignInForm({ addUser }) {
   };
 
   const [errors, setErrors] = useState({});
-
+  const [alertShow, setAlertShow] = useState(false);
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -24,6 +24,32 @@ function SignInForm({ addUser }) {
       [name]: value,
     }));
   };
+  const alert = (
+    <>
+      <Alert variant="success" className={styles.AlertModal}>
+        <Alert.Heading>
+          Bug Alert <i className="fa-solid fa-crosshairs"></i>
+        </Alert.Heading>
+        <p>
+          You have successfully Signed in - Welcome to Bug Alert
+          <i className="fa-solid fa-crosshairs"></i>
+        </p>
+        <hr />
+        <div className="d-flex justify-content-center">
+          <Button
+            onClick={() => {
+              setAlertShow(false);
+              history.push("/");
+            }}
+            variant="success"
+            block
+          >
+            Close
+          </Button>
+        </div>
+      </Alert>
+    </>
+  );
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -31,9 +57,9 @@ function SignInForm({ addUser }) {
     try {
       await axios.post("/dj-rest-auth/login/", user);
       // setTokenTimestamp(data);
-      alert("You have successfully logged in.");
+
       addUser(user); // Add user to the state
-      history.push("/");
+      setAlertShow(true);
     } catch (err) {
       console.log("err", err.response?.data);
       setErrors(err.response?.data);
@@ -42,6 +68,7 @@ function SignInForm({ addUser }) {
 
   return (
     <div>
+      {alertShow && alert}
       <Container className={styles.SignInForm}>
         <h2>Sign In</h2>
         {errors.username?.map((message, idx) => (
