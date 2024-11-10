@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import { Form, Container, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import styles from "../../styles/AddProject.module.css";
+import axios from "axios";
 
 function AddProject({ addProject }) {
   const closeForm = () => {
     history.push("/");
-  }; // This is a new function that closes the form and redirects to the home page.
+  };
+
   const [project, setProject] = useState({
-    id: "",
-    projecttitle: "",
+    title: "",
     description: "",
-    headerImage: "",
-    projectUrl: "",
+    projectURL: "",
   });
   const history = useHistory();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProject((prev) => ({
@@ -23,19 +24,32 @@ function AddProject({ addProject }) {
     }));
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    if (project.description && project.projecttitle) {
-      addProject(project);
-      setProject({
-        id: "",
-        projecttitle: "",
-        description: "",
-      });
-      history.push("/");
-    } else {
-      alert("Please fill out the required fields.");
+
+    try {
+      const response = await axios.post("/projects/", project);
+      console.log("Project added successfully", response.data);
+    } catch (err) {
+      if (err.response) {
+        // Server responded with a status other than 2xx
+        console.error("Error response:", err.response.data);
+      } else if (err.request) {
+        // Request was made but no response received
+        console.error("Error request:", err.request);
+      } else {
+        // Something else happened while setting up the request
+        console.error("Error message:", err.message);
+      }
     }
+
+    addProject(project);
+    setProject({
+      title: "",
+      description: "",
+      projectURL: "",
+    });
+    history.push("/");
   };
 
   return (
@@ -53,8 +67,8 @@ function AddProject({ addProject }) {
               maxLength="35"
               onChange={handleChange}
               placeholder="Project Name"
-              name="projecttitle"
-              value={project.projectTitle}
+              name="title"
+              value={project.title}
             />
           </Form.Group>
 
@@ -72,25 +86,6 @@ function AddProject({ addProject }) {
               value={project.description}
             />
           </Form.Group>
-          {/* <Form.Control
-            as="select"
-            name="priorityLevel"
-            onChange={handleChange}
-            value={project.priorityLevel}
-          >
-            <option value="">Choose...</option>
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
-          </Form.Control> */}
-
-          <Form.Group>
-            <Form.File id="image" label="Upload an Image"
-            onChange={handleChange}
-            name="headerImage"
-            value={project.headerImage}
-             />
-          </Form.Group>
 
           <Form.Group controlId="projectUrl">
             <Form.Label>Project URL</Form.Label>
@@ -102,8 +97,8 @@ function AddProject({ addProject }) {
               onChange={handleChange}
               maxLength="150"
               placeholder="Project URL"
-              name="projectUrl"
-              value={project.projectUrl}
+              name="projectURL"
+              value={project.projectURL}
             />
           </Form.Group>
 

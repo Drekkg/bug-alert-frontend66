@@ -13,8 +13,8 @@ function SignInForm({ addUser }) {
   const [errors, setErrors] = useState({});
   const [alertShow, setAlertShow] = useState(false);
   const [user, setUser] = useState({
-    username: "",
-    password: "",
+    username: "christine",
+    password: "berryjuice",
   });
   const { username, password } = user;
   const handleChange = (e) => {
