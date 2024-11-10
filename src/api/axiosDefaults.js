@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://vernon-makes-pancakes-c73f647bd403.herokuapp.com";
+axios.defaults.baseURL = "https://bug-alert-drf-7540ff833a9e.herokuapp.com";
 axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
 axios.defaults.withCredentials = true;
 
