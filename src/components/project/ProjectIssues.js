@@ -171,13 +171,16 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
             .map((issue, index) => (
               <Card key={index} style={{ margin: "10px 0" }}>
                 <Card.Body>
-                  <Card.Title>Issue {index + 1}</Card.Title>
+                  <Card.Title>Issue Nr: ##{issue.id}</Card.Title>
                   <Card.Text>
-                    <strong>Logged By:</strong> {issue.issue}
+                    <strong>Logged By:</strong> {issue.owner}
                   </Card.Text>
                   <Card.Text>
-                    <strong>Date:</strong> {date}
-                    <strong>Issue Information:</strong> {issue.console_error}
+                    <strong>Issue:</strong> {issue.issue}
+                  </Card.Text>
+                  <Card.Text>
+                    <strong>Date:</strong> {issue.created_on}
+                    <strong>Issue Information/Console Error:</strong> {issue.console_error}
                   </Card.Text>
 
                   <Card.Text>
