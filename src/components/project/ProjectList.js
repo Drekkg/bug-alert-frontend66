@@ -22,7 +22,7 @@ function ProjectList({ projects, currentUser }) {
       axios.get("/projects/").then((response) => setProjectData(response.data));
     } catch {}
   }, [projects.id]);
-  console.log(projectData);
+
   return (
     <Container className={styles.Project}>
       <h2>
