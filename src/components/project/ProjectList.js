@@ -20,7 +20,7 @@ function ProjectList({ projects, currentUser }) {
   useEffect(() => {
     try {
       axios.get("/projects/").then((response) => setProjectData(response.data));
-    } catch { }
+    } catch {}
   }, [projects.id]);
 
   return (
@@ -48,12 +48,17 @@ function ProjectList({ projects, currentUser }) {
 
             <Card.Text>Added By: {project.owner}</Card.Text>
             <Card.Text>Date Logged {project.created_on}</Card.Text>
+            
             <Button variant="primary" onClick={() => handleClick(project.id)}>
               {openProjectId === project.id ? "Close the issues Panel" : "Open the issues Panel"}
             </Button>
 
             {openProjectId === project.id && (
-              <ProjectIssues onResolvedChange={handleResolvedChange} owner={currentUser} />
+              <ProjectIssues
+                onResolvedChange={handleResolvedChange}
+                owner={currentUser}
+                ProjectId={project.id}
+              />
             )}
           </Card.Body>
         </Card>
