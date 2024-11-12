@@ -3,19 +3,33 @@ import { Button, Card, Form } from "react-bootstrap";
 import styles from "../../styles/ProjectIssues.module.css";
 import axios from "axios";
 
-function ProjectIssues({ onResolvedChange }) {
+function ProjectIssues({ onResolvedChange, owner }) {
   const [showIssueForm, setShowIssueForm] = useState(false);
   const [issue, setIssue] = useState({
     issue: "",
-    console_error: "",
-    issue_project: 1,
-    repeatable: false,
-    priority: ""
+    // console_error: "",
+    // issue_project: 1,
+    // repeatable: false,
+    // priority: ""
   });
+
   const [issueToList, setIssueToList] = useState([]);
   const date = new Date().toLocaleDateString();
-
   const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Open Issue Form";
+
+  console.log(owner);
+  const showFormButton = (
+    <>
+      <Button
+        variant="secondary"
+        className={styles.responseButton}
+        onClick={() => setShowIssueForm(!showIssueForm)}
+      >
+        {showIssueFormButton}
+      </Button>
+    </>
+  )
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setIssue((prev) => ({
@@ -25,10 +39,10 @@ function ProjectIssues({ onResolvedChange }) {
   };
 
   const handleSubmit = async (e) => {
-    console.log("issue");
+    console.log(issue.issue);
     e.preventDefault();
     try {
-      const response = await axios.post("/issues/project/18", issue);
+      const response = await axios.post("/issues/", issue);
       console.log("issue added successfully", response.data);
     } catch (err) {
       //   console.log(err);
@@ -54,18 +68,12 @@ function ProjectIssues({ onResolvedChange }) {
     //   priority: "",
     //   // resolved: false,
     // });
-    setIssueToList((prev) => [...prev, issue]);
+    // setIssueToList((prev) => [...prev, issue]);
     setShowIssueForm(false);
   };
   return (
     <div>
-      <Button
-        variant="secondary"
-        className={styles.responseButton}
-        onClick={() => setShowIssueForm(!showIssueForm)}
-      >
-        {showIssueFormButton}
-      </Button>
+      {owner.length > 0 || owner.username && showFormButton}
       {showIssueForm && (
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="issue">
@@ -80,7 +88,7 @@ function ProjectIssues({ onResolvedChange }) {
               required
             />
           </Form.Group>
-          <Form.Group controlId="console_error">
+          {/* <Form.Group controlId="console_error">
             <Form.Label>Issue:</Form.Label>
             <Form.Control
               type="text"
@@ -91,7 +99,7 @@ function ProjectIssues({ onResolvedChange }) {
               value={issue.console_error}
               required
             />
-          </Form.Group>
+          </Form.Group> */}
 
           {/* <Form.Group controlId="AdditionalInfo">
             <Form.Label>Additional Info</Form.Label>
@@ -104,7 +112,7 @@ function ProjectIssues({ onResolvedChange }) {
               required
             />
           </Form.Group> */}
-
+          {/* 
           <Form.Group controlId="Repeatable">
             <Form.Check
               type="checkbox"
@@ -113,9 +121,9 @@ function ProjectIssues({ onResolvedChange }) {
               checked={issue.repeatable || false}
               onChange={handleChange}
             />
-          </Form.Group>
+          </Form.Group> */}
 
-          <Form.Group controlId="PriorityLevel">
+          {/* <Form.Group controlId="PriorityLevel">
             <Form.Label>Priority Level</Form.Label>
             <Form.Control
               as="select"
@@ -129,7 +137,7 @@ function ProjectIssues({ onResolvedChange }) {
               <option value="Medium">Medium</option>
               <option value="Low">Low</option>
             </Form.Control>
-          </Form.Group>
+          </Form.Group> */}
 
           {/* <Form.Group controlId="Resolved">
             <Form.Check

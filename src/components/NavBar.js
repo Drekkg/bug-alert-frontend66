@@ -3,7 +3,7 @@ import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstr
 import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
-const NavBar = ({ currentUser }) => {
+const NavBar = ({ currentUser, logUserOut }) => {
   // const currentUser = {
   //   username: "test",
   //   password: "test",
@@ -16,6 +16,7 @@ const NavBar = ({ currentUser }) => {
   const handleLogout = () => {
     alert("are you sure you want to log out?");
     setNewUser({});
+    logUserOut();
   };
 
   const loggedInUser = (
@@ -56,7 +57,7 @@ const NavBar = ({ currentUser }) => {
 
   return (
     <div>
-      <Navbar bg="light" expand="xl">
+      <Navbar bg="light" expand="xl" fixed="top">
         <Container>
           <Navbar.Brand>
             <NavLink to="/">

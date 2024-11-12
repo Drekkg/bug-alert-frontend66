@@ -53,7 +53,6 @@ function SignInForm({ addUser }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
     try {
       await axios.post("/dj-rest-auth/login/", user);
       // setTokenTimestamp(data);

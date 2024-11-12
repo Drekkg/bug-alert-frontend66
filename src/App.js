@@ -18,10 +18,11 @@ function App() {
   const addUser = (user) => {
     setCurrentUser(user);
   };
-
+const logUserOut = () =>
+  setCurrentUser([])
   return (
     <div>
-      <NavBar currentUser={currentUser} />
+      <NavBar currentUser={currentUser} logUserOut={logUserOut} />
       <Switch>
         <Route
           exact
