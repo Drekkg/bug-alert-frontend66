@@ -10,6 +10,7 @@ function ProjectIssues({ onResolvedChange }) {
     console_error: "",
     issue_project: 1,
     repeatable: false,
+    priority: ""
   });
   const [issueToList, setIssueToList] = useState([]);
   const date = new Date().toLocaleDateString();
@@ -24,27 +25,23 @@ function ProjectIssues({ onResolvedChange }) {
   };
 
   const handleSubmit = async (e) => {
-    console.log("issue" + issue);
+    console.log("issue");
     e.preventDefault();
-
-    setIssueToList((prev) => [...prev, issue]);
-    setShowIssueForm(false);
-
     try {
       const response = await axios.post("/issues/project/18", issue);
       console.log("issue added successfully", response.data);
     } catch (err) {
-      console.log(err);
-      // if (err.response) {
-      //   // Server responded with a status other than 2xx
-      //   console.error("Error response:", err.response.data);
-      // } else if (err.request) {
-      //   // Request was made but no response received
-      //   console.error("Error request:", err.request);
-      // } else {
-      //   // Something else happened while setting up the request
-      //   console.error("Error message:", err.message);
-      // }
+      //   console.log(err);
+      //   // if (err.response) {
+      //   //   // Server responded with a status other than 2xx
+      //   //   console.error("Error response:", err.response.data);
+      //   // } else if (err.request) {
+      //   //   // Request was made but no response received
+      //   //   console.error("Error request:", err.request);
+      //   // } else {
+      //   //   // Something else happened while setting up the request
+      //   //   console.error("Error message:", err.message);
+      //   // }
     }
 
     // if (issue.resolved === true) {
@@ -57,6 +54,8 @@ function ProjectIssues({ onResolvedChange }) {
     //   priority: "",
     //   // resolved: false,
     // });
+    setIssueToList((prev) => [...prev, issue]);
+    setShowIssueForm(false);
   };
   return (
     <div>

@@ -26,7 +26,7 @@ function AddProject({ addProject }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
+    console.log("add project" + project)
     try {
       const response = await axios.post("/projects/", project);
       console.log("Project added successfully", response.data);
