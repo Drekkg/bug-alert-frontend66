@@ -13,6 +13,7 @@ function AddProject({ addProject }) {
     title: "",
     description: "",
     projectURL: "",
+    githubURL: "",
   });
   const history = useHistory();
 
@@ -26,7 +27,7 @@ function AddProject({ addProject }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("add project" + project)
+    console.log("add project" + project);
     try {
       const response = await axios.post("/projects/", project);
       console.log("Project added successfully", response.data);
@@ -48,6 +49,7 @@ function AddProject({ addProject }) {
       title: "",
       description: "",
       projectURL: "",
+      githubURL: "",
     });
     history.push("/");
   };
@@ -99,6 +101,20 @@ function AddProject({ addProject }) {
               placeholder="Project URL"
               name="projectURL"
               value={project.projectURL}
+            />
+          </Form.Group>
+          <Form.Group controlId="githubUrl">
+            <Form.Label>GitHub URL</Form.Label>
+            <Form.Text className="text-muted">
+              Please paste the Project's GitHub URL: https://github.com/...
+            </Form.Text>
+            <Form.Control
+              type="text"
+              onChange={handleChange}
+              maxLength="150"
+              placeholder="Project URL"
+              name="githubURL"
+              value={project.githubURL}
             />
           </Form.Group>
 

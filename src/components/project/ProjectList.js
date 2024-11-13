@@ -45,10 +45,21 @@ function ProjectList({ projects, currentUser }) {
                 {project.projectURL}
               </a>
             </Card.Text>
+            <Card.Text>
+              GitHub URL:
+              <a
+                href={project.githubURL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Link to Github"
+              >
+                {project.githubURL}
+              </a>
+            </Card.Text>
 
             <Card.Text>Added By: {project.owner}</Card.Text>
             <Card.Text>Date Logged {project.created_on}</Card.Text>
-            
+
             <Button variant="primary" onClick={() => handleClick(project.id)}>
               {openProjectId === project.id ? "Close the issues Panel" : "Open the issues Panel"}
             </Button>
