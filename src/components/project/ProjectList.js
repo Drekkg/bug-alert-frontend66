@@ -5,7 +5,6 @@ import { Container, Button, Card } from "react-bootstrap";
 import ProjectIssues from "./ProjectIssues";
 
 function ProjectList({ projects, currentUser }) {
-  const [issues, setIssues] = useState(false);
   const [resolved, setResolved] = useState(false);
   const [projectData, setProjectData] = useState(null);
   const [openProjectId, setOpenProjectId] = useState(null);
