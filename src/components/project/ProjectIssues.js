@@ -7,6 +7,7 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
   console.log(ProjectId);
   const [showIssueForm, setShowIssueForm] = useState(false);
   const [issueData, setIssueData] = useState([]);
+  const [noIssues, setNoIssues] = useState(false);
   const [issue, setIssue] = useState({
     issue: "",
     console_error: "",
@@ -68,12 +69,23 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
     setShowIssueForm(false);
   };
 
+  useEffect(
+    () => {
+      try {
+        axios.get(`/issues/project/${ProjectId}/`).then((response) => setIssueData(response.data));
+      } catch {}
+    }, // eslint-disable-next-line react-hooks/exhaustive-deps
+    [ProjectId, showIssueForm]
+  );
+  console.log(issueData);
+
   useEffect(() => {
-    try {
-      axios.get(`/issues/project/${ProjectId}/`).then((response) => setIssueData(response.data));
-    } catch {}
-  }, [ProjectId, showIssueForm]);
-  console.log("AAAAA" + issueData);
+    issueData.forEach((issue) => {
+      if (issue.issue_project_id === ProjectId) {
+        setNoIssues(true);
+      }
+    });
+  }, [issueData, ProjectId]);
 
   return (
     <div>
@@ -104,7 +116,7 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
               required
             />
           </Form.Group>
-          {/* 
+          {/*
           <Form.Group controlId="AdditionalInfo">
             <Form.Label>Additional Info</Form.Label>
             <Form.Control
@@ -160,6 +172,7 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
         </Form>
       )}{" "}
       <div>
+        {!noIssues && <Card.Title>No issues Logged for this Project</Card.Title>}
         {issueData
           ?.filter((issue) => issue.issue_project_id === ProjectId)
           .map((issue, index) => (
