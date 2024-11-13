@@ -15,8 +15,6 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
     issue_id: ProjectId,
   });
 
-  const [issueToList, setIssueToList] = useState([]);
-  const date = new Date().toLocaleDateString();
   const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Open Issue Form";
 
   const showFormButton = (
@@ -40,7 +38,6 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
   };
 
   const handleSubmit = async (e) => {
-    console.log(issue);
     e.preventDefault();
     try {
       const response = await axios.post(`/issues/project/${ProjectId}/`, issue);
@@ -48,19 +45,16 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
     } catch (err) {
       console.log(err);
       if (err.response) {
-
         console.error("Error response:", err.response.data);
       } else if (err.request) {
-
         console.error("Error request:", err.request);
       } else {
-
         console.error("Error message:", err.message);
       }
     }
 
     // if (issue.resolved === true) {
-    onResolvedChange(true);
+    // onResolvedChange(true);
 
     setIssue({
       issue: "",
@@ -77,9 +71,9 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
   useEffect(() => {
     try {
       axios.get(`/issues/project/${ProjectId}/`).then((response) => setIssueData(response.data));
-    } catch { }
-  }, [issueData, ProjectId]);
-  console.log(issueData);
+    } catch {}
+  }, [ProjectId, showIssueForm]);
+  console.log("AAAAA" + issueData);
 
   return (
     <div>
@@ -165,39 +159,37 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
           </Button>
         </Form>
       )}{" "}
-      {issueData.length > 0 && (
-        <div>
-          {issueData
-            ?.filter((issue) => issue.issue_project_id === ProjectId)
-            .map((issue, index) => (
-              <Card key={index} style={{ margin: "10px 0" }}>
-                <Card.Body>
-                  <Card.Title>Issue Nr: ##{issue.id}</Card.Title>
-                  <Card.Text>
-                    <strong>Logged By:</strong> {issue.owner}
-                  </Card.Text>
-                  <Card.Text>
-                    <strong>Issue:</strong> {issue.issue}
-                  </Card.Text>
-                  <Card.Text>
-                    <strong>Date:</strong> {issue.created_on}
-                    <strong>Issue Information/Console Error:</strong> {issue.console_error}
-                  </Card.Text>
+      <div>
+        {issueData
+          ?.filter((issue) => issue.issue_project_id === ProjectId)
+          .map((issue, index) => (
+            <Card key={index} style={{ margin: "10px 0" }}>
+              <Card.Body>
+                <Card.Title>Issue Nr: ##{issue.id}</Card.Title>
+                <Card.Text>
+                  <strong>Logged By:</strong> {issue.owner}
+                </Card.Text>
+                <Card.Text>
+                  <strong>Issue:</strong> {issue.issue}
+                </Card.Text>
+                <Card.Text>
+                  <strong>Date:</strong> {issue.created_on}
+                  <strong>Issue Information/Console Error:</strong> {issue.console_error}
+                </Card.Text>
 
-                  <Card.Text>
-                    <strong>Repeatable:</strong> {issue.repeatable ? "Yes" : "No"}
-                  </Card.Text>
-                  <Card.Text>
-                    <strong>Priority Level:</strong> {issue.priority}
-                  </Card.Text>
-                  {/* <Card.Text>
+                <Card.Text>
+                  <strong>Repeatable:</strong> {issue.repeatable ? "Yes" : "No"}
+                </Card.Text>
+                <Card.Text>
+                  <strong>Priority Level:</strong> {issue.priority}
+                </Card.Text>
+                {/* <Card.Text>
                             <strong>Resolved:</strong> {issue.resolved ? "Yes" : "No"}
                           </Card.Text> */}
-                </Card.Body>
-              </Card>
-            ))}
-        </div>
-      )}
+              </Card.Body>
+            </Card>
+          ))}
+      </div>
     </div>
   );
 }
