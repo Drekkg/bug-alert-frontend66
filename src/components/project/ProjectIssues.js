@@ -48,27 +48,28 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
     } catch (err) {
       console.log(err);
       if (err.response) {
-        // Server responded with a status other than 2xx
+
         console.error("Error response:", err.response.data);
       } else if (err.request) {
-        // Request was made but no response received
+
         console.error("Error request:", err.request);
       } else {
-        // Something else happened while setting up the request
+
         console.error("Error message:", err.message);
       }
     }
 
     // if (issue.resolved === true) {
-    //   onResolvedChange(true);
-    // }
-    // setIssue({
-    //   issue: "",
-    //   console_error: "",
-    //   repeatable: false,
-    //   priority: "",
-    //   // resolved: false,
-    // });
+    onResolvedChange(true);
+
+    setIssue({
+      issue: "",
+      console_error: "",
+      repeatable: false,
+      priority: "",
+      issue_id: ProjectId,
+      // resolved: false,
+    });
     // setIssueToList((prev) => [...prev, issue]);
     setShowIssueForm(false);
   };
@@ -76,9 +77,9 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
   useEffect(() => {
     try {
       axios.get(`/issues/project/${ProjectId}/`).then((response) => setIssueData(response.data));
-    } catch {}
-  }, [ProjectId]);
-  console.log(issueData[1]);
+    } catch { }
+  }, [issueData, ProjectId]);
+  console.log(issueData);
 
   return (
     <div>
@@ -142,7 +143,7 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
               required
             >
               <option value="">Choose...</option>
-              <option value="Critical">Low</option>
+              <option value="Critical">Critical</option>
               <option value="High">High</option>
               <option value="Medium">Medium</option>
               <option value="Low">Low</option>
