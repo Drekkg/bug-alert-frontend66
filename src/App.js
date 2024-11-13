@@ -6,6 +6,7 @@ import ProjectList from "./components/project/ProjectList";
 import AddProject from "./components/project/AddProject";
 import SignUpForm from "./auth/SignUpForm";
 import SignInForm from "./auth/SignInForm";
+import IssueDetail from "./components/project/IssueDetail";
 import "./api/axiosDefaults";
 
 function App() {
@@ -18,8 +19,7 @@ function App() {
   const addUser = (user) => {
     setCurrentUser(user);
   };
-const logUserOut = () =>
-  setCurrentUser([])
+  const logUserOut = () => setCurrentUser([]);
   return (
     <div>
       <NavBar currentUser={currentUser} logUserOut={logUserOut} />
@@ -32,7 +32,7 @@ const logUserOut = () =>
         <Route path="/addProject" render={() => <AddProject addProject={addProject} />} />
         <Route path="/signupform" render={() => <SignUpForm />} />
         <Route exact path="/signinform" render={() => <SignInForm addUser={addUser} />} />
-        <ProjectList />
+        <Route path="/issueDetail/:id" component={IssueDetail} />
       </Switch>
     </div>
   );

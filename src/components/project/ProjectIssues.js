@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import styles from "../../styles/ProjectIssues.module.css";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
@@ -8,6 +9,7 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
   const [showIssueForm, setShowIssueForm] = useState(false);
   const [issueData, setIssueData] = useState([]);
   const [noIssues, setNoIssues] = useState(false);
+  const [showIssueDetail, setShowIssueDetail] = useState(false);
   const [issue, setIssue] = useState({
     issue: "",
     console_error: "",
@@ -29,6 +31,7 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
       </Button>
     </>
   );
+  const handleClick = (issueId) => {};
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -199,6 +202,14 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
                 {/* <Card.Text>
                             <strong>Resolved:</strong> {issue.resolved ? "Yes" : "No"}
                           </Card.Text> */}
+                <Link
+                  to={{
+                    pathname: `/issueDetail/${issue.id}`,
+                    state: { issue },
+                  }}
+                >
+                  View Issue
+                </Link>
               </Card.Body>
             </Card>
           ))}
