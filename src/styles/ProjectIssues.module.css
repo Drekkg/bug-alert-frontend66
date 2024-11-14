@@ -1,3 +1,8 @@
 .responseButton {
     margin-top: .8rem;
 }
+
+.issueCard {
+    background-color: #ece6e6;
+    border: 3px solid black;
+}

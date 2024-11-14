@@ -170,11 +170,13 @@ function ProjectIssues({ onResolvedChange, owner, onOpenProject, ProjectId, rout
         </Form>
       )}{" "}
       <div>
-        {!noIssues && <Card.Title>No issues Logged for this Project</Card.Title>}
+        {!noIssues && (
+          <Card.Title style={{ margin: "10px 0" }}>No issues Logged for this Project</Card.Title>
+        )}
         {issueData
           ?.filter((issue) => issue.issue_project_id === ProjectId)
           .map((issue, index) => (
-            <Card key={index} style={{ margin: "10px 0" }}>
+            <Card key={index} className={styles.issueCard}>
               <Card.Body>
                 <Card.Title>Issue Nr: ##{issue.id}</Card.Title>
                 <Card.Text>

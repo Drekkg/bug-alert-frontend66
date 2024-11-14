@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { useLocation, useHistory } from "react-router-dom";
 import styles from "../../styles/Project.module.css";
 
@@ -43,6 +43,19 @@ const IssueDetail = () => {
         <Button variant="success" onClick={handleBackToIssues}>
           Submit Response
         </Button>
+        <Form>
+          <Form.Group controlId="Comments">
+            <Form.Label>Response</Form.Label>
+            <Form.Control type="text" placeholder="Enter response" />
+            <Form.Text className="text-muted">
+              please share any comments or actions that have been taken
+            </Form.Text>
+          </Form.Group>
+
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
       </Container>
     </div>
   );
