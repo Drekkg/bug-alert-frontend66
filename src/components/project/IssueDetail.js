@@ -7,12 +7,15 @@ const IssueDetail = () => {
   const location = useLocation();
   const history = useHistory();
   const { issue } = location.state || {};
+  const ProjectId = location.ProjectId;
 
-  if (!issue) {
-    // Redirect to a different page or show an error message if issue is not available
-    history.push("/");
-    return null;
-  }
+  const handleBackToIssues = () => {
+    history.push({
+      pathname: "/",
+      state: { reload: true },
+      ProjectId: ProjectId,
+    });
+  };
 
   return (
     <div>
@@ -34,11 +37,11 @@ const IssueDetail = () => {
         <p>
           <strong>Priority Level:</strong> {issue.priority}
         </p>
-        <Button variant="success" onClick={() => history.push("/")}>
-          Back to Projects
+        <Button variant="success" onClick={handleBackToIssues}>
+          Back to Issues
         </Button>
-        <Button variant="success" onClick={() => history.push("/")}>
-          Submit Response{" "}
+        <Button variant="success" onClick={handleBackToIssues}>
+          Submit Response
         </Button>
       </Container>
     </div>

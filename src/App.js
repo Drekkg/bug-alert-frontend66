@@ -20,6 +20,7 @@ function App() {
     setCurrentUser(user);
   };
   const logUserOut = () => setCurrentUser([]);
+
   return (
     <div>
       <NavBar currentUser={currentUser} logUserOut={logUserOut} />

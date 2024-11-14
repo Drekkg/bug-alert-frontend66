@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "../../styles/Project.module.css";
 import { Container, Button, Card } from "react-bootstrap";
 import ProjectIssues from "./ProjectIssues";
+import { useLocation } from "react-router-dom";
 
 function ProjectList({ projects, currentUser }) {
   const [resolved, setResolved] = useState(false);
@@ -16,6 +17,20 @@ function ProjectList({ projects, currentUser }) {
     setResolved(resolved);
   };
 
+  const location = useLocation();
+  const ProjectIdProp = location.ProjectId;
+
+  useEffect(() => {
+    if (ProjectIdProp) {
+      handleClick(ProjectIdProp);
+      console.log("effect");
+    }
+  }, [ProjectIdProp]);
+
+  const handleRouteBack = (projectId) => {
+    setOpenProjectId(openProjectId === projectId ? null : projectId);
+  };
+
   useEffect(() => {
     try {
       axios.get("/projects/").then((response) => setProjectData(response.data));
@@ -27,52 +42,60 @@ function ProjectList({ projects, currentUser }) {
       <h2>
         Bug Alert<i className="fa-solid fa-crosshairs"></i>
       </h2>
-      {projectData?.map((project, index) => (
-        <Card key={project.id} className={styles.projectCard}>
-          <Card.Body className={styles.projectCardBody}>
-            <Card.Title>Project: {project.title}</Card.Title>
-            {resolved && <Card.Title>RESOLVED</Card.Title>}
-            <Card.Text>Project Description: {project.description}</Card.Text>
-            <Card.Text>
-              Project URL:
-              <a
-                href={project.projectURL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Link to Project"
-              >
-                {project.projectURL}
-              </a>
-            </Card.Text>
-            <Card.Text>
-              GitHub URL:
-              <a
-                href={project.githubURL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Link to Github"
-              >
-                {project.githubURL}
-              </a>
-            </Card.Text>
+      {projectData?.map(
+        (project) => (
+          console.log(project.id + "pppppp"),
+          (
+            <Card key={project.id} className={styles.projectCard}>
+              <Card.Body className={styles.projectCardBody}>
+                <Card.Title>Project: {project.title}</Card.Title>
+                {resolved && <Card.Title>RESOLVED</Card.Title>}
+                <Card.Text>Project Description: {project.description}</Card.Text>
+                <Card.Text>
+                  Project URL:
+                  <a
+                    href={project.projectURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Link to Project"
+                  >
+                    {project.projectURL}
+                  </a>
+                </Card.Text>
+                <Card.Text>
+                  GitHub URL:
+                  <a
+                    href={project.githubURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Link to Github"
+                  >
+                    {project.githubURL}
+                  </a>
+                </Card.Text>
 
-            <Card.Text>Added By: {project.owner}</Card.Text>
-            <Card.Text>Date Logged {project.created_on}</Card.Text>
+                <Card.Text>Added By: {project.owner}</Card.Text>
+                <Card.Text>Date Logged {project.created_on}</Card.Text>
 
-            <Button variant="primary" onClick={() => handleClick(project.id)}>
-              {openProjectId === project.id ? "Close the issues Panel" : "Open the issues Panel"}
-            </Button>
+                <Button variant="primary" onClick={() => handleClick(project.id)}>
+                  {openProjectId === project.id
+                    ? "Close the issues Panel"
+                    : "Open the issues Panel"}
+                </Button>
 
-            {openProjectId === project.id && (
-              <ProjectIssues
-                onResolvedChange={handleResolvedChange}
-                owner={currentUser}
-                ProjectId={project.id}
-              />
-            )}
-          </Card.Body>
-        </Card>
-      ))}
+                {openProjectId === project.id && (
+                  <ProjectIssues
+                    onResolvedChange={handleResolvedChange}
+                    owner={currentUser}
+                    ProjectId={project.id}
+                    routeBack={handleRouteBack}
+                  />
+                )}
+              </Card.Body>
+            </Card>
+          )
+        )
+      )}
     </Container>
   );
 }

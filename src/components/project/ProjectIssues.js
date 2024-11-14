@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import styles from "../../styles/ProjectIssues.module.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
+function ProjectIssues({ onResolvedChange, owner, onOpenProject, ProjectId, routeBack }) {
   console.log(ProjectId);
   const [showIssueForm, setShowIssueForm] = useState(false);
   const [issueData, setIssueData] = useState([]);
   const [noIssues, setNoIssues] = useState(false);
-  const [showIssueDetail, setShowIssueDetail] = useState(false);
+
   const [issue, setIssue] = useState({
     issue: "",
     console_error: "",
@@ -31,7 +31,6 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
       </Button>
     </>
   );
-  const handleClick = (issueId) => {};
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -57,9 +56,6 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
       }
     }
 
-    // if (issue.resolved === true) {
-    // onResolvedChange(true);
-
     setIssue({
       issue: "",
       console_error: "",
@@ -80,7 +76,6 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
     }, // eslint-disable-next-line react-hooks/exhaustive-deps
     [ProjectId, showIssueForm]
   );
-  console.log(issueData);
 
   useEffect(() => {
     issueData.forEach((issue) => {
@@ -92,7 +87,7 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
 
   return (
     <div>
-      {(owner.length > 0 || owner.username) && showFormButton}
+      {(owner?.length > 0 || owner.username) && showFormButton}
       {showIssueForm && (
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="issue">
@@ -206,6 +201,7 @@ function ProjectIssues({ onResolvedChange, owner, ProjectId }) {
                   to={{
                     pathname: `/issueDetail/${issue.id}`,
                     state: { issue },
+                    ProjectId: ProjectId,
                   }}
                 >
                   View Issue
