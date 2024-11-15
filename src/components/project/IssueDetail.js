@@ -6,15 +6,17 @@ import axios from "axios";
 
 const IssueDetail = () => {
   const [triggerFetch, setTriggerFetch] = useState(false);
-  const [issueDetailData, setIssueDetailData] = useState([])
+  const [issueDetailData, setIssueDetailData] = useState([]);
+
+  const location = useLocation();
+  const history = useHistory();
+  const { issue, projectTitle, ProjectId } = location.state || {};
+
   const [enteredDetailData, setEnteredDetailData] = useState({
     comment: "",
     resolved: false,
+    issue_id: issue.id,
   });
-  const location = useLocation();
-  const history = useHistory();
-  const { issue } = location.state || {};
-  const ProjectId = location.ProjectId;
 
   const handleBackToIssues = () => {
     history.push({
@@ -33,28 +35,23 @@ const IssueDetail = () => {
     }));
   };
 
-  useEffect(
-    () => {
-      try {
-        axios.get("/comments/").then((response) => setIssueDetailData(response.data));
-        console.log("effected")
-      } catch { }
-    }, 
-    [triggerFetch]
-  );
-
-
+  useEffect(() => {
+    try {
+      axios.get("/comments/").then((response) => setIssueDetailData(response.data));
+      console.log("effected" + issueDetailData.issue_id);
+    } catch {}
+  }, [triggerFetch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/comments/", enteredDetailData);
-      console.log("issue added successfully", response.data);
-      setTriggerFetch((prev) => !prev); 
+      const response = await axios.post(`/comments/`, enteredDetailData);
+      console.log(enteredDetailData);
+      setTriggerFetch((prev) => !prev);
       setEnteredDetailData({
         comment: "",
         resolved: false,
-      })
+      });
     } catch (err) {
       console.log(err);
       if (err.response) {
@@ -65,14 +62,12 @@ const IssueDetail = () => {
         console.error("Error message:", err.message);
       }
     }
-  }
-
-
+  };
 
   return (
     <div>
       <Container className={styles.Project}>
-        <h2>Issue Detail</h2>
+        <h4>{projectTitle} Issue Detail</h4>
         <span className={styles.IssueDetail}>Nr: ## {issue.id}</span>
         <p>
           <strong>Logged By:</strong> {issue.owner}
@@ -81,7 +76,10 @@ const IssueDetail = () => {
           <strong>Date:</strong> {issue.created_on}
         </p>
         <p>
-          <strong>Issue Information/Console Error:</strong> {issue.console_error}
+          <strong>Issue Information: </strong> {issue.issue}
+        </p>
+        <p>
+          <strong>Console Error:</strong> {issue.console_error}
         </p>
         <p>
           <strong>Repeatable:</strong> {issue.repeatable ? "Yes" : "No"}
@@ -89,7 +87,7 @@ const IssueDetail = () => {
         <p>
           <strong>Priority Level:</strong> {issue.priority}
         </p>
-       
+
         <Button variant="success" onClick={handleBackToIssues}>
           Back to Issues
         </Button>
@@ -104,7 +102,8 @@ const IssueDetail = () => {
               name="comment"
               onChange={handleChange}
               value={enteredDetailData.comment}
-              required />
+              required
+            />
             <Form.Text className="text-muted">
               please share any comments or actions that have been taken
             </Form.Text>
@@ -116,7 +115,7 @@ const IssueDetail = () => {
               name="resolved"
               onChange={handleChange}
               checked={enteredDetailData.resolved}
-              />
+            />
           </Form.Group>
 
           <Button variant="primary" type="submit">
@@ -124,18 +123,27 @@ const IssueDetail = () => {
           </Button>
         </Form>
         <div>
-              <h3>Comments:</h3>
-              {issueDetailData.map((comment) => (
-          <div key={comment.id}>
-            <p><strong>Comment:</strong> {comment.comment}</p>
-            <p><strong>Resolved:</strong> {comment.resolved ? "Yes" : "No"}</p>
-            <p><strong>Date:</strong> {comment.created_on}</p>
-            <p><strong>Owner:</strong> {comment.owner}</p>
-          </div>
-        ))}
-
-
-          </div>
+          <h3>Comments:</h3>
+          {issueDetailData
+            ?.filter((comment) => comment.issue_id === issue.id)
+            .map((comment) => (
+              <div key={comment.id}>
+                <p>
+                  <strong>Comment:</strong> {comment.comment}
+                </p>
+                <p>
+                  <strong>Resolved:</strong> {comment.resolved ? "Yes" : "No"}
+                </p>
+                <p>
+                  <strong>Date:</strong> {comment.created_on}
+                </p>
+                <p>
+                  <strong>Owner:</strong> {comment.owner}
+                </p>
+                <p> id: {comment.issue_id} </p>
+              </div>
+            ))}
+        </div>
       </Container>
     </div>
   );

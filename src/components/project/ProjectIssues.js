@@ -4,8 +4,14 @@ import styles from "../../styles/ProjectIssues.module.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function ProjectIssues({ onResolvedChange, owner, onOpenProject, ProjectId, routeBack }) {
-
+function ProjectIssues({
+  onResolvedChange,
+  owner,
+  onOpenProject,
+  ProjectId,
+  routeBack,
+  projectTitle,
+}) {
   const [showIssueForm, setShowIssueForm] = useState(false);
   const [issueData, setIssueData] = useState([]);
   const [noIssues, setNoIssues] = useState(false);
@@ -62,7 +68,7 @@ function ProjectIssues({ onResolvedChange, owner, onOpenProject, ProjectId, rout
       repeatable: false,
       priority: "",
       issue_id: ProjectId,
-      // resolved: false,
+      projectTitle: projectTitle,
     });
     // setIssueToList((prev) => [...prev, issue]);
     setShowIssueForm(false);
@@ -72,7 +78,7 @@ function ProjectIssues({ onResolvedChange, owner, onOpenProject, ProjectId, rout
     () => {
       try {
         axios.get(`/issues/project/${ProjectId}/`).then((response) => setIssueData(response.data));
-      } catch { }
+      } catch {}
     }, // eslint-disable-next-line react-hooks/exhaustive-deps
     [ProjectId, showIssueForm]
   );
@@ -155,7 +161,9 @@ function ProjectIssues({ onResolvedChange, owner, onOpenProject, ProjectId, rout
           .map((issue, index) => (
             <Card key={index} className={styles.issueCard}>
               <Card.Body>
-                <Card.Title>Issue Nr: ##{issue.id}</Card.Title>
+                <Card.Title>
+                  {projectTitle} <strong>Issue Nr: ##{issue.id}</strong>
+                </Card.Title>
                 <Card.Text>
                   <strong>Logged By:</strong> {issue.owner}
                 </Card.Text>
@@ -179,8 +187,9 @@ function ProjectIssues({ onResolvedChange, owner, onOpenProject, ProjectId, rout
                 <Link
                   to={{
                     pathname: `/issueDetail/${issue.id}`,
-                    state: { issue },
-                    ProjectId: ProjectId,
+                    state: { issue, projectTitle, ProjectId },
+                    // ProjectId: ProjectId,
+                    // projectTitle: projectTitle,
                   }}
                 >
                   View Issue

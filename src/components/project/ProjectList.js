@@ -92,6 +92,7 @@ function ProjectList({ projects, currentUser }) {
                     owner={currentUser}
                     ProjectId={project.id}
                     routeBack={handleRouteBack}
+                    projectTitle={project.title}
                   />
                 )}
               </Card.Body>
