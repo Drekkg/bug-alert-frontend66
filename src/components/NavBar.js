@@ -17,6 +17,7 @@ const NavBar = ({ currentUser, logUserOut }) => {
     alert("are you sure you want to log out?");
     setNewUser({});
     logUserOut();
+    window.location.reload(true);
   };
 
   const loggedInUser = (
@@ -26,7 +27,7 @@ const NavBar = ({ currentUser, logUserOut }) => {
       </Nav.Item>
 
       <Nav.Item>
-        <NavLink to="" className={styles.navBarLinks} onClick={handleLogout}>
+        <NavLink to="/" className={styles.navBarLinks} onClick={handleLogout}>
           Log Out
         </NavLink>
       </Nav.Item>
@@ -49,11 +50,7 @@ const NavBar = ({ currentUser, logUserOut }) => {
     </>
   );
 
-  // const addProject = (
-  //   <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/posts/create">
-  //     <i className="fa-solid fa-folder-plus"></i>Add a Project to Track
-  //   </NavLink>
-  // );
+
 
   return (
     <div>
@@ -69,10 +66,9 @@ const NavBar = ({ currentUser, logUserOut }) => {
           <Navbar.Collapse id="basic-navbar-nav">
             {newUser.username ? loggedInUser : loggedOutUser}
             <div className="ml-auto">
-              <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-success">Search</Button>
-              </Form>
+
+
+
             </div>
           </Navbar.Collapse>
         </Container>

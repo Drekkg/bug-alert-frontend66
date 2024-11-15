@@ -23,14 +23,14 @@ function ProjectList({ projects, currentUser }) {
   useEffect(() => {
     if (ProjectIdProp) {
       handleClick(ProjectIdProp);
-     
+
     }
   }, [ProjectIdProp]);
 
   const handleRouteBack = (projectId) => {
     setOpenProjectId(openProjectId === projectId ? null : projectId);
   };
-
+  console.log(currentUser)
   useEffect(() => {
     try {
       axios.get("/projects/").then((response) => setProjectData(response.data));
@@ -76,11 +76,15 @@ function ProjectList({ projects, currentUser }) {
                 <Card.Text>Added By: {project.owner}</Card.Text>
                 <Card.Text>Date Logged {project.created_on}</Card.Text>
 
-                <Button variant="primary" onClick={() => handleClick(project.id)}>
-                  {openProjectId === project.id
-                    ? "Close the issues Panel"
-                    : "Open the issues Panel"}
-                </Button>
+
+                {currentUser.username && (
+                  <Button variant="primary" onClick={() => handleClick(project.id)}>
+                    {openProjectId === project.id
+                      ? "Close the issues Panel"
+                      : "Open the issues Panel"}
+                  </Button>
+                )
+                }
 
                 {openProjectId === project.id && (
                   <ProjectIssues
