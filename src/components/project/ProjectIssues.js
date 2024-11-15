@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 function ProjectIssues({ onResolvedChange, owner, onOpenProject, ProjectId, routeBack }) {
-  console.log(ProjectId);
+
   const [showIssueForm, setShowIssueForm] = useState(false);
   const [issueData, setIssueData] = useState([]);
   const [noIssues, setNoIssues] = useState(false);

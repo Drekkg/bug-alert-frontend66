@@ -34,7 +34,7 @@ function ProjectList({ projects, currentUser }) {
   useEffect(() => {
     try {
       axios.get("/projects/").then((response) => setProjectData(response.data));
-    } catch {}
+    } catch { }
   }, [projects.id]);
 
   return (
@@ -44,7 +44,6 @@ function ProjectList({ projects, currentUser }) {
       </h2>
       {projectData?.map(
         (project) => (
-          console.log(project.id + "pppppp"),
           (
             <Card key={project.id} className={styles.projectCard}>
               <Card.Body className={styles.projectCardBody}>
