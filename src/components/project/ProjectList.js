@@ -23,7 +23,7 @@ function ProjectList({ projects, currentUser }) {
   useEffect(() => {
     if (ProjectIdProp) {
       handleClick(ProjectIdProp);
-      console.log("effect");
+     
     }
   }, [ProjectIdProp]);
 

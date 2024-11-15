@@ -5,6 +5,7 @@ import styles from "../../styles/Project.module.css";
 import axios from "axios";
 
 const IssueDetail = () => {
+  const [triggerFetch, setTriggerFetch] = useState(false);
   const [issueDetailData, setIssueDetailData] = useState([])
   const [enteredDetailData, setEnteredDetailData] = useState({
     comment: "",
@@ -38,8 +39,8 @@ const IssueDetail = () => {
         axios.get("/comments/").then((response) => setIssueDetailData(response.data));
         console.log("effected")
       } catch { }
-    }, // eslint-disable-next-line react-hooks/exhaustive-deps
-    [enteredDetailData]
+    }, 
+    [triggerFetch]
   );
 
 
@@ -49,8 +50,11 @@ const IssueDetail = () => {
     try {
       const response = await axios.post("/comments/", enteredDetailData);
       console.log("issue added successfully", response.data);
-
-
+      setTriggerFetch((prev) => !prev); 
+      setEnteredDetailData({
+        comment: "",
+        resolved: false,
+      })
     } catch (err) {
       console.log(err);
       if (err.response) {
@@ -85,7 +89,7 @@ const IssueDetail = () => {
         <p>
           <strong>Priority Level:</strong> {issue.priority}
         </p>
-        <p><strong>Comments:</strong>{issueDetailData}</p>
+       
         <Button variant="success" onClick={handleBackToIssues}>
           Back to Issues
         </Button>
@@ -112,13 +116,26 @@ const IssueDetail = () => {
               name="resolved"
               onChange={handleChange}
               checked={enteredDetailData.resolved}
-            />
+              />
           </Form.Group>
 
           <Button variant="primary" type="submit">
             Submit
           </Button>
         </Form>
+        <div>
+              <h3>Comments:</h3>
+              {issueDetailData.map((comment) => (
+          <div key={comment.id}>
+            <p><strong>Comment:</strong> {comment.comment}</p>
+            <p><strong>Resolved:</strong> {comment.resolved ? "Yes" : "No"}</p>
+            <p><strong>Date:</strong> {comment.created_on}</p>
+            <p><strong>Owner:</strong> {comment.owner}</p>
+          </div>
+        ))}
+
+
+          </div>
       </Container>
     </div>
   );
