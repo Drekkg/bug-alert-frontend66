@@ -72,7 +72,7 @@ function ProjectIssues({ onResolvedChange, owner, onOpenProject, ProjectId, rout
     () => {
       try {
         axios.get(`/issues/project/${ProjectId}/`).then((response) => setIssueData(response.data));
-      } catch {}
+      } catch { }
     }, // eslint-disable-next-line react-hooks/exhaustive-deps
     [ProjectId, showIssueForm]
   );
@@ -114,18 +114,6 @@ function ProjectIssues({ onResolvedChange, owner, onOpenProject, ProjectId, rout
               required
             />
           </Form.Group>
-          {/*
-          <Form.Group controlId="AdditionalInfo">
-            <Form.Label>Additional Info</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Additional Information"
-              name="additionalInfo"
-              onChange={handleChange}
-              value={issue.additionalInfo}
-              required
-            />
-          </Form.Group> */}
 
           <Form.Group controlId="Repeatable">
             <Form.Check
@@ -153,17 +141,6 @@ function ProjectIssues({ onResolvedChange, owner, onOpenProject, ProjectId, rout
               <option value="Low">Low</option>
             </Form.Control>
           </Form.Group>
-
-          {/* <Form.Group controlId="Resolved">
-            <Form.Check
-              type="checkbox"
-              label="Issue is Resolved"
-              name="resolved"
-              onChange={handleChange}
-              checked={issue.resolved}
-            />
-          </Form.Group> */}
-
           <Button variant="success" type="submit">
             Submit
           </Button>
