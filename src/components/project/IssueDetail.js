@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Card, Container, Form } from "react-bootstrap";
 import { useLocation, useHistory } from "react-router-dom";
 import styles from "../../styles/Project.module.css";
 import axios from "axios";
@@ -135,27 +135,28 @@ const IssueDetail = () => {
           </Button>
         </Form>
         <div>
-          <h3>Comments:</h3>
-          {loading && <LoadingBadge />}
-          {issueDetailData
-            ?.filter((comment) => comment.issue_id === issue.id)
-            .map((comment) => (
-              <div key={comment.id}>
-                <p>
-                  <strong>Comment:</strong> {comment.comment}
-                </p>
-                <p>
-                  <strong>Resolved:</strong> {comment.resolved ? "Yes" : "No"}
-                </p>
-                <p>
-                  <strong>Date:</strong> {comment.created_on}
-                </p>
-                <p>
-                  <strong>Owner:</strong> {comment.owner}
-                </p>
-                <p> id: {comment.issue_id} </p>
-              </div>
-            ))}
+          <Card>
+            <h3>Comments:</h3>
+            {loading && <LoadingBadge />}
+            {issueDetailData
+              ?.filter((comment) => comment.issue_id === issue.id)
+              .map((comment) => (
+                <div key={comment.id}>
+                  <p>
+                    <strong>Comment:</strong> {comment.comment}
+                  </p>
+                  <p>
+                    <strong>Resolved:</strong> {comment.resolved ? "Yes" : "No"}
+                  </p>
+                  <p>
+                    <strong>Date:</strong> {comment.created_on}
+                  </p>
+                  <p>
+                    <strong>Owner:</strong> {comment.owner}
+                  </p>
+                </div>
+              ))}
+          </Card>
         </div>
       </Container>
     </div>

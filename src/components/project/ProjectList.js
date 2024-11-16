@@ -103,9 +103,12 @@ function ProjectList({ projects, currentUser }) {
       {showAlert && deleteAlert}
 
       {projectData?.map((project) => (
-        <Card key={project.id} className={styles.projectCard}>
+        <Card key={project.id} className={styles.projectCard} bg="light">
           <Card.Body className={styles.projectCardBody}>
-            <Card.Title>Project: {project.title}</Card.Title>
+            <Card.Header className="mb-3">
+              <i className="fa-solid fa-crosshairs"></i>
+              {project.title}
+            </Card.Header>
 
             {resolved && <Card.Title>RESOLVED</Card.Title>}
             <Card.Text>Project Description: {project.description}</Card.Text>
@@ -157,7 +160,11 @@ function ProjectList({ projects, currentUser }) {
                 >
                   Edit Project
                 </Button>
-                <Button variant="danger" onClick={() => handleDelete(project.id, project.title)}>
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleDelete(project.id, project.title)}
+                >
                   Delete Project
                 </Button>
               </>
