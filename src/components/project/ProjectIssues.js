@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Form } from "react-bootstrap";
+import { Button, Card, Form, Alert } from "react-bootstrap";
 import styles from "../../styles/ProjectIssues.module.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -15,6 +15,7 @@ function ProjectIssues({
   const [showIssueForm, setShowIssueForm] = useState(false);
   const [issueData, setIssueData] = useState([]);
   const [noIssues, setNoIssues] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const [issue, setIssue] = useState({
     issue: "",
@@ -25,6 +26,16 @@ function ProjectIssues({
   });
 
   const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Open Issue Form";
+
+  const issueAddAlert = (
+    <Alert variant="success">
+      <Alert.Heading>Issue Added</Alert.Heading>
+      <p>Issue has been added successfully</p>
+      <Button onClick={() => setShowAlert(false)} variant="success" block>
+        Close
+      </Button>
+    </Alert>
+  );
 
   const showFormButton = (
     <>
@@ -50,6 +61,7 @@ function ProjectIssues({
     e.preventDefault();
     try {
       const response = await axios.post(`/issues/project/${ProjectId}/`, issue);
+
       console.log("issue added successfully", response.data);
     } catch (err) {
       console.log(err);
@@ -70,8 +82,8 @@ function ProjectIssues({
       issue_id: ProjectId,
       projectTitle: projectTitle,
     });
-    // setIssueToList((prev) => [...prev, issue]);
     setShowIssueForm(false);
+    setShowAlert(true);
   };
 
   useEffect(
@@ -94,6 +106,7 @@ function ProjectIssues({
   return (
     <div>
       {(owner?.length > 0 || owner.username) && showFormButton}
+      {showAlert && issueAddAlert}
       {showIssueForm && (
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="issue">
@@ -188,8 +201,6 @@ function ProjectIssues({
                   to={{
                     pathname: `/issueDetail/${issue.id}`,
                     state: { issue, projectTitle, ProjectId },
-                    // ProjectId: ProjectId,
-                    // projectTitle: projectTitle,
                   }}
                 >
                   View Issue

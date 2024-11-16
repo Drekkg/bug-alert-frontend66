@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "../../styles/Project.module.css";
 import { Container, Button, Card, Modal, Alert } from "react-bootstrap";
 import ProjectIssues from "./ProjectIssues";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 function ProjectList({ projects, currentUser }) {
   const [resolved, setResolved] = useState(false);
@@ -14,6 +14,7 @@ function ProjectList({ projects, currentUser }) {
   const [deleteProjectId, setDeleteProjectId] = useState(null);
   const [triggerEffect, setTriggerEffect] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const history = useHistory();
 
   const handleClose = () => setShowDeleteModal(false);
   // const handleShow = () => setShowDeleteModal(true);
@@ -32,10 +33,13 @@ function ProjectList({ projects, currentUser }) {
     if (ProjectIdProp) {
       handleClick(ProjectIdProp);
     }
-  }, [ProjectIdProp]);
+  }, [ProjectIdProp]); //eslint-disable-line
 
   const handleRouteBack = (projectId) => {
     setOpenProjectId(openProjectId === projectId ? null : projectId);
+  };
+  const handleEdit = (projectId, title, description, githubURL, projectURL) => {
+    history.push(`/edit-project/${projectId}`);
   };
 
   const handleDelete = (projectId, title) => {
@@ -131,10 +135,27 @@ function ProjectList({ projects, currentUser }) {
                 {openProjectId === project.id ? "Close the issues Panel" : "Open the issues Panel"}
               </Button>
             )}
+
             {currentUser.username === project.owner && (
-              <Button variant="danger" onClick={() => handleDelete(project.id, project.title)}>
-                Delete Project
-              </Button>
+              <>
+                <Button
+                  variant="info"
+                  onClick={() =>
+                    handleEdit(
+                      project.id,
+                      project.title,
+                      project.description,
+                      project.githubURL,
+                      project.projectURL
+                    )
+                  }
+                >
+                  Edit Project
+                </Button>
+                <Button variant="danger" onClick={() => handleDelete(project.id, project.title)}>
+                  Delete Project
+                </Button>
+              </>
             )}
 
             {openProjectId === project.id && (

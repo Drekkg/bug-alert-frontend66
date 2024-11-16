@@ -40,7 +40,7 @@ const IssueDetail = () => {
       axios.get("/comments/").then((response) => setIssueDetailData(response.data));
       console.log("effected" + issueDetailData.issue_id);
     } catch {}
-  }, [triggerFetch]);
+  }, [triggerFetch]); //eslint-disable-line
 
   const handleSubmit = async (e) => {
     e.preventDefault();

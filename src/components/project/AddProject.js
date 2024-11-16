@@ -34,6 +34,7 @@ function AddProject({ addProject }) {
 
     try {
       const response = await axios.post("/projects/", project);
+      console.log(response);
 
       setShowAlert(true);
     } catch (err) {
