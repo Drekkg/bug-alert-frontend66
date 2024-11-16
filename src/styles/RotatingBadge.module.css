@@ -1,0 +1,11 @@
+.loadingBadge {
+    color: #dd1818; /* Change the color */
+    font-size: 2rem; /* Change the size */
+    margin: 1rem; /* Add margin */
+    animation: spin .66s linear infinite; /* Add spin animation */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

@@ -3,10 +3,12 @@ import { Button, Container, Form } from "react-bootstrap";
 import { useLocation, useHistory } from "react-router-dom";
 import styles from "../../styles/Project.module.css";
 import axios from "axios";
+import LoadingBadge from "../LoadingBadge";
 
 const IssueDetail = () => {
   const [triggerFetch, setTriggerFetch] = useState(false);
   const [issueDetailData, setIssueDetailData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const location = useLocation();
   const history = useHistory();
@@ -35,9 +37,19 @@ const IssueDetail = () => {
   };
 
   useEffect(() => {
-    try {
-      axios.get("/comments/").then((response) => setIssueDetailData(response.data));
-    } catch { }
+    const fetchComments = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get("/comments/");
+        setIssueDetailData(response.data);
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchComments();
   }, [triggerFetch]); //eslint-disable-line
 
   const handleSubmit = async (e) => {
@@ -50,7 +62,6 @@ const IssueDetail = () => {
         comment: "",
         resolved: false,
         issue_id: issue.id,
-
       });
     } catch (err) {
       console.log(err);
@@ -125,6 +136,7 @@ const IssueDetail = () => {
         </Form>
         <div>
           <h3>Comments:</h3>
+          {loading && <LoadingBadge />}
           {issueDetailData
             ?.filter((comment) => comment.issue_id === issue.id)
             .map((comment) => (

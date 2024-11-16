@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card, Form, Alert } from "react-bootstrap";
 import styles from "../../styles/ProjectIssues.module.css";
+import LoadingBadge from "../LoadingBadge";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -16,6 +17,7 @@ function ProjectIssues({
   const [issueData, setIssueData] = useState([]);
   const [noIssues, setNoIssues] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [issue, setIssue] = useState({
     issue: "",
@@ -88,9 +90,12 @@ function ProjectIssues({
 
   useEffect(
     () => {
-      try {
-        axios.get(`/issues/project/${ProjectId}/`).then((response) => setIssueData(response.data));
-      } catch {}
+      setLoading(true);
+      axios
+        .get(`/issues/project/${ProjectId}/`)
+        .then((response) => setIssueData(response.data))
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
     }, // eslint-disable-next-line react-hooks/exhaustive-deps
     [ProjectId, showIssueForm]
   );
@@ -164,10 +169,14 @@ function ProjectIssues({
             Submit
           </Button>
         </Form>
-      )}{" "}
+      )}
       <div>
-        {!noIssues && (
-          <Card.Title style={{ margin: "10px 0" }}>No issues Logged for this Project</Card.Title>
+        {loading ? (
+          <LoadingBadge />
+        ) : (
+          !noIssues && (
+            <Card.Title style={{ margin: "10px 0" }}>No issues Logged for this Project</Card.Title>
+          )
         )}
         {issueData
           ?.filter((issue) => issue.issue_project_id === ProjectId)

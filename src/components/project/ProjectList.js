@@ -4,6 +4,7 @@ import styles from "../../styles/Project.module.css";
 import { Container, Button, Card, Modal, Alert } from "react-bootstrap";
 import ProjectIssues from "./ProjectIssues";
 import { useLocation, useHistory } from "react-router-dom";
+import LoadingBadge from "../LoadingBadge";
 
 function ProjectList({ projects, currentUser }) {
   const [resolved, setResolved] = useState(false);
@@ -14,6 +15,7 @@ function ProjectList({ projects, currentUser }) {
   const [deleteProjectId, setDeleteProjectId] = useState(null);
   const [triggerEffect, setTriggerEffect] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [Loading, setLoading] = useState(true);
   const history = useHistory();
 
   const handleClose = () => setShowDeleteModal(false);
@@ -38,7 +40,7 @@ function ProjectList({ projects, currentUser }) {
   const handleRouteBack = (projectId) => {
     setOpenProjectId(openProjectId === projectId ? null : projectId);
   };
-  const handleEdit = (projectId, title, description, githubURL, projectURL) => {
+  const handleEdit = (projectId) => {
     history.push(`/edit-project/${projectId}`);
   };
 
@@ -60,11 +62,12 @@ function ProjectList({ projects, currentUser }) {
   };
 
   useEffect(() => {
-    try {
-      axios.get("/projects/").then((response) => setProjectData(response.data));
-    } catch (error) {
-      console.error("Error fetching project data:", error);
-    }
+    setLoading(true);
+    axios
+      .get("/projects/")
+      .then((response) => setProjectData(response.data))
+      .catch((error) => console.error("Error fetching project data:", error))
+      .finally(() => setLoading(false));
   }, [projects, triggerEffect]);
 
   const deleteAlert = (
@@ -77,6 +80,7 @@ function ProjectList({ projects, currentUser }) {
 
   return (
     <Container className={styles.Project}>
+      {Loading && <LoadingBadge />}
       <h2>
         Bug Alert<i className="fa-solid fa-crosshairs"></i>
       </h2>
@@ -97,6 +101,7 @@ function ProjectList({ projects, currentUser }) {
         </Modal>
       )}
       {showAlert && deleteAlert}
+
       {projectData?.map((project) => (
         <Card key={project.id} className={styles.projectCard}>
           <Card.Body className={styles.projectCardBody}>
