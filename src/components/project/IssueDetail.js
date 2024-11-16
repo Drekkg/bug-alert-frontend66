@@ -28,7 +28,6 @@ const IssueDetail = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-
     setEnteredDetailData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -38,19 +37,20 @@ const IssueDetail = () => {
   useEffect(() => {
     try {
       axios.get("/comments/").then((response) => setIssueDetailData(response.data));
-      console.log("effected" + issueDetailData.issue_id);
-    } catch {}
+    } catch { }
   }, [triggerFetch]); //eslint-disable-line
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(`/comments/`, enteredDetailData);
-      console.log(enteredDetailData);
-      setTriggerFetch((prev) => !prev);
+
+      setTriggerFetch(!triggerFetch);
       setEnteredDetailData({
         comment: "",
         resolved: false,
+        issue_id: issue.id,
+
       });
     } catch (err) {
       console.log(err);
@@ -62,6 +62,7 @@ const IssueDetail = () => {
         console.error("Error message:", err.message);
       }
     }
+    setTriggerFetch((prev) => !prev);
   };
 
   return (

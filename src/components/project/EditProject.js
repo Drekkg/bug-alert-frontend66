@@ -53,11 +53,11 @@ const EditProject = ({ updateProject }) => {
 
     try {
       const response = await axios.put(`/projects/${projectId}/`, project);
-      console.log(response);
 
-      setShowAlert(true);
+
+      setShowAlert(!showAlert);
       updateProject(response.data);
-      history.push("/");
+
     } catch (err) {
       if (err.response) {
         // Server responded with a status other than 2xx
@@ -71,6 +71,20 @@ const EditProject = ({ updateProject }) => {
       }
     }
   };
+  const handleClose = () => {
+    setShowAlert(!showAlert)
+    history.push("/");
+  }
+  const updateAlert = (
+    <>
+      <div className="alert alert-success">
+        Project updated successfully!
+        <span>
+          <Button variant="success" onClick={handleClose}>Close</Button>
+        </span>
+      </div>
+    </>
+  )
 
   return (
     <Container className={styles.Project}>
@@ -123,7 +137,7 @@ const EditProject = ({ updateProject }) => {
           Go Back to Projects
         </Button>
       </Form>
-      {showAlert && <div className="alert alert-success">Project updated successfully!</div>}
+      {showAlert && updateAlert}
     </Container>
   );
 };
