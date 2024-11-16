@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import styles from "../../styles/ProjectIssues.module.css";
 import { Link } from "react-router-dom";

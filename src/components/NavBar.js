@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
@@ -50,8 +50,6 @@ const NavBar = ({ currentUser, logUserOut }) => {
     </>
   );
 
-
-
   return (
     <div>
       <Navbar bg="light" expand="xl" fixed="top">
@@ -65,11 +63,7 @@ const NavBar = ({ currentUser, logUserOut }) => {
           <Navbar.Toggle />
           <Navbar.Collapse id="basic-navbar-nav">
             {newUser.username ? loggedInUser : loggedOutUser}
-            <div className="ml-auto">
-
-
-
-            </div>
+            <div className="ml-auto"></div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
