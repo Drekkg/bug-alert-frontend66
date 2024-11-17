@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Badge } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
@@ -18,8 +18,10 @@ const NavBar = ({ currentUser, logUserOut }) => {
 
   const loggedInUser = (
     <>
-      <Nav.Item className={styles.navBarLinks}>
-        <NavLink to="/addProject">Add Project to Track</NavLink>
+      <Nav.Item>
+        <NavLink className={styles.navBarProject} to="/addProject">
+          Add Project to Track
+        </NavLink>
       </Nav.Item>
 
       <Nav.Item>
@@ -51,11 +53,15 @@ const NavBar = ({ currentUser, logUserOut }) => {
       <Navbar bg="light" expand="xl" fixed="top">
         <Container>
           <Navbar.Brand>
-            <NavLink to="/">
+            <NavLink to="/" className={styles.navHeading}>
               Bug Alert<i className="fa-solid fa-crosshairs"></i>
             </NavLink>
           </Navbar.Brand>
-          {newUser.username ? <Nav.Link to="/">User: {newUser.username}</Nav.Link> : null}
+          {newUser.username ? (
+            <div className={styles.user} to="/">
+              User: <span className={styles.userName}>{newUser.username}</span>
+            </div>
+          ) : null}
           <Navbar.Toggle />
           <Navbar.Collapse id="basic-navbar-nav">
             {newUser.username ? loggedInUser : loggedOutUser}

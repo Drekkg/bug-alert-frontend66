@@ -111,7 +111,7 @@ function ProjectList({ projects, currentUser }) {
             </Card.Header>
 
             {resolved && <Card.Title>RESOLVED</Card.Title>}
-            <div className={styles["vertical-align-container"]}>
+            <div>
               <Card.Text>
                 <span>Project Description: </span>
                 {project.description}
@@ -149,8 +149,12 @@ function ProjectList({ projects, currentUser }) {
               </Card.Text>
             </div>
             {currentUser.username && (
-              <div className="d-flex justify-content-center">
-                <Button variant="primary" onClick={() => handleClick(project.id)}>
+              <div className={`d-flex justify-content-center`}>
+                <Button
+                  className={styles.issueButton}
+                  variant="primary"
+                  onClick={() => handleClick(project.id)}
+                >
                   {openProjectId === project.id
                     ? "Close the issues Panel"
                     : "Open the issues Panel"}
@@ -161,7 +165,7 @@ function ProjectList({ projects, currentUser }) {
             {currentUser.username === project.owner && (
               <>
                 <Button
-                  className="float-right ml-1"
+                  className={styles.deleteButton}
                   variant="danger"
                   size="sm"
                   onClick={() => handleDelete(project.id, project.title)}
@@ -170,7 +174,7 @@ function ProjectList({ projects, currentUser }) {
                 </Button>
                 <Button
                   size="sm"
-                  className="float-right"
+                  className={styles.editButton}
                   variant="info"
                   onClick={() =>
                     handleEdit(

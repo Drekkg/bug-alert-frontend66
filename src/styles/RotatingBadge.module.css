@@ -1,8 +1,8 @@
 .loadingBadge {
-    color: #dd1818; /* Change the color */
-    font-size: 2rem; /* Change the size */
-    margin: 1rem; /* Add margin */
-    animation: spin .66s linear infinite; /* Add spin animation */
+    color: #28266e; 
+    font-size: 2rem; 
+    margin: 1rem; 
+    animation: spin .66s linear infinite; 
   }
   
   @keyframes spin {

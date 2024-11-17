@@ -26,5 +26,29 @@ i {
 
   .navBarLinks {
     margin: 0 2rem;
+    color:#181a24;
   
   }
+
+  .navHeading {
+    color: #181a24;
+    font-size: 1.5rem;
+    margin: 0 2rem;
+  }
+
+  .userName {
+    color: #17171a;
+    font-size: 1.2rem;
+   margin: 0 0.3rem;
+  }
+
+.navBarProject {
+    color: #181a24;
+    font-size: 1.2rem;
+    margin: 0 2rem;
+}
+.user {
+    color: #181a24;
+
+    margin: 0 2rem;
+}
