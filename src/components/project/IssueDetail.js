@@ -177,7 +177,7 @@ const IssueDetail = () => {
                   </p>
 
                   <p>
-                    <strong>Date:</strong> {comment.created_on} <strong>Owner:</strong>{" "}
+                    <strong>Date:</strong> {comment.created_on} <strong>Logged by:</strong>{" "}
                     {comment.owner}
                   </p>
                   <hr />
