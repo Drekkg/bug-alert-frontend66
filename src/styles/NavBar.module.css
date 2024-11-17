@@ -52,3 +52,44 @@ i {
 
     margin: 0 2rem;
 }
+
+.AlertModal {
+  width: 50rem;
+  background-color:#eaeadb;
+  position: fixed;
+  height:50%;
+  z-index: 99;
+  
+  
+}
+.logoutButton {
+  background-color: #c7a73d;
+  border: 1px solid #dadadf;
+  border-radius: 2px;
+  padding: .3rem 1rem;
+  margin: 1rem;
+  cursor: pointer;
+  color: #080808fd;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none; 
+  transition: background-color .3s;
+}
+
+.goBackButton {
+ 
+  background-color: #7195b9;
+  border: 1px solid #dadadf;
+  border-radius: 2px;
+  padding: .5rem 1rem;
+  margin: 0.8rem;
+  cursor: pointer;
+  color: #080808fd;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color .3s;
+}

@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
+import { NavLink, useHistory } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
 const NavBar = ({ currentUser, logUserOut }) => {
   const [newUser, setNewUser] = useState(currentUser);
+  const [logoutAlert, setLogoutAlert] = useState(false);
   useEffect(() => {
     setNewUser({ username: currentUser.username });
   }, [currentUser]); //eslint-disable-line
-
+  const history = useHistory();
   const handleLogout = () => {
-    alert("are you sure you want to log out?");
-    setNewUser({});
-    logUserOut();
-    window.location.reload(true);
+    setLogoutAlert(!logoutAlert);
   };
 
   const loggedInUser = (
@@ -48,8 +47,47 @@ const NavBar = ({ currentUser, logUserOut }) => {
     </>
   );
 
+  const alertToLogout = (
+    <>
+      <Alert className={styles.AlertModal}>
+        <Alert.Heading>
+          Bug Alert <i className="fa-solid fa-crosshairs"></i>
+        </Alert.Heading>
+        <p>Are you sure you want to Logout?</p>
+        <hr />
+        <div className="d-flex justify-content-center">
+          <Button
+            size="sm"
+            className={styles.goBackButton}
+            onClick={() => {
+              setLogoutAlert(false);
+              history.push("/");
+            }}
+            variant="info"
+            block
+          >
+            Go Back
+          </Button>
+          <Button
+            size="sm"
+            className={styles.logoutButton}
+            onClick={() => {
+              setNewUser({});
+              logUserOut();
+              window.location.reload(true);
+            }}
+            variant="warning"
+            block
+          >
+            Log Out
+          </Button>
+        </div>
+      </Alert>
+    </>
+  );
+
   return (
-    <div>
+    <div className={styles.Alertmodal}>
       <Navbar bg="light" expand="xl" fixed="top">
         <Container>
           <Navbar.Brand>
@@ -60,6 +98,7 @@ const NavBar = ({ currentUser, logUserOut }) => {
           {newUser.username ? (
             <div className={styles.user} to="/">
               User: <span className={styles.userName}>{newUser.username}</span>
+              {logoutAlert && alertToLogout}
             </div>
           ) : null}
           <Navbar.Toggle />
