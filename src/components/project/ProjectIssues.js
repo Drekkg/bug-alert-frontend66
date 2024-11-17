@@ -195,7 +195,6 @@ function ProjectIssues({
                 </Card.Text>
                 <Card.Text>
                   <strong>Date:</strong> {issue.created_on}
-                  <strong>Issue Information/Console Error:</strong> {issue.console_error}
                 </Card.Text>
 
                 <Card.Text>
