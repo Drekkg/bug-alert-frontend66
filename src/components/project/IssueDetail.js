@@ -13,6 +13,12 @@ const IssueDetail = () => {
   const location = useLocation();
   const history = useHistory();
   const { issue, projectTitle, ProjectId } = location.state || {};
+  const priorityClassMap = {
+    Critical: styles.criticalPriority,
+    High: styles.highPriority,
+    Medium: styles.mediumPriority,
+    Low: styles.lowPriority,
+  };
 
   const [enteredDetailData, setEnteredDetailData] = useState({
     comment: "",
@@ -56,7 +62,6 @@ const IssueDetail = () => {
     e.preventDefault();
     try {
       const response = await axios.post(`/comments/`, enteredDetailData);
-
       setTriggerFetch(!triggerFetch);
       setEnteredDetailData({
         comment: "",
@@ -75,6 +80,7 @@ const IssueDetail = () => {
     }
     setTriggerFetch((prev) => !prev);
   };
+  const priorityClass = priorityClassMap[issue.priority];
 
   return (
     <div className={styles.project}>
@@ -109,7 +115,7 @@ const IssueDetail = () => {
           </Row>
           <Row>
             <Col>
-              Console Error:{" "}
+              Console Error:
               <span className={styles.colAlign}>
                 <strong>{issue.console_error}</strong>
               </span>
@@ -125,8 +131,8 @@ const IssueDetail = () => {
             </Col>
             <Col></Col>
             <Col>
-              Priority Level:{" "}
-              <span className={styles.colAlign}>
+              Priority Level:
+              <span className={`${styles.colAlign} ${priorityClass}`}>
                 <strong>{issue.priority}</strong>
               </span>
             </Col>
@@ -135,7 +141,6 @@ const IssueDetail = () => {
         <Button variant="success" className={styles.backToIssueButton} onClick={handleBackToIssues}>
           Back to Issue List
         </Button>
-
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="Comments">
             <Form.Label>Response</Form.Label>

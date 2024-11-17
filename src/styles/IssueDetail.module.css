@@ -1,4 +1,9 @@
-
+hr {
+    border: 1px solid #dadadf;
+    margin: 1rem 0;
+    max-width: 85%;
+    margin: 0 1rem 1rem 1rem;
+}
 .project {
     background-color: #eaeadb;
     border: 1px solid #dadadf;
@@ -73,3 +78,42 @@
 
    
 }
+.criticalPriority {
+    border: 1px solid black;
+    background-color: red;
+    color: white;
+    border-radius: 5%;
+    padding: .2rem .5rem .4rem .5rem;
+    border-radius: 10%;
+   
+  }
+  
+  .highPriority {
+    border: 1px solid black;
+    background-color: rgb(255, 150, 13);
+    color: rgb(77, 74, 74);
+    border-radius: 5%;
+    padding: .3rem .6rem .5rem .6rem;
+    border-radius: 10%;
+ 
+  }
+  
+  .mediumPriority {
+    border: 1px solid black;
+    background-color: yellow;
+    color: black;
+    border-radius: 5%;
+    padding: .2rem .4rem .4rem .4rem;
+    border-radius: 10%;
+    
+  }
+  
+  .lowPriority {
+    border: 1px solid black;
+    background-color: rgb(68, 128, 0);
+    color: white;
+    border-radius: 5%;
+    padding: .2rem .4rem .4rem .4rem;
+    border-radius: 10%;
+   
+  }

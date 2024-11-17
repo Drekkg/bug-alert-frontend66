@@ -132,7 +132,7 @@ function ProjectIssues({
             <Form.Control
               type="text"
               maxLength="200"
-              placeholder="Paste in any console errors etc "
+              placeholder="Please Enter none if there are no console errors "
               name="console_error"
               onChange={handleChange}
               value={issue.console_error}
@@ -183,15 +183,23 @@ function ProjectIssues({
           ?.filter((issue) => issue.issue_project_id === ProjectId)
           .map((issue, index) => {
             let priorityClass = "";
-            if (issue.priority === "Critical") {
-              priorityClass = styles.criticalPriority;
-            } else if (issue.priority === "High") {
-              priorityClass = styles.highPriority;
-            } else if (issue.priority === "Medium") {
-              priorityClass = styles.mediumPriority;
-            } else if (issue.priority === "Low") {
-              priorityClass = styles.lowPriority;
+            switch (issue.priority) {
+              case "Critical":
+                priorityClass = styles.criticalPriority;
+                break;
+              case "High":
+                priorityClass = styles.highPriority;
+                break;
+              case "Medium":
+                priorityClass = styles.mediumPriority;
+                break;
+              case "Low":
+                priorityClass = styles.lowPriority;
+                break;
+              default:
+                priorityClass = "";
             }
+
             return (
               <Card key={index} className={styles.issueCard}>
                 <Card.Body>
