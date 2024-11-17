@@ -83,6 +83,7 @@ function ProjectList({ projects, currentUser }) {
       {Loading && <LoadingBadge />}
       <h2>
         Bug Alert<i className="fa-solid fa-crosshairs"></i>
+        <span>Keep track of what needs to be fixed</span>
       </h2>
       {!currentUser.username && (
         <h4 className={styles.banner}>
