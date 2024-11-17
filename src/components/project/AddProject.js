@@ -58,7 +58,7 @@ function AddProject({ addProject }) {
   };
   const addProjectAlert = (
     <Alert variant="success">
-      <Alert.Heading>Project Deleted</Alert.Heading>
+      <Alert.Heading>Project Added</Alert.Heading>
       <p>The Project has been added successfully</p>
       <button onClick={handleClickAlert}>Close</button>
     </Alert>
