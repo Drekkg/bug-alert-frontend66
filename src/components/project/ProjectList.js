@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "../../styles/Project.module.css";
 import { Container, Button, Card, Modal, Alert } from "react-bootstrap";
 import ProjectIssues from "./ProjectIssues";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory, NavLink } from "react-router-dom";
 import LoadingBadge from "../LoadingBadge";
 
 function ProjectList({ projects, currentUser }) {
@@ -84,6 +84,19 @@ function ProjectList({ projects, currentUser }) {
       <h2>
         Bug Alert<i className="fa-solid fa-crosshairs"></i>
       </h2>
+      {!currentUser.username && (
+        <h4 className={styles.banner}>
+          Please{" "}
+          <NavLink className={styles.navBarLinks} to="/signinform">
+            Sign in
+          </NavLink>{" "}
+          or{" "}
+          <NavLink to="/signupform" className={styles.navBarLinks}>
+            Sign up
+          </NavLink>{" "}
+          to Experience more...{" "}
+        </h4>
+      )}
       {showDeleteModal && (
         <Modal show={showDeleteModal} onHide={handleClose}>
           <Modal.Header closeButton>

@@ -122,7 +122,7 @@ const IssueDetail = () => {
             </Col>
           </Row>
 
-          <Row>
+          <Row className={styles.rowAlign}>
             <Col>
               Repeatable:
               <span className={styles.colAlign}>

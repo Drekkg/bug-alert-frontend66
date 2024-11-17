@@ -77,3 +77,9 @@ span {
     margin-left: 1rem;
 }
 
+.banner {
+    padding: 2rem;
+    background-color: aliceblue;
+    border: 1px solid black;
+}
+

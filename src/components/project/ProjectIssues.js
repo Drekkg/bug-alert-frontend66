@@ -132,7 +132,7 @@ function ProjectIssues({
             <Form.Control
               type="text"
               maxLength="200"
-              placeholder="Please Enter none if there are no console errors "
+              placeholder="Please enter none if there are no console errors "
               name="console_error"
               onChange={handleChange}
               value={issue.console_error}
@@ -211,7 +211,10 @@ function ProjectIssues({
                     Logged By: <strong>{issue.owner}</strong>
                   </Card.Text>
                   <Card.Text>
-                    Issue: <strong>{issue.issue}</strong>
+                    Issue:{" "}
+                    <strong>
+                      <span className={styles.issueText}>{issue.issue}</span>
+                    </strong>
                   </Card.Text>
                   <Card.Text>
                     Date:<strong>{issue.created_on}</strong>

@@ -35,8 +35,10 @@ hr {
     margin-left: 5rem;
 }
 .colAlign {
-    margin-left: 0.4rem;
+    margin: 0.4rem;
     font-size: 1.1rem;
+   
+   
 }
 
 .enterButton {
@@ -85,6 +87,7 @@ hr {
     border-radius: 5%;
     padding: .2rem .5rem .4rem .5rem;
     border-radius: 10%;
+  
    
   }
   
@@ -116,4 +119,8 @@ hr {
     padding: .2rem .4rem .4rem .4rem;
     border-radius: 10%;
    
+  }
+
+  .rowAlign {
+    margin-top: 1.3rem;
   }
