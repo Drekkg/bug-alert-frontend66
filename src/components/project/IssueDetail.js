@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Container, Form } from "react-bootstrap";
+import { Button, Card, Container, Form, Row, Col } from "react-bootstrap";
 import { useLocation, useHistory } from "react-router-dom";
-import styles from "../../styles/Project.module.css";
+import styles from "../../styles/IssueDetail.module.css";
 import axios from "axios";
 import LoadingBadge from "../LoadingBadge";
 
@@ -77,31 +77,63 @@ const IssueDetail = () => {
   };
 
   return (
-    <div>
-      <Container className={styles.Project}>
-        <h4>{projectTitle} Issue Detail</h4>
-        <span className={styles.IssueDetail}>Nr: ## {issue.id}</span>
-        <p>
-          <strong>Logged By:</strong> {issue.owner}
-        </p>
-        <p>
-          <strong>Date:</strong> {issue.created_on}
-        </p>
-        <p>
-          <strong>Issue Information: </strong> {issue.issue}
-        </p>
-        <p>
-          <strong>Console Error:</strong> {issue.console_error}
-        </p>
-        <p>
-          <strong>Repeatable:</strong> {issue.repeatable ? "Yes" : "No"}
-        </p>
-        <p>
-          <strong>Priority Level:</strong> {issue.priority}
-        </p>
+    <div className={styles.project}>
+      <Container>
+        <h4>
+          {projectTitle}
+          <span className={styles.issueNr}> ## {issue.id}</span>
+        </h4>
+        <div className={styles.issueContent}>
+          <Row>
+            <Col>
+              Logged By:
+              <span className={styles.colAlign}>
+                <strong>{issue.owner}</strong>
+              </span>
+            </Col>
+            <Col></Col>
+            <Col>
+              Date:
+              <span className={styles.colAlign}>
+                <strong>{issue.created_on}</strong>
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              Issue Information:{" "}
+              <span className={styles.colAlign}>
+                <strong>{issue.issue}</strong>
+              </span>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              Console Error:{" "}
+              <span className={styles.colAlign}>
+                <strong>{issue.console_error}</strong>
+              </span>
+            </Col>
+          </Row>
 
-        <Button variant="success" onClick={handleBackToIssues}>
-          Back to Issues
+          <Row>
+            <Col>
+              Repeatable:
+              <span className={styles.colAlign}>
+                <strong>{issue.repeatable ? "Yes" : "No"}</strong>
+              </span>
+            </Col>
+            <Col></Col>
+            <Col>
+              Priority Level:{" "}
+              <span className={styles.colAlign}>
+                <strong>{issue.priority}</strong>
+              </span>
+            </Col>
+          </Row>
+        </div>
+        <Button variant="success" className={styles.backToIssueButton} onClick={handleBackToIssues}>
+          Back to Issue List
         </Button>
 
         <Form onSubmit={handleSubmit}>
@@ -120,23 +152,16 @@ const IssueDetail = () => {
               please share any comments or actions that have been taken
             </Form.Text>
           </Form.Group>
-          <Form.Group controlId="Resolved">
-            <Form.Check
-              type="checkbox"
-              label="Issue is Resolved"
-              name="resolved"
-              onChange={handleChange}
-              checked={enteredDetailData.resolved}
-            />
-          </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="primary" className={styles.enterButton} type="submit">
             Submit
           </Button>
         </Form>
         <div>
           <Card>
-            <h3>Comments:</h3>
+            <Card.Title className={styles.commentsHeader}>
+              <h3>Comments:</h3>
+            </Card.Title>
             {loading && <LoadingBadge />}
             {issueDetailData
               ?.filter((comment) => comment.issue_id === issue.id)
@@ -145,15 +170,12 @@ const IssueDetail = () => {
                   <p>
                     <strong>Comment:</strong> {comment.comment}
                   </p>
+
                   <p>
-                    <strong>Resolved:</strong> {comment.resolved ? "Yes" : "No"}
+                    <strong>Date:</strong> {comment.created_on} <strong>Owner:</strong>{" "}
+                    {comment.owner}
                   </p>
-                  <p>
-                    <strong>Date:</strong> {comment.created_on}
-                  </p>
-                  <p>
-                    <strong>Owner:</strong> {comment.owner}
-                  </p>
+                  <hr />
                 </div>
               ))}
           </Card>

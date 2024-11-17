@@ -1,17 +1,75 @@
-.Project {
+
+.project {
     background-color: #eaeadb;
     border: 1px solid #dadadf;
     border-radius: 2px;
-    
     text-align: center;
-    max-width: 50rem;
+    max-width: 80rem;
     padding: 2rem 2rem;
-    margin-top:2rem;
+    margin-top: 4rem;
 
 }
 
 .projectCard{
  
     margin: 1rem;
+}
+
+.issueNr {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: 1px solid black;
+    padding: .2rem .4rem .4rem .4rem;
+    border-radius: 10%;
+    font-size: 1.2rem;
+    margin-left: .5rem;
+}
+
+.issueContent {
+    text-align: left;
+    margin-left: 5rem;
+}
+.colAlign {
+    margin-left: 0.4rem;
+    font-size: 1.1rem;
+}
+
+.enterButton {
+    background-color: #63cae4;
+    border: 1px solid #dadadf;
+    border-radius: 2px;
+    padding: .5rem 1rem;
+    margin: 1rem;
+    cursor: pointer;
+    color: #080808fd;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color .3s;
+}
+
+.backToIssueButton {
+   
+    background-color: #7195b9;
+    border: 1px solid #dadadf;
+    border-radius: 2px;
+    padding: .5rem 1rem;
+    margin: 1rem;
+    cursor: pointer;
+    color: #080808fd;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color .3s;
+}
+
+.commentsHeader {
+    background-color: #ece6e6;
+    border: 1px solid rgb(180, 175, 175);
+
    
 }

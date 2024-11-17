@@ -2,7 +2,6 @@
     background-color: #eaeadb;
     border: 1px solid #dadadf;
     border-radius: 2px;
-    
     text-align: center;
     max-width: 80rem;
     padding: 2rem .3rem;
@@ -69,3 +68,12 @@ span {
     display: inline-block;
     transition: background-color .3s;
 }
+.issueNr {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    padding: .2rem .4rem .4rem .4rem;
+    border-radius: 10%;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+
