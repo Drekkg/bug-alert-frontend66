@@ -83,8 +83,8 @@ const IssueDetail = () => {
   const priorityClass = priorityClassMap[issue.priority];
 
   return (
-    <div className={styles.project}>
-      <Container>
+    <Container>
+      <div className={styles.project}>
         <h4>
           {projectTitle}
           <span className={styles.issueNr}> ## {issue.id}</span>
@@ -185,8 +185,8 @@ const IssueDetail = () => {
               ))}
           </Card>
         </div>
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 };
 
