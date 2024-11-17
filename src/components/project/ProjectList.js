@@ -148,6 +148,7 @@ function ProjectList({ projects, currentUser }) {
               <>
                 <Button
                   variant="info"
+                  className=" ml-2"
                   onClick={() =>
                     handleEdit(
                       project.id,
