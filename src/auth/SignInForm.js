@@ -55,8 +55,6 @@ function SignInForm({ addUser }) {
     e.preventDefault();
     try {
       await axios.post("/dj-rest-auth/login/", user);
-      // setTokenTimestamp(data);
-
       addUser(user);
       setAlertShow(true);
     } catch (err) {
@@ -69,7 +67,7 @@ function SignInForm({ addUser }) {
     <div>
       <Container className={styles.SignInForm}>
         <h2>Sign In</h2>
-        <h2>{alertShow && alert}</h2>
+        <h3>{alertShow && alert}</h3>
         {errors.username?.map((message, idx) => (
           <Alert variant="warning" key={idx}>
             {message}
