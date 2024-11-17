@@ -181,42 +181,59 @@ function ProjectIssues({
         )}
         {issueData
           ?.filter((issue) => issue.issue_project_id === ProjectId)
-          .map((issue, index) => (
-            <Card key={index} className={styles.issueCard}>
-              <Card.Body>
-                <Card.Title>
-                  {projectTitle} <strong>Issue Nr: ##{issue.id}</strong>
-                </Card.Title>
-                <Card.Text>
-                  <strong>Logged By:</strong> {issue.owner}
-                </Card.Text>
-                <Card.Text>
-                  <strong>Issue:</strong> {issue.issue}
-                </Card.Text>
-                <Card.Text>
-                  <strong>Date:</strong> {issue.created_on}
-                </Card.Text>
+          .map((issue, index) => {
+            let priorityClass = "";
+            if (issue.priority === "Critical") {
+              priorityClass = styles.criticalPriority;
+            } else if (issue.priority === "High") {
+              priorityClass = styles.highPriority;
+            } else if (issue.priority === "Medium") {
+              priorityClass = styles.mediumPriority;
+            } else if (issue.priority === "Low") {
+              priorityClass = styles.lowPriority;
+            }
+            return (
+              <Card key={index} className={styles.issueCard}>
+                <Card.Body>
+                  <Card.Title>
+                    <strong> {projectTitle}</strong> Issue Nr:{" "}
+                    <span className={styles.issueNr}>##{issue.id}</span>
+                  </Card.Title>
+                  <Card.Text>
+                    Logged By: <strong>{issue.owner}</strong>
+                  </Card.Text>
+                  <Card.Text>
+                    Issue: <strong>{issue.issue}</strong>
+                  </Card.Text>
+                  <Card.Text>
+                    Date:<strong>{issue.created_on}</strong>
+                  </Card.Text>
 
-                <Card.Text>
-                  <strong>Repeatable:</strong> {issue.repeatable ? "Yes" : "No"}
-                </Card.Text>
-                <Card.Text>
-                  <strong>Priority Level:</strong> {issue.priority}
-                </Card.Text>
-                {/* <Card.Text>
-                            <strong>Resolved:</strong> {issue.resolved ? "Yes" : "No"}
-                          </Card.Text> */}
-                <Link
-                  to={{
-                    pathname: `/issueDetail/${issue.id}`,
-                    state: { issue, projectTitle, ProjectId },
-                  }}
-                >
-                  View Issue
-                </Link>
-              </Card.Body>
-            </Card>
-          ))}
+                  <Card.Text>
+                    Repeatable:<strong> {issue.repeatable ? "Yes" : "No"}</strong>
+                  </Card.Text>
+                  <Card.Text>
+                    Priority Level:{" "}
+                    <span className={priorityClass}>
+                      <strong>{issue.priority}</strong>
+                    </span>
+                  </Card.Text>
+                  {/* <Card.Text>
+                              <strong>Resolved:</strong> {issue.resolved ? "Yes" : "No"}
+                            </Card.Text> */}
+                  <Link
+                    className={styles.issueLink}
+                    to={{
+                      pathname: `/issueDetail/${issue.id}`,
+                      state: { issue, projectTitle, ProjectId },
+                    }}
+                  >
+                    View Issue
+                  </Link>
+                </Card.Body>
+              </Card>
+            );
+          })}
       </div>
     </div>
   );

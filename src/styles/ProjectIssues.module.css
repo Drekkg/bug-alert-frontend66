@@ -2,10 +2,7 @@
     margin-top: .8rem;
 }
 
-.issueCard {
-    background-color: #ece6e6;
-    border: 3px solid black;
-}
+
 
 .showFormButton {
     background-color: #555a5f;
@@ -22,3 +19,65 @@
     display: inline-block;
     
 }
+
+.issueNr {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    padding: .2rem .4rem .4rem .4rem;
+    border-radius: 10%;
+    font-size: 1.2rem;
+}
+
+.issueLink {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    padding: .3rem;
+    border-radius: 10%;
+    font-size: .8rem;
+    color: black;
+}
+
+.issueCard {
+    background-color: #ece6e6;
+    border: 3px solid black;
+}
+
+.criticalPriority {
+    border: 1px solid black;
+    background-color: red;
+    color: white;
+    border-radius: 5%;
+    padding: .2rem .5rem .4rem .5rem;
+    border-radius: 10%;
+   
+  }
+  
+  .highPriority {
+    border: 1px solid black;
+    background-color: rgb(255, 150, 13);
+    color: rgb(77, 74, 74);
+    border-radius: 5%;
+    padding: .3rem .6rem .5rem .6rem;
+    border-radius: 10%;
+ 
+  }
+  
+  .mediumPriority {
+    border: 1px solid black;
+    background-color: yellow;
+    color: black;
+    border-radius: 5%;
+    padding: .2rem .4rem .4rem .4rem;
+    border-radius: 10%;
+    
+  }
+  
+  .lowPriority {
+    border: 1px solid black;
+    background-color: rgb(68, 128, 0);
+    color: white;
+    border-radius: 5%;
+    padding: .2rem .4rem .4rem .4rem;
+    border-radius: 10%;
+   
+  }
