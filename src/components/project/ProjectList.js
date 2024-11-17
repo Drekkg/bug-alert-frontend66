@@ -136,19 +136,32 @@ function ProjectList({ projects, currentUser }) {
             </Card.Text>
 
             <Card.Text>Added By: {project.owner}</Card.Text>
-            <Card.Text>Date Logged {project.created_on}</Card.Text>
+            <Card.Text>Date Logged: {project.created_on}</Card.Text>
 
             {currentUser.username && (
-              <Button variant="primary" onClick={() => handleClick(project.id)}>
-                {openProjectId === project.id ? "Close the issues Panel" : "Open the issues Panel"}
-              </Button>
+              <div className="d-flex justify-content-center">
+                <Button variant="primary" onClick={() => handleClick(project.id)}>
+                  {openProjectId === project.id
+                    ? "Close the issues Panel"
+                    : "Open the issues Panel"}
+                </Button>
+              </div>
             )}
 
             {currentUser.username === project.owner && (
               <>
                 <Button
+                  className="float-right ml-1"
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleDelete(project.id, project.title)}
+                >
+                  Delete Project
+                </Button>
+                <Button
+                  size="sm"
+                  className="float-right"
                   variant="info"
-                  className=" ml-2"
                   onClick={() =>
                     handleEdit(
                       project.id,
@@ -160,13 +173,6 @@ function ProjectList({ projects, currentUser }) {
                   }
                 >
                   Edit Project
-                </Button>
-                <Button
-                  variant="danger"
-                  size="sm"
-                  onClick={() => handleDelete(project.id, project.title)}
-                >
-                  Delete Project
                 </Button>
               </>
             )}

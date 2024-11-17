@@ -40,15 +40,16 @@ function ProjectIssues({
   );
 
   const showFormButton = (
-    <>
+    <div style={{ textAlign: "left" }}>
       <Button
         variant="secondary"
-        className={styles.responseButton}
+        size="sm"
+        className="mb-2"
         onClick={() => setShowIssueForm(!showIssueForm)}
       >
         {showIssueFormButton}
       </Button>
-    </>
+    </div>
   );
 
   const handleChange = (e) => {
