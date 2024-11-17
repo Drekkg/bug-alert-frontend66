@@ -42,9 +42,9 @@ function ProjectIssues({
   const showFormButton = (
     <div style={{ textAlign: "left" }}>
       <Button
+        className={styles.showFormButton}
         variant="secondary"
         size="sm"
-        className="mb-2"
         onClick={() => setShowIssueForm(!showIssueForm)}
       >
         {showIssueFormButton}

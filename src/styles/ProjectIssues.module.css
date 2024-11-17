@@ -6,3 +6,19 @@
     background-color: #ece6e6;
     border: 3px solid black;
 }
+
+.showFormButton {
+    background-color: #555a5f;
+    border: 1px solid #dadadf;
+    border-radius: 2px;
+    padding: .5rem 1rem;
+    margin: 1rem;
+    cursor: pointer;
+    color: #f7fcfffd;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    
+}
