@@ -77,6 +77,7 @@ function SignInForm({ addUser }) {
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="userName">
             <Form.Label>Username</Form.Label>
+            <Form.Text className="text-muted">Please enter Your username.</Form.Text>
             <Form.Control
               type="text"
               onChange={handleChange}
@@ -85,11 +86,11 @@ function SignInForm({ addUser }) {
               value={username}
               autoComplete="username"
             />
-            <Form.Text className="text-muted">Please enter Your username.</Form.Text>
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
+            <Form.Text className="text-muted">Please enter Your password.</Form.Text>
             <Form.Control
               type="password"
               onChange={handleChange}
@@ -99,11 +100,11 @@ function SignInForm({ addUser }) {
               autoComplete="current-password"
             />
           </Form.Group>
-          <Form.Text className="text-muted">Please enter Your password.</Form.Text>
-          <Button variant="success" type="submit">
-            Submit
+
+          <Button variant="success" size="sm" type="submit">
+            Sign In
           </Button>
-          <Button variant="warning" className={styles.CloseButton} onClick={closeForm}>
+          <Button variant="warning" size="sm" className={styles.CloseButton} onClick={closeForm}>
             Close
           </Button>
           {errors.non_field_errors?.map((message, idx) => (

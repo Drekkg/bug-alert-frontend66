@@ -111,33 +111,43 @@ function ProjectList({ projects, currentUser }) {
             </Card.Header>
 
             {resolved && <Card.Title>RESOLVED</Card.Title>}
-            <Card.Text>Project Description: {project.description}</Card.Text>
-            <Card.Text>
-              Project URL:
-              <a
-                href={project.projectURL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Link to Project"
-              >
-                {project.projectURL}
-              </a>
-            </Card.Text>
-            <Card.Text>
-              GitHub URL:
-              <a
-                href={project.githubURL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Link to Github"
-              >
-                {project.githubURL}
-              </a>
-            </Card.Text>
+            <div className={styles["vertical-align-container"]}>
+              <Card.Text>
+                <span>Project Description: </span>
+                {project.description}
+              </Card.Text>
+              <Card.Text>
+                <span> Project URL:</span>
+                <a
+                  href={project.projectURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Link to Project"
+                >
+                  {project.projectURL}
+                </a>
+              </Card.Text>
+              <Card.Text>
+                <span> GitHub URL:</span>
+                <a
+                  href={project.githubURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Link to Github"
+                >
+                  {project.githubURL}
+                </a>
+              </Card.Text>
 
-            <Card.Text>Added By: {project.owner}</Card.Text>
-            <Card.Text>Date Logged: {project.created_on}</Card.Text>
-
+              <Card.Text>
+                <span>Added By: </span>
+                {project.owner}
+              </Card.Text>
+              <Card.Text>
+                <span>Date Logged: </span>
+                {project.created_on}
+              </Card.Text>
+            </div>
             {currentUser.username && (
               <div className="d-flex justify-content-center">
                 <Button variant="primary" onClick={() => handleClick(project.id)}>
