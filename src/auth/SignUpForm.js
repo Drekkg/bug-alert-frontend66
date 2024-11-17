@@ -17,13 +17,6 @@ function SignUpForm() {
   });
   const { username, password1, password2 } = newUser;
   const [errors, setErrors] = useState({});
-  // let isMounted = true;
-
-  // useEffect(() => {
-  //   return () => {
-  //     isMounted = false; // Cleanup function to set isMounted to false when the component unmounts
-  //   };
-  // }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +30,6 @@ function SignUpForm() {
     e.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", newUser);
-
       setAlertShow(true);
     } catch (err) {
       setErrors(err.response?.data);
@@ -48,7 +40,7 @@ function SignUpForm() {
       <Alert variant="success" className={styles.AlertModal}>
         <Alert.Heading>You have successfully Signed Up</Alert.Heading>
         <p>
-          Thank you for <i className="fa-solid fa-crosshairs"></i>Bug Alert - Please sign in to
+          Thank you for choosing <i className="fa-solid fa-crosshairs"></i>Bug Alert - Please sign in to
           continue
         </p>
         <hr />

@@ -13,8 +13,8 @@ function SignInForm({ addUser }) {
   const [errors, setErrors] = useState({});
   const [alertShow, setAlertShow] = useState(false);
   const [user, setUser] = useState({
-    username: "christine",
-    password: "berryjuice",
+    username: "",
+    password: "",
   });
   const { username, password } = user;
   const handleChange = (e) => {
@@ -57,7 +57,7 @@ function SignInForm({ addUser }) {
       await axios.post("/dj-rest-auth/login/", user);
       // setTokenTimestamp(data);
 
-      addUser(user); // Add user to the state
+      addUser(user);
       setAlertShow(true);
     } catch (err) {
       console.log("err", err.response?.data);
@@ -67,9 +67,9 @@ function SignInForm({ addUser }) {
 
   return (
     <div>
-      {alertShow && alert}
       <Container className={styles.SignInForm}>
         <h2>Sign In</h2>
+        <h2>{alertShow && alert}</h2>
         {errors.username?.map((message, idx) => (
           <Alert variant="warning" key={idx}>
             {message}
