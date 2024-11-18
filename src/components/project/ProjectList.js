@@ -71,11 +71,13 @@ function ProjectList({ projects, currentUser }) {
   }, [projects, triggerEffect]);
 
   const deleteAlert = (
-    <Alert variant="danger">
-      <Alert.Heading>Project Deleted</Alert.Heading>
-      <p>The Project has been deleted successfully</p>
-      <button onClick={() => setShowAlert(false)}>Close</button>
-    </Alert>
+    <div className={styles.Backdrop}>
+      <Alert variant="danger">
+        <Alert.Heading>Project Deleted</Alert.Heading>
+        <p>The Project has been deleted successfully</p>
+        <button onClick={() => setShowAlert(false)}>Close</button>
+      </Alert>
+    </div>
   );
 
   return (

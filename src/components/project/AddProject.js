@@ -44,8 +44,7 @@ function AddProject({ addProject }) {
         // Request was made but no response received
         console.error("Error request:", err.request);
       } else {
-        // Something else happened while setting up the request
-        console.error("Error message:", err.message);
+        console.log.error("Error message:", err.message);
       }
     }
     addProject(project);
@@ -57,11 +56,13 @@ function AddProject({ addProject }) {
     });
   };
   const addProjectAlert = (
-    <Alert variant="success">
-      <Alert.Heading>Project Added</Alert.Heading>
-      <p>The Project has been added successfully</p>
-      <button onClick={handleClickAlert}>Close</button>
-    </Alert>
+    <div className={styles.BackDrop}>
+      <Alert variant="success" className={styles.AlertModal}>
+        <Alert.Heading>Project Added</Alert.Heading>
+        <p>The Project has been added successfully</p>
+        <button onClick={handleClickAlert}>Close</button>
+      </Alert>
+    </div>
   );
 
   return (
