@@ -101,7 +101,7 @@ function ProjectList({ projects, currentUser }) {
         </h4>
       )}
       {showDeleteModal && (
-        <Modal show={showDeleteModal} onHide={handleClose}>
+        <Modal show={showDeleteModal} onHide={handleClose} backdrop="static">
           <Modal.Header closeButton>
             <Modal.Title>{deleteTitle}</Modal.Title>
           </Modal.Header>

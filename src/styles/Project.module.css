@@ -38,6 +38,12 @@ span {
     transition: background-color .3s;
 }
 
+.issueButton:focus {
+    background-color:#7195b9;
+    color: black
+}
+
+
 .deleteButton {
     background-color: #dd4338;
     border: 1px solid #dadadf;
