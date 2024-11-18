@@ -210,10 +210,11 @@ function ProjectList({ projects, currentUser }) {
             {openProjectId === project.id && (
               <ProjectIssues
                 onResolvedChange={handleResolvedChange}
-                owner={currentUser}
+                currentUser={currentUser}
                 ProjectId={project.id}
                 routeBack={handleRouteBack}
                 projectTitle={project.title}
+                projectOwner={project.owner}
               />
             )}
           </Card.Body>

@@ -7,7 +7,8 @@ import axios from "axios";
 
 function ProjectIssues({
   onResolvedChange,
-  owner,
+  currentUser,
+  projectOwner,
   onOpenProject,
   ProjectId,
   routeBack,
@@ -18,13 +19,13 @@ function ProjectIssues({
   const [noIssues, setNoIssues] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const [issue, setIssue] = useState({
     issue: "",
     console_error: "",
     repeatable: false,
     priority: "",
     issue_id: ProjectId,
+    resolved: false,
   });
 
   const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Open Issue Form";
@@ -84,6 +85,7 @@ function ProjectIssues({
       priority: "",
       issue_id: ProjectId,
       projectTitle: projectTitle,
+      resolved: false,
     });
     setShowIssueForm(false);
     setShowAlert(true);
@@ -111,7 +113,7 @@ function ProjectIssues({
 
   return (
     <div>
-      {(owner?.length > 0 || owner.username) && showFormButton}
+      {(currentUser?.length > 0 || currentUser.username) && showFormButton}
       {showAlert && issueAddAlert}
       {showIssueForm && (
         <Form onSubmit={handleSubmit}>
@@ -228,19 +230,36 @@ function ProjectIssues({
                     <span className={priorityClass}>
                       <strong>{issue.priority}</strong>
                     </span>
+                    <br />
+                    <br />
+                    <hr />
                   </Card.Text>
-                  {/* <Card.Text>
-                              <strong>Resolved:</strong> {issue.resolved ? "Yes" : "No"}
-                            </Card.Text> */}
-                  <Link
-                    className={styles.issueLink}
-                    to={{
-                      pathname: `/issueDetail/${issue.id}`,
-                      state: { issue, projectTitle, ProjectId },
-                    }}
-                  >
-                    View Issue
-                  </Link>
+                  <Row>
+                    {projectOwner === currentUser.username && (
+                      <Col>
+                        <Card.Text>
+                          <div>
+                            <p>Has the issue been Fixed? Click Here</p>
+                            <Button size="sm">Resolved</Button>
+                          </div>
+                        </Card.Text>
+                      </Col>
+                    )}
+                    <Col>
+                      <div>
+                        <p>Click here to view Details</p>
+                        <Link
+                          className={styles.issueLink}
+                          to={{
+                            pathname: `/issueDetail/${issue.id}`,
+                            state: { issue, projectTitle, ProjectId },
+                          }}
+                        >
+                          View Issue
+                        </Link>
+                      </div>
+                    </Col>
+                  </Row>
                 </Card.Body>
               </Card>
             );
