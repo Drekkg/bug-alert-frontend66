@@ -36,30 +36,28 @@ function SignUpForm() {
     }
   };
   const alert = (
-    <>
-      <div className={styles.BackDrop}>
-        <Alert variant="success" className={styles.AlertModal}>
-          <Alert.Heading>You have successfully Signed Up</Alert.Heading>
-          <p>
-            Thank you for choosing <i className="fa-solid fa-crosshairs"></i>Bug Alert - Please sign
-            in to continue
-          </p>
-          <hr />
-          <div className="d-flex justify-content-center">
-            <Button
-              onClick={() => {
-                setAlertShow(false);
-                history.push("/signinform");
-              }}
-              variant="success"
-              block
-            >
-              Sign In
-            </Button>
-          </div>
-        </Alert>
-      </div>
-    </>
+    <div className={styles.Backdrop}>
+      <Alert variant="success" className={styles.AlertModal}>
+        <Alert.Heading>You have successfully Signed Up</Alert.Heading>
+        <p>
+          Thank you for choosing <i className="fa-solid fa-crosshairs"></i>Bug Alert - Please sign
+          in to continue
+        </p>
+        <hr />
+        <div className="d-flex justify-content-center">
+          <Button
+            onClick={() => {
+              setAlertShow(false);
+              history.push("/signinform");
+            }}
+            variant="success"
+            block
+          >
+            Sign In
+          </Button>
+        </div>
+      </Alert>
+    </div>
   );
   return (
     <div>

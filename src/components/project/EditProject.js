@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Container, Form, Row, Col } from "react-bootstrap";
+import { Button, Container, Form, Row, Col, Alert } from "react-bootstrap";
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import styles from "../../styles/Project.module.css";
@@ -69,21 +69,30 @@ const EditProject = ({ updateProject }) => {
       }
     }
   };
-  const handleClose = () => {
-    setShowAlert(!showAlert);
-    history.push("/");
-  };
+
   const updateAlert = (
-    <>
-      <div className="alert alert-success">
-        Project updated successfully!
-        <span>
-          <Button variant="success" onClick={handleClose}>
-            Close
-          </Button>
-        </span>
-      </div>
-    </>
+    <div className={styles.Backdrop}>
+      <Alert variant="success" className={styles.AlertModal}>
+        <Alert.Heading>
+          {" "}
+          Bug Alert <i className="fa-solid fa-crosshairs"></i>
+        </Alert.Heading>
+        <p>
+          Project Updated Successfully!
+          <i className="fa-solid fa-crosshairs"></i>
+        </p>
+        <Button
+          onClick={() => {
+            setShowAlert(false);
+            history.push("/");
+          }}
+          variant="success"
+          block
+        >
+          Close
+        </Button>
+      </Alert>
+    </div>
   );
 
   return (

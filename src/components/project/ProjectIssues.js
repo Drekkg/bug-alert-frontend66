@@ -31,14 +31,17 @@ function ProjectIssues({
   });
 
   const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Open Issue Form";
+
   const issueAddAlert = (
-    <Alert variant="success">
-      <Alert.Heading>Issue Added</Alert.Heading>
-      <p>Issue has been added successfully</p>
-      <Button onClick={() => setShowAlert(false)} variant="success" block>
-        Close
-      </Button>
-    </Alert>
+    <div className={styles.Backdrop}>
+      <Alert variant="success" className={styles.AlertModal}>
+        <Alert.Heading>Issue Added</Alert.Heading>
+        <p>Issue has been added successfully</p>
+        <Button onClick={() => setShowAlert(false)} variant="success" block>
+          Close
+        </Button>
+      </Alert>
+    </div>
   );
 
   const showFormButton = (
