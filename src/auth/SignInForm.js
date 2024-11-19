@@ -25,32 +25,28 @@ function SignInForm({ addUser }) {
     }));
   };
   const alert = (
-    <>
-      <div className={styles.BackDrop}>
-        <Alert variant="success" className={styles.AlertModal}>
-          <Alert.Heading>
-            Bug Alert <i className="fa-solid fa-crosshairs"></i>
-          </Alert.Heading>
-          <p>
-            You have successfully Signed in - Welcome to Bug Alert
-            <i className="fa-solid fa-crosshairs"></i>
-          </p>
-          <hr />
-          <div className="d-flex justify-content-center">
-            <Button
-              onClick={() => {
-                setAlertShow(false);
-                history.push("/");
-              }}
-              variant="success"
-              block
-            >
-              Close
-            </Button>
-          </div>
-        </Alert>
-      </div>
-    </>
+    <div className={styles.Backdrop}>
+      <Alert variant="success" className={styles.AlertModal}>
+        <Alert.Heading>
+          {" "}
+          Bug Alert <i className="fa-solid fa-crosshairs"></i>
+        </Alert.Heading>
+        <p>
+          You have successfully Signed in - Welcome to Bug Alert
+          <i className="fa-solid fa-crosshairs"></i>
+        </p>
+        <Button
+          onClick={() => {
+            setAlertShow(false);
+            history.push("/");
+          }}
+          variant="success"
+          block
+        >
+          Close
+        </Button>
+      </Alert>
+    </div>
   );
 
   const submitHandler = async (e) => {
