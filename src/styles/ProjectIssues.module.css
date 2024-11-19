@@ -40,6 +40,7 @@
 .issueCard {
     background-color: #ece6e6;
     border: 3px solid black;
+    padding: 1rem;
 }
 
 .criticalPriority {
@@ -83,4 +84,11 @@
   }
   .issueText {
     font-size: 1.2rem;
+}
+
+.Resolve {
+  margin-left: 0.5rem;
+  background-color: rgb(153, 218, 80);
+  padding: 0.4rem;
+  border-radius: 15%;
 }

@@ -19,6 +19,8 @@ function ProjectIssues({
   const [noIssues, setNoIssues] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [resolved, setResolved] = useState(false);
+  const [issueId, setIssueId] = useState(null);
   const [issue, setIssue] = useState({
     issue: "",
     console_error: "",
@@ -29,7 +31,6 @@ function ProjectIssues({
   });
 
   const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Open Issue Form";
-
   const issueAddAlert = (
     <Alert variant="success">
       <Alert.Heading>Issue Added</Alert.Heading>
@@ -91,17 +92,14 @@ function ProjectIssues({
     setShowAlert(true);
   };
 
-  useEffect(
-    () => {
-      setLoading(true);
-      axios
-        .get(`/issues/project/${ProjectId}/`)
-        .then((response) => setIssueData(response.data))
-        .catch((error) => console.error(error))
-        .finally(() => setLoading(false));
-    }, // eslint-disable-next-line react-hooks/exhaustive-deps
-    [ProjectId, showIssueForm]
-  );
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(`/issues/project/${ProjectId}/`)
+      .then((response) => setIssueData(response.data))
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, [ProjectId, showIssueForm]);
 
   useEffect(() => {
     issueData.forEach((issue) => {
@@ -110,6 +108,26 @@ function ProjectIssues({
       }
     });
   }, [issueData, ProjectId]);
+
+  const handleResolved = (issueToResolve) => {
+    setIssueId(issueToResolve);
+    setResolved(true);
+    const matchedIssue = issueData.find((issue) => issue.id === issueToResolve);
+    matchedIssue.resolved = true;
+    setIssueData((prev) => [...prev, matchedIssue]);
+
+    handleResolvePut(issueData);
+  };
+  const handleResolvePut = async (issueData, projectId) => {
+    try {
+      const response = await axios.put(`/issues/project/1/`, issueData);
+    } catch {}
+  };
+
+  const handleOpenResolved = () => {
+    setIssueId(null);
+    setResolved(false);
+  };
 
   return (
     <div>
@@ -173,98 +191,104 @@ function ProjectIssues({
           </Button>
         </Form>
       )}
-      <div>
-        {loading ? (
-          <LoadingBadge />
-        ) : (
-          !noIssues && (
-            <Card.Title style={{ margin: "10px 0" }}>No issues Logged for this Project</Card.Title>
-          )
-        )}
-        {issueData
-          ?.filter((issue) => issue.issue_project_id === ProjectId)
-          .map((issue, index) => {
-            let priorityClass = "";
-            switch (issue.priority) {
-              case "Critical":
-                priorityClass = styles.criticalPriority;
-                break;
-              case "High":
-                priorityClass = styles.highPriority;
-                break;
-              case "Medium":
-                priorityClass = styles.mediumPriority;
-                break;
-              case "Low":
-                priorityClass = styles.lowPriority;
-                break;
-              default:
-                priorityClass = "";
-            }
 
-            return (
-              <Card key={index} className={styles.issueCard}>
-                <Card.Body>
-                  <Card.Title>
-                    <strong> {projectTitle}</strong> Issue Nr:{" "}
-                    <span className={styles.issueNr}>##{issue.id}</span>
-                  </Card.Title>
-                  <Card.Text>
-                    Logged By: <strong>{issue.owner}</strong>
-                  </Card.Text>
-                  <Card.Text>
-                    Issue:{" "}
-                    <strong>
-                      <span className={styles.issueText}>{issue.issue}</span>
-                    </strong>
-                  </Card.Text>
-                  <Card.Text>
-                    Date:<strong>{issue.created_on}</strong>
-                  </Card.Text>
+      {loading ? (
+        <LoadingBadge />
+      ) : (
+        !noIssues && (
+          <Card.Title style={{ margin: "10px 0" }}>No issues Logged for this Project</Card.Title>
+        )
+      )}
+      {issueData
+        ?.filter((issue) => issue.issue_project_id === ProjectId)
+        .map((issue, index) => {
+          let priorityClass = "";
+          switch (issue.priority) {
+            case "Critical":
+              priorityClass = styles.criticalPriority;
+              break;
+            case "High":
+              priorityClass = styles.highPriority;
+              break;
+            case "Medium":
+              priorityClass = styles.mediumPriority;
+              break;
+            case "Low":
+              priorityClass = styles.lowPriority;
+              break;
+            default:
+              priorityClass = "";
+          }
 
-                  <Card.Text>
-                    Repeatable:<strong> {issue.repeatable ? "Yes" : "No"}</strong>
-                  </Card.Text>
-                  <Card.Text>
-                    Priority Level:{" "}
-                    <span className={priorityClass}>
-                      <strong>{issue.priority}</strong>
-                    </span>
-                    <br />
-                    <br />
-                    <hr />
-                  </Card.Text>
-                  <Row>
-                    {projectOwner === currentUser.username && (
-                      <Col>
-                        <Card.Text>
-                          <div>
-                            <p>Has the issue been Fixed? Click Here</p>
-                            <Button size="sm">Resolved</Button>
-                          </div>
-                        </Card.Text>
-                      </Col>
-                    )}
+          return (
+            <Card key={index} className={styles.issueCard}>
+              <Card.Title>
+                <strong> {projectTitle}</strong> Issue Nr:{" "}
+                <span className={styles.issueNr}>
+                  ##{issue.id}
+                  {issueId === issue.id ? <span className={styles.Resolve}>Resolved</span> : null}
+                </span>
+              </Card.Title>
+              <Card.Text>
+                Logged By: <strong>{issue.owner}</strong>
+              </Card.Text>
+              <Card.Text>
+                Issue: <span className={styles.issueText}>{issue.issue}</span>
+              </Card.Text>
+              <Card.Text>
+                Date:<strong>{issue.created_on}</strong>
+              </Card.Text>
+
+              <Card.Text>
+                Repeatable:<strong> {issue.repeatable ? "Yes" : "No"}</strong>
+              </Card.Text>
+              <Card.Text>
+                Priority Level:{" "}
+                <span className={priorityClass}>
+                  <strong>{issue.priority}</strong>
+                </span>
+                <br />
+                <br />
+              </Card.Text>
+              <Row>
+                {projectOwner === currentUser.username &&
+                  (resolved && issue.id === issueId ? (
                     <Col>
+                      <p>Click Here to Re-open the Issue</p>
                       <div>
-                        <p>Click here to view Details</p>
-                        <Link
-                          className={styles.issueLink}
-                          to={{
-                            pathname: `/issueDetail/${issue.id}`,
-                            state: { issue, projectTitle, ProjectId },
-                          }}
-                        >
-                          View Issue
-                        </Link>
+                        <Button size="sm" onClick={() => handleOpenResolved(issue.id)}>
+                          Re-open
+                        </Button>
                       </div>
                     </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            );
-          })}
-      </div>
+                  ) : (
+                    <Col>
+                      <p>Has the issue been Fixed? Click Here</p>
+                      <span>
+                        <Button size="sm" onClick={() => handleResolved(issue.id)}>
+                          Resolved
+                        </Button>
+                      </span>
+                    </Col>
+                  ))}
+                <Col>
+                  <p>Click here to view Details</p>
+                  <div>
+                    <Link
+                      className={styles.issueLink}
+                      to={{
+                        pathname: `/issueDetail/${issue.id}`,
+                        state: { issue, projectTitle, ProjectId },
+                      }}
+                    >
+                      View Issue
+                    </Link>
+                  </div>
+                </Col>
+              </Row>
+            </Card>
+          );
+        })}
     </div>
   );
 }
