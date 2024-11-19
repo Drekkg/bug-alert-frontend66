@@ -226,33 +226,34 @@ function ProjectIssues({
           return (
             <Card key={index} className={styles.issueCard}>
               <Card.Title>
-                <strong> {projectTitle}</strong> Issue Nr:{" "}
-                <span className={styles.issueNr}>
-                  ##{issue.id}
+                <div className={styles.issueNr}>
+                  <strong> {projectTitle}</strong> Issue Nr: ##{issue.id}
                   {issueId === issue.id ? <span className={styles.Resolve}>Resolved</span> : null}
-                </span>
+                </div>
               </Card.Title>
-              <Card.Text>
-                Logged By: <strong>{issue.owner}</strong>
-              </Card.Text>
-              <Card.Text>
-                Issue: <span className={styles.issueText}>{issue.issue}</span>
-              </Card.Text>
-              <Card.Text>
-                Date:<strong>{issue.created_on}</strong>
-              </Card.Text>
+              <div className={styles.issueContentCard}>
+                <Card.Text>
+                  Logged By: <strong>{issue.owner}</strong>
+                </Card.Text>
+                <Card.Text>
+                  Issue: <span className={styles.issueText}>{issue.issue}</span>
+                </Card.Text>
+                <Card.Text>
+                  Date:<strong>{issue.created_on}</strong>
+                </Card.Text>
 
-              <Card.Text>
-                Repeatable:<strong> {issue.repeatable ? "Yes" : "No"}</strong>
-              </Card.Text>
-              <Card.Text>
-                Priority Level:{" "}
-                <span className={priorityClass}>
-                  <strong>{issue.priority}</strong>
-                </span>
-                <br />
-                <br />
-              </Card.Text>
+                <Card.Text>
+                  Repeatable:<strong> {issue.repeatable ? "Yes" : "No"}</strong>
+                </Card.Text>
+                <Card.Text>
+                  <span className={priorityClass}>
+                    <strong> Priority Level: {issue.priority}</strong>
+                  </span>
+                  <br />
+                  <br />
+                </Card.Text>
+              </div>
+
               <Row>
                 {projectOwner === currentUser.username &&
                   (resolved && issue.id === issueId ? (

@@ -85,9 +85,9 @@ const IssueDetail = () => {
   return (
     <Container>
       <div className={styles.project}>
-        <h4>
+        <h4 className={styles.issueNr}>
           {projectTitle}
-          <span className={styles.issueNr}> ## {issue.id}</span>
+          <span> ## {issue.id}</span>
         </h4>
         <div className={styles.issueContent}>
           <Row>
@@ -131,8 +131,8 @@ const IssueDetail = () => {
             </Col>
             <Col></Col>
             <Col>
-              Priority Level:
               <span className={`${styles.colAlign} ${priorityClass}`}>
+                Priority Level:
                 <strong>{issue.priority}</strong>
               </span>
             </Col>
