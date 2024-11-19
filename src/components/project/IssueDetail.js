@@ -131,10 +131,9 @@ const IssueDetail = () => {
             </Col>
             <Col></Col>
             <Col>
-              <span className={`${styles.colAlign} ${priorityClass}`}>
-                Priority Level:
-                <strong>{issue.priority}</strong>
-              </span>
+              <div className={`${styles.colAlign} ${priorityClass}`}>
+                <strong>Priority Level: {issue.priority}</strong>
+              </div>
             </Col>
           </Row>
         </div>

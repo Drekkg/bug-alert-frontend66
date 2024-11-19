@@ -246,9 +246,9 @@ function ProjectIssues({
                   Repeatable:<strong> {issue.repeatable ? "Yes" : "No"}</strong>
                 </Card.Text>
                 <Card.Text>
-                  <span className={priorityClass}>
+                  <div className={priorityClass}>
                     <strong> Priority Level: {issue.priority}</strong>
-                  </span>
+                  </div>
                   <br />
                   <br />
                 </Card.Text>
