@@ -125,8 +125,6 @@ function ProjectList({ projects, currentUser }) {
               <i className="fa-solid fa-crosshairs"></i>
               {project.title}
             </Card.Header>
-
-            {resolved && <Card.Title>RESOLVED</Card.Title>}
             <div>
               <Card.Text>
                 <span>Project Description: </span>

@@ -30,7 +30,7 @@ function ProjectIssues({
     resolved: false,
   });
 
-  const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Open Issue Form";
+  const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Add an Issue";
 
   const issueAddAlert = (
     <div className={styles.Backdrop}>
@@ -258,7 +258,7 @@ function ProjectIssues({
                 {projectOwner === currentUser.username &&
                   (resolved && issue.id === issueId ? (
                     <Col>
-                      <p>Click Here to Re-open the Issue</p>
+                      <p className={styles.paragraphText}>Click Here to Re-open the Issue</p>
                       <div>
                         <Button size="sm" onClick={() => handleOpenResolved(issue.id)}>
                           Re-open
@@ -267,7 +267,7 @@ function ProjectIssues({
                     </Col>
                   ) : (
                     <Col>
-                      <p>Has the issue been Fixed? Click Here</p>
+                      <p className={styles.paragraphText}>Has the issue been Fixed? Click Here</p>
                       <span>
                         <Button size="sm" onClick={() => handleResolved(issue.id)}>
                           Resolved
@@ -276,7 +276,7 @@ function ProjectIssues({
                     </Col>
                   ))}
                 <Col>
-                  <p>Click here to view Details</p>
+                  <p className={styles.paragraphText}>Click here to view Details</p>
                   <div>
                     <Link
                       className={styles.issueLink}

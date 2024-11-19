@@ -8,15 +8,16 @@
     background-color: #555a5f;
     border: 1px solid #dadadf;
     border-radius: 2px;
-    padding: .5rem 1rem;
+    padding: .3rem .8rem;
     margin: 1rem;
     cursor: pointer;
     color: #f7fcfffd;
-    font-size: 1rem;
+    font-size: .8rem;
     font-weight: 600;
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    border-radius: .3rem;
     
 }
 
@@ -25,15 +26,15 @@
     border: 1px solid black;
     padding: .2rem .4rem .4rem .4rem;
     border-radius: .3rem;
-    font-size: 1.3rem;
-   
- 
-    
-    
+    font-size: 1.3rem;   
+}
+
+.paragraphText {
+  font-size: .9rem;
 }
 
 .issueLink {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(193, 113, 209);
     border: 1px solid black;
     padding: .3rem;
     border-radius: 10%;
@@ -92,6 +93,8 @@
   }
   .issueText {
     font-size: 1.2rem;
+    font-weight: bolder;
+    color: black;
 }
 
 .Resolve {

@@ -9,6 +9,10 @@
 
 }
 
+.projectCardBody {
+    font-size: 1.3rem;
+}
+
 .projectCard{
  
     margin: 1rem;
@@ -26,16 +30,17 @@ span {
     background-color: #8da2b8;
     border: 1px solid #dadadf;
     border-radius: 2px;
-    padding: .5rem 1rem;
+    padding: .3rem .8rem;
     margin: 1rem;
     cursor: pointer;
     color: #080808fd;
-    font-size: 1rem;
+    font-size: .8rem;
     font-weight: 600;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     transition: background-color .3s;
+    border-radius: .3rem;
 }
 
 .issueButton:focus {
@@ -52,12 +57,13 @@ span {
     margin: 1rem;
     cursor: pointer;
     color: #080808fd;
-    font-size: 1rem;
+    font-size: .6rem;
     font-weight: 600;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     transition: background-color .3s;
+    border-radius: .3rem;
 }
 .editButton {
     background-color: #63cae4;
@@ -67,12 +73,13 @@ span {
     margin: 1rem;
     cursor: pointer;
     color: #080808fd;
-    font-size: 1rem;
+    font-size: .6rem;
     font-weight: 600;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     transition: background-color .3s;
+    border-radius: .3rem;
 }
 .issueNr {
     background-color: rgb(255, 255, 255);
