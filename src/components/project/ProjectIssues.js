@@ -239,6 +239,10 @@ function ProjectIssues({
                   Issue: <span className={styles.issueText}>{issue.issue}</span>
                 </Card.Text>
                 <Card.Text>
+                  Console Error: <span className={styles.issueText}>{issue.console_error}</span>
+                </Card.Text>
+
+                <Card.Text>
                   Date:<strong>{issue.created_on}</strong>
                 </Card.Text>
 

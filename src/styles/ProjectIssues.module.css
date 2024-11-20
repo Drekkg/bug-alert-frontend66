@@ -5,14 +5,14 @@
 
 
 .showFormButton {
-    background-color: #555a5f;
+    background-color: #7c96af;
     border: 1px solid #dadadf;
     border-radius: 2px;
     padding: .3rem .8rem;
     margin: 1rem;
     cursor: pointer;
-    color: #f7fcfffd;
-    font-size: .8rem;
+    color: #000000fd;
+    font-size: .9rem;
     font-weight: 600;
     text-align: center;
     text-decoration: none;
