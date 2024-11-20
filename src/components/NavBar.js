@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav, Button, Modal } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
 import { NavLink, useHistory } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
@@ -48,46 +48,41 @@ const NavBar = ({ currentUser, logUserOut }) => {
     </>
   );
 
+  
   const alertToLogout = (
-    <>
-      <div className={styles.backdrop}>
-        <Alert className={styles.alertModal}>
-          <Alert.Heading>
-            Bug Alert <i className="fa-solid fa-crosshairs"></i>
-          </Alert.Heading>
-          <p>Are you sure you want to Logout?</p>
-          <hr />
-          <div className="d-flex justify-content-center">
-            <Button
-              size="sm"
-              className={styles.goBackButton}
-              onClick={() => {
-                setLogoutAlert(false);
-                history.push("/");
-              }}
-              variant="info"
-              block
-            >
-              Go Back
-            </Button>
-            <Button
-              size="sm"
-              className={styles.logoutButton}
-              onClick={() => {
-                setNewUser({});
-                logUserOut();
-                window.location.reload(true);
-              }}
-              variant="warning"
-              block
-            >
-              Log Out
-            </Button>
-          </div>
-        </Alert>
-      </div>
-    </>
-  );
+    <Modal show={" "} onHide={" "} backdrop="static">
+      <Modal.Header>
+        <Modal.Title></Modal.Title>
+      </Modal.Header>
+      <Modal.Body>Are you Sure you Want to Logout?</Modal.Body>
+      <Modal.Footer>
+        <Button
+          size="sm"
+          className={styles.goBackButton}
+          onClick={() => {
+            setLogoutAlert(false);
+            history.push("/");
+          }}
+          variant="info"
+          block
+        >
+          Go Back
+        </Button>
+        <Button
+          size="sm"
+          className={styles.logoutButton}
+          onClick={() => {
+            setNewUser({});
+            logUserOut();
+            window.location.reload(true);
+          }}
+          variant="warning"
+          block
+        >
+          Log Out
+        </Button>
+      </Modal.Footer>
+    </Modal>);
 
   return (
     <div className={styles.Alertmodal}>

@@ -88,6 +88,7 @@ i {
   text-align: center;
   text-decoration: none; 
   transition: background-color .3s;
+  border-radius: .3rem;
 }
 
 .goBackButton {
@@ -95,7 +96,7 @@ i {
   background-color: #7195b9;
   border: 1px solid #dadadf;
   border-radius: 2px;
-  padding: .5rem 1rem;
+  padding: .3rem 1rem;
   margin: 0.8rem;
   cursor: pointer;
   color: #080808fd;
@@ -105,4 +106,5 @@ i {
   text-decoration: none;
   display: inline-block;
   transition: background-color .3s;
+  border-radius: .3rem;
 }
