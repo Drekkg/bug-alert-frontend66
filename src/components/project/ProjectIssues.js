@@ -29,7 +29,7 @@ function ProjectIssues({
     issue_id: ProjectId,
     resolved: false,
   });
-
+  console.log(issueData);
   const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Add an Issue";
 
   const issueAddAlert = (
@@ -68,7 +68,7 @@ function ProjectIssues({
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`/issues/project/${ProjectId}/`, issue);
+      const response = await axios.post(`/issues/${ProjectId}/`, issue);
 
       console.log("issue added successfully", response.data);
     } catch (err) {
@@ -98,7 +98,7 @@ function ProjectIssues({
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/issues/project/${ProjectId}/`)
+      .get(`/issues/`)
       .then((response) => setIssueData(response.data))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
@@ -118,12 +118,13 @@ function ProjectIssues({
     const matchedIssue = issueData.find((issue) => issue.id === issueToResolve);
     matchedIssue.resolved = true;
     setIssueData((prev) => [...prev, matchedIssue]);
-
-    handleResolvePut(issueData);
+    handleResolvePut(issueData, issueToResolve);
   };
-  const handleResolvePut = async (issueData, projectId) => {
+
+  const handleResolvePut = async (issueData, issueToResolve) => {
+    console.log();
     try {
-      const response = await axios.put(`/issues/project/1/`, issueData);
+      await axios.put(`/issues/project/${issueToResolve}/`, issueData);
     } catch {}
   };
 
