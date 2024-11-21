@@ -29,7 +29,7 @@ function ProjectIssues({
     issue_id: ProjectId,
     resolved: false,
   });
-  console.log(issueData);
+
   const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Add an Issue";
 
   const issueAddAlert = (
@@ -68,7 +68,7 @@ function ProjectIssues({
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`/issues/${ProjectId}/`, issue);
+      const response = await axios.post(`/issues/projects/${ProjectId}/`, issue);
 
       console.log("issue added successfully", response.data);
     } catch (err) {
@@ -98,7 +98,7 @@ function ProjectIssues({
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/issues/`)
+      .get(`/issues/projects/${ProjectId}`)
       .then((response) => setIssueData(response.data))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
@@ -118,13 +118,13 @@ function ProjectIssues({
     const matchedIssue = issueData.find((issue) => issue.id === issueToResolve);
     matchedIssue.resolved = true;
     setIssueData((prev) => [...prev, matchedIssue]);
-    handleResolvePut(issueData, issueToResolve);
+    console.log(matchedIssue);
+    handleResolvePut(matchedIssue, issueToResolve);
   };
 
-  const handleResolvePut = async (issueData, issueToResolve) => {
-    console.log();
+  const handleResolvePut = async (matchedIssue, issueToResolve) => {
     try {
-      await axios.put(`/issues/project/${issueToResolve}/`, issueData);
+      await axios.put(`/issues/${issueToResolve}/`, matchedIssue);
     } catch {}
   };
 
@@ -229,7 +229,7 @@ function ProjectIssues({
               <Card.Title>
                 <div className={styles.issueNr}>
                   <strong> {projectTitle}</strong> Issue Nr: ##{issue.id}
-                  {issueId === issue.id ? <span className={styles.Resolve}>Resolved</span> : null}
+                  {issue.resolved ? <span className={styles.Resolve}>Resolved</span> : null}
                 </div>
               </Card.Title>
               <div className={styles.issueContentCard}>
