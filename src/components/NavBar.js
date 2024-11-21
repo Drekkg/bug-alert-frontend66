@@ -12,6 +12,7 @@ const NavBar = ({ currentUser, logUserOut }) => {
     setNewUser({ username: currentUser.username });
   }, [currentUser]); //eslint-disable-line
   const history = useHistory();
+
   const handleLogout = () => {
     setLogoutAlert(!logoutAlert);
   };
@@ -48,9 +49,8 @@ const NavBar = ({ currentUser, logUserOut }) => {
     </>
   );
 
-  
   const alertToLogout = (
-    <Modal show={" "} onHide={" "} backdrop="static">
+    <Modal show={logoutAlert} onHide={() => setLogoutAlert(false)} backdrop="static">
       <Modal.Header>
         <Modal.Title></Modal.Title>
       </Modal.Header>
@@ -82,7 +82,8 @@ const NavBar = ({ currentUser, logUserOut }) => {
           Log Out
         </Button>
       </Modal.Footer>
-    </Modal>);
+    </Modal>
+  );
 
   return (
     <div className={styles.Alertmodal}>
