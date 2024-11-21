@@ -116,9 +116,11 @@ function ProjectIssues({
     setIssueId(issueToResolve);
     setResolved(true);
     const matchedIssue = issueData.find((issue) => issue.id === issueToResolve);
-    matchedIssue.resolved = true;
-    setIssueData((prev) => [...prev, matchedIssue]);
-    console.log(matchedIssue);
+    const updatedIssue = { ...matchedIssue, resolved: true };
+    setIssueData((prev) =>
+      prev.map((issue) => (issue.id === issueToResolve ? updatedIssue : issue))
+    );
+
     handleResolvePut(matchedIssue, issueToResolve);
   };
 
@@ -128,9 +130,14 @@ function ProjectIssues({
     } catch {}
   };
 
-  const handleOpenResolved = () => {
+  const handleOpenResolved = (issueToResolve) => {
     setIssueId(null);
     setResolved(false);
+    const matchedIssue = issueData.find((issue) => issue.id === issueToResolve);
+    const updatedIssue = { ...matchedIssue, resolved: true };
+    setIssueData((prev) =>
+      prev.map((issue) => (issue.id === issueToResolve ? updatedIssue : issue))
+    );
   };
 
   return (
