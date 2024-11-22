@@ -26,7 +26,7 @@ function SignInForm({ addUser }) {
   };
   const alert = (
     <div className={styles.Backdrop}>
-      <Alert variant="success" className={styles.AlertModal}>
+      <Alert variant="info" className={styles.AlertModal}>
         <Alert.Heading>
           {" "}
           Bug Alert <i className="fa-solid fa-crosshairs"></i>

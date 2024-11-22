@@ -16,6 +16,7 @@ function ProjectList({ projects, currentUser }) {
   const [triggerEffect, setTriggerEffect] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [Loading, setLoading] = useState(true);
+  const [backgroundChange, setBackgroundChange] = useState(false);
   const history = useHistory();
 
   const handleClose = () => setShowDeleteModal(false);
@@ -23,6 +24,7 @@ function ProjectList({ projects, currentUser }) {
 
   const handleClick = (projectId) => {
     setOpenProjectId(openProjectId === projectId ? null : projectId);
+    setBackgroundChange(!backgroundChange);
   };
   const handleResolvedChange = (resolved) => {
     setResolved(resolved);

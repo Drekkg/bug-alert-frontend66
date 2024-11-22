@@ -8,14 +8,12 @@ const EditProject = ({ updateProject }) => {
   const { projectId } = useParams();
 
   const history = useHistory();
-  const [project, setProject] = useState([
-    {
-      title: "",
-      description: "",
-      projectURL: "",
-      githubURL: "",
-    },
-  ]);
+  const [project, setProject] = useState({
+    title: "",
+    description: "",
+    projectURL: "",
+    githubURL: "",
+  });
 
   const [showAlert, setShowAlert] = useState(false);
   const handleBackToProjects = () => {

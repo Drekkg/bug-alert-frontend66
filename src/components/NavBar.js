@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Container, Nav, Button, Modal } from "react-bootstrap";
-import Alert from "react-bootstrap/Alert";
 import { NavLink, useHistory } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 

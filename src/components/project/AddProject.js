@@ -57,7 +57,7 @@ function AddProject({ addProject }) {
   };
   const addProjectAlert = (
     <div className={styles.BackDrop}>
-      <Alert variant="success" className={styles.AlertModal}>
+      <Alert variant="info" className={styles.AlertModal}>
         <Alert.Heading>Project Added</Alert.Heading>
         <p>The Project has been added successfully</p>
         <button onClick={handleClickAlert}>Close</button>

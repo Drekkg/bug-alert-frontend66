@@ -37,7 +37,7 @@ function SignUpForm() {
   };
   const alert = (
     <div className={styles.Backdrop}>
-      <Alert variant="success" className={styles.AlertModal}>
+      <Alert variant="info" className={styles.AlertModal}>
         <Alert.Heading>You have successfully Signed Up</Alert.Heading>
         <p>
           Thank you for choosing <i className="fa-solid fa-crosshairs"></i>Bug Alert - Please sign

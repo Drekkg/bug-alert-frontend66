@@ -43,7 +43,7 @@
 }
 
 .issueCard {
-    background-color: #fffbfb;
+    background-color: #e4eee5;
     border: 3px solid black;
     padding: 1rem;
 }
@@ -138,3 +138,4 @@
    background-color: rgba(0, 0, 0, 0.5); 
    z-index: 10000; 
  }
+

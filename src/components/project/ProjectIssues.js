@@ -121,12 +121,12 @@ function ProjectIssues({
       prev.map((issue) => (issue.id === issueToResolve ? updatedIssue : issue))
     );
 
-    handleResolvePut(matchedIssue, issueToResolve);
+    handleResolvePut(updatedIssue, issueToResolve);
   };
 
-  const handleResolvePut = async (matchedIssue, issueToResolve) => {
+  const handleResolvePut = async (updatedIssue, issueToResolve) => {
     try {
-      await axios.put(`/issues/${issueToResolve}/`, matchedIssue);
+      await axios.put(`/issues/${issueToResolve}/`, updatedIssue);
     } catch {}
   };
 
@@ -134,10 +134,11 @@ function ProjectIssues({
     setIssueId(null);
     setResolved(false);
     const matchedIssue = issueData.find((issue) => issue.id === issueToResolve);
-    const updatedIssue = { ...matchedIssue, resolved: true };
+    const updatedIssue = { ...matchedIssue, resolved: false };
     setIssueData((prev) =>
       prev.map((issue) => (issue.id === issueToResolve ? updatedIssue : issue))
     );
+    handleResolvePut(updatedIssue, issueToResolve);
   };
 
   return (
@@ -197,8 +198,8 @@ function ProjectIssues({
               <option value="Low">Low</option>
             </Form.Control>
           </Form.Group>
-          <Button variant="success" type="submit">
-            Submit
+          <Button variant="success" className="mb-3" type="submit">
+            Add Issue
           </Button>
         </Form>
       )}

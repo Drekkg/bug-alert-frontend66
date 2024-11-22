@@ -6,16 +6,23 @@
     max-width: 80rem;
     padding: 2rem .3rem;
     margin-top: 3.9rem;
-
 }
 
+
+
 .projectCardBody {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 }
 
 .projectCard{
- 
     margin: 1rem;
+}
+
+.backgroundClosed {
+    background-color: #d6b80d;
+}
+.backgroundOpen {
+    background-color: #edede9;
    
 }
 
