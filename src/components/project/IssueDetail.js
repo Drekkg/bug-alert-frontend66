@@ -167,7 +167,7 @@ const IssueDetail = () => {
               <h3>Comments:</h3>
             </Card.Title>
             {loading && <LoadingBadge />}
-            {filteredComment ? (
+            {filteredComment.length > 0 ? (
               filteredComment.map((comment) => (
                 <div key={comment.id} className={styles.commentBox}>
                   <p>
