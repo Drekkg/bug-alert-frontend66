@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Container, Form, Row, Col } from "react-bootstrap";
+import { Button, Card, Container, Form, Row, Col, Alert, NavLink } from "react-bootstrap";
 import { useLocation, useHistory } from "react-router-dom";
 import styles from "../../styles/IssueDetail.module.css";
 import axios from "axios";
 import LoadingBadge from "../LoadingBadge";
 
-const IssueDetail = () => {
+const IssueDetail = (currentUser) => {
   const [triggerFetch, setTriggerFetch] = useState(false);
   const [issueDetailData, setIssueDetailData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -82,6 +82,7 @@ const IssueDetail = () => {
   const filteredComment = issueDetailData?.filter((comment) => comment.issue_id === issue.id);
 
   const priorityClass = priorityClassMap[issue.priority];
+
   return (
     <Container>
       <div className={styles.project}>

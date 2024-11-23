@@ -44,7 +44,7 @@ function App() {
         />
         <Route path="/signupform" render={() => <SignUpForm />} />
         <Route exact path="/signinform" render={() => <SignInForm addUser={addUser} />} />
-        <Route path="/issueDetail/:id" component={IssueDetail} />
+        <Route path="/issueDetail/:id" component={IssueDetail} currentUser={currentUser} />
       </Switch>
     </div>
   );
