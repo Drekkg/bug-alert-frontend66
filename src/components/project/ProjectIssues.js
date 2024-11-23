@@ -19,7 +19,7 @@ function ProjectIssues({
   const [noIssues, setNoIssues] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [issueId, setIssueId] = useState(null);
+
   const [issue, setIssue] = useState({
     issue: "",
     console_error: "",
@@ -112,7 +112,6 @@ function ProjectIssues({
   }, [issueData, ProjectId]);
 
   const handleResolved = (issueToResolve) => {
-    setIssueId(issueToResolve);
     const matchedIssue = issueData.find((issue) => issue.id === issueToResolve);
     const updatedIssue = { ...matchedIssue, resolved: true };
     setIssueData((prev) =>
@@ -129,7 +128,6 @@ function ProjectIssues({
   };
 
   const handleOpenResolved = (issueToResolve) => {
-    setIssueId(null);
     const matchedIssue = issueData.find((issue) => issue.id === issueToResolve);
     const updatedIssue = { ...matchedIssue, resolved: false };
     setIssueData((prev) =>

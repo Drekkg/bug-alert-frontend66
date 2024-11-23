@@ -7,7 +7,6 @@ import { useLocation, useHistory, NavLink } from "react-router-dom";
 import LoadingBadge from "../LoadingBadge";
 
 function ProjectList({ projects, currentUser }) {
-  const [resolved, setResolved] = useState(false);
   const [projectData, setProjectData] = useState(null);
   const [openProjectId, setOpenProjectId] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -20,14 +19,10 @@ function ProjectList({ projects, currentUser }) {
   const history = useHistory();
 
   const handleClose = () => setShowDeleteModal(false);
-  // const handleShow = () => setShowDeleteModal(true);
 
   const handleClick = (projectId) => {
     setOpenProjectId(openProjectId === projectId ? null : projectId);
     setBackgroundChange(!backgroundChange);
-  };
-  const handleResolvedChange = (resolved) => {
-    setResolved(resolved);
   };
 
   const location = useLocation();
@@ -210,7 +205,6 @@ function ProjectList({ projects, currentUser }) {
 
               {openProjectId === project.id && (
                 <ProjectIssues
-                  onResolvedChange={handleResolvedChange}
                   currentUser={currentUser}
                   ProjectId={project.id}
                   routeBack={handleRouteBack}

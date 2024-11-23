@@ -61,7 +61,7 @@ const IssueDetail = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`/comments/`, enteredDetailData);
+      await axios.post(`/comments/`, enteredDetailData);
       setTriggerFetch(!triggerFetch);
       setEnteredDetailData({
         comment: "",
