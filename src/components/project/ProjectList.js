@@ -164,59 +164,61 @@ function ProjectList({ projects, currentUser }) {
                 {project.created_on}
               </Card.Text>
             </div>
-            {currentUser.username && (
-              <div className={`d-flex justify-content-center`}>
-                <Button
-                  className={styles.issueButton}
-                  variant="primary"
-                  onClick={() => handleClick(project.id)}
-                >
-                  {openProjectId === project.id
-                    ? "Close the issues Panel"
-                    : "Open the issues Panel"}
-                </Button>
-              </div>
-            )}
+            <div className={styles.buttonContainer}>
+              {currentUser.username && (
+                <div className={`d-flex justify-content-center`}>
+                  <Button
+                    className={styles.issueButton}
+                    variant="primary"
+                    onClick={() => handleClick(project.id)}
+                  >
+                    {openProjectId === project.id
+                      ? "Close the issues Panel"
+                      : "Open the issues Panel"}
+                  </Button>
+                </div>
+              )}
 
-            {currentUser.username === project.owner && (
-              <>
-                <Button
-                  className={styles.deleteButton}
-                  variant="danger"
-                  size="sm"
-                  onClick={() => handleDelete(project.id, project.title)}
-                >
-                  Delete Project
-                </Button>
-                <Button
-                  size="sm"
-                  className={styles.editButton}
-                  variant="info"
-                  onClick={() =>
-                    handleEdit(
-                      project.id,
-                      project.title,
-                      project.description,
-                      project.githubURL,
-                      project.projectURL
-                    )
-                  }
-                >
-                  Edit Project
-                </Button>
-              </>
-            )}
+              {currentUser.username === project.owner && (
+                <>
+                  <Button
+                    className={styles.deleteButton}
+                    variant="danger"
+                    size="sm"
+                    onClick={() => handleDelete(project.id, project.title)}
+                  >
+                    Delete Project
+                  </Button>
+                  <Button
+                    size="sm"
+                    className={styles.editButton}
+                    variant="info"
+                    onClick={() =>
+                      handleEdit(
+                        project.id,
+                        project.title,
+                        project.description,
+                        project.githubURL,
+                        project.projectURL
+                      )
+                    }
+                  >
+                    Edit Project
+                  </Button>
+                </>
+              )}
 
-            {openProjectId === project.id && (
-              <ProjectIssues
-                onResolvedChange={handleResolvedChange}
-                currentUser={currentUser}
-                ProjectId={project.id}
-                routeBack={handleRouteBack}
-                projectTitle={project.title}
-                projectOwner={project.owner}
-              />
-            )}
+              {openProjectId === project.id && (
+                <ProjectIssues
+                  onResolvedChange={handleResolvedChange}
+                  currentUser={currentUser}
+                  ProjectId={project.id}
+                  routeBack={handleRouteBack}
+                  projectTitle={project.title}
+                  projectOwner={project.owner}
+                />
+              )}
+            </div>
           </Card.Body>
         </Card>
       ))}

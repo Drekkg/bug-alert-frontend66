@@ -1,3 +1,11 @@
+
+span {
+    font-size: .9rem;
+    color: #47565cfd;
+    padding-right: 1rem;
+   
+}
+
 .Project {
     background-color: #edede9;
     border: 1px solid #dadadf;
@@ -8,8 +16,6 @@
     margin-top: 3.9rem;
 }
 
-
-
 .projectCardBody {
     font-size: 1.4rem;
 }
@@ -18,29 +24,17 @@
     margin: 1rem;
 }
 
-.backgroundClosed {
-    background-color: #d6b80d;
-}
-.backgroundOpen {
-    background-color: #edede9;
-   
-}
 
-span {
-    font-size: .9rem;
-    color: #47565cfd;
-    padding-right: 1rem;
-   
-}
+
 .issueButton {
    
-    background-color: #8da2b8;
+    background-color: #445261;
     border: 1px solid #dadadf;
     border-radius: 2px;
     padding: .3rem .8rem;
     margin: 1rem;
     cursor: pointer;
-    color: #080808fd;
+    color:  #dadadf;
     font-size: .8rem;
     font-weight: 600;
     text-align: center;
@@ -48,6 +42,9 @@ span {
     display: inline-block;
     transition: background-color .3s;
     border-radius: .3rem;
+}
+.buttonContainer {
+    background-color: rgb(240 241 242);
 }
 
 .issueButton:focus {
@@ -64,7 +61,7 @@ span {
     margin: 1rem;
     cursor: pointer;
     color: #080808fd;
-    font-size: .6rem;
+    font-size: .7rem;
     font-weight: 600;
     text-align: center;
     text-decoration: none;
@@ -80,7 +77,7 @@ span {
     margin: 1rem;
     cursor: pointer;
     color: #080808fd;
-    font-size: .6rem;
+    font-size: .7rem;
     font-weight: 600;
     text-align: center;
     text-decoration: none;
