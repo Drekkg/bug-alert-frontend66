@@ -262,8 +262,6 @@ function ProjectIssues({
                   <span className={priorityClass}>
                     <strong> Priority Level: {issue.priority}</strong>
                   </span>
-                  <br />
-                  <br />
                 </Card.Text>
               </div>
 
