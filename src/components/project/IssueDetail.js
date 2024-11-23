@@ -54,7 +54,6 @@ const IssueDetail = () => {
         setLoading(false);
       }
     };
-
     fetchComments();
   }, [triggerFetch]); //eslint-disable-line
 
@@ -80,8 +79,9 @@ const IssueDetail = () => {
     }
     setTriggerFetch((prev) => !prev);
   };
-  const priorityClass = priorityClassMap[issue.priority];
+  const filteredComment = issueDetailData?.filter((comment) => comment.issue_id === issue.id);
 
+  const priorityClass = priorityClassMap[issue.priority];
   return (
     <Container>
       <div className={styles.project}>
@@ -167,10 +167,9 @@ const IssueDetail = () => {
               <h3>Comments:</h3>
             </Card.Title>
             {loading && <LoadingBadge />}
-            {issueDetailData
-              ?.filter((comment) => comment.issue_id === issue.id)
-              .map((comment) => (
-                <div key={comment.id}>
+            {filteredComment ? (
+              filteredComment.map((comment) => (
+                <div key={comment.id} className={styles.commentBox}>
                   <p>
                     <strong>Comment:</strong> {comment.comment}
                   </p>
@@ -180,7 +179,12 @@ const IssueDetail = () => {
                   </p>
                   <hr />
                 </div>
-              ))}
+              ))
+            ) : (
+              <div>
+                <p>No Comments Added</p>
+              </div>
+            )}
           </Card>
         </div>
       </div>
