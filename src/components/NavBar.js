@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Navbar, Container, Nav, Button, Modal } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
@@ -6,6 +6,20 @@ import styles from "../styles/NavBar.module.css";
 const NavBar = ({ currentUser, logUserOut }) => {
   const [newUser, setNewUser] = useState(currentUser);
   const [logoutAlert, setLogoutAlert] = useState(false);
+
+  const [expanded, setExpanded] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setExpanded(false);
+      }
+    };
+    document.addEventListener("mouseup", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousup", handleClickOutside);
+    };
+  }, [ref]);
 
   useEffect(() => {
     setNewUser({ username: currentUser.username });
@@ -86,7 +100,7 @@ const NavBar = ({ currentUser, logUserOut }) => {
 
   return (
     <div className={styles.Alertmodal}>
-      <Navbar bg="light" expand="xl" fixed="top">
+      <Navbar expanded={expanded} bg="light" expand="xl" fixed="top">
         <Container>
           <Navbar.Brand>
             <NavLink to="/" className={styles.navHeading}>
@@ -98,7 +112,7 @@ const NavBar = ({ currentUser, logUserOut }) => {
               User: <span className={styles.userName}>{newUser.username}</span>
             </div>
           ) : null}
-          <Navbar.Toggle />
+          <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} />
           <Navbar.Collapse id="basic-navbar-nav">
             {newUser.username ? loggedInUser : loggedOutUser}
             <div className="ml-auto"></div>

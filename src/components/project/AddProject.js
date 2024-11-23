@@ -6,7 +6,7 @@ import axios from "axios";
 
 function AddProject({ addProject }) {
   const closeForm = () => {
-    history.push("/");
+    history.goBack();
   };
   const handleClickAlert = () => {
     setShowAlert(false);
