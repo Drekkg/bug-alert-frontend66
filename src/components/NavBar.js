@@ -1,25 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Container, Nav, Button, Modal } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
+import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 const NavBar = ({ currentUser, logUserOut }) => {
   const [newUser, setNewUser] = useState(currentUser);
   const [logoutAlert, setLogoutAlert] = useState(false);
 
-  const [expanded, setExpanded] = useState(false);
-  const ref = useRef(null);
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setExpanded(false);
-      }
-    };
-    document.addEventListener("mouseup", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousup", handleClickOutside);
-    };
-  }, [ref]);
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   useEffect(() => {
     setNewUser({ username: currentUser.username });
