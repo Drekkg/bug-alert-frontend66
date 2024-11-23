@@ -19,7 +19,6 @@ function ProjectIssues({
   const [noIssues, setNoIssues] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [resolved, setResolved] = useState(false);
   const [issueId, setIssueId] = useState(null);
   const [issue, setIssue] = useState({
     issue: "",
@@ -114,7 +113,6 @@ function ProjectIssues({
 
   const handleResolved = (issueToResolve) => {
     setIssueId(issueToResolve);
-    setResolved(true);
     const matchedIssue = issueData.find((issue) => issue.id === issueToResolve);
     const updatedIssue = { ...matchedIssue, resolved: true };
     setIssueData((prev) =>
@@ -132,7 +130,6 @@ function ProjectIssues({
 
   const handleOpenResolved = (issueToResolve) => {
     setIssueId(null);
-    setResolved(false);
     const matchedIssue = issueData.find((issue) => issue.id === issueToResolve);
     const updatedIssue = { ...matchedIssue, resolved: false };
     setIssueData((prev) =>
@@ -267,7 +264,7 @@ function ProjectIssues({
 
               <Row>
                 {projectOwner === currentUser.username &&
-                  (resolved && issue.id === issueId ? (
+                  (issue.resolved ? (
                     <Col>
                       <p className={styles.paragraphText}>Click Here to Re-open the Issue</p>
                       <div>
@@ -281,7 +278,7 @@ function ProjectIssues({
                       <p className={styles.paragraphText}>Has the issue been Fixed? Click Here</p>
                       <span>
                         <Button size="sm" onClick={() => handleResolved(issue.id)}>
-                          Resolved
+                          Close Issue
                         </Button>
                       </span>
                     </Col>
