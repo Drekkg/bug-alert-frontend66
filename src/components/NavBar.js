@@ -60,7 +60,7 @@ const NavBar = ({ currentUser, logUserOut }) => {
           className={styles.goBackButton}
           onClick={() => {
             setLogoutAlert(false);
-            history.push("/");
+            history.goBack();
           }}
           variant="info"
           block
@@ -93,7 +93,6 @@ const NavBar = ({ currentUser, logUserOut }) => {
               Bug Alert<i className="fa-solid fa-crosshairs"></i>
             </NavLink>
           </Navbar.Brand>
-
           {newUser.username ? (
             <div className={styles.user} to="/">
               User: <span className={styles.userName}>{newUser.username}</span>
