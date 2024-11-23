@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Container, Form, Row, Col, Alert, NavLink } from "react-bootstrap";
+import { Button, Card, Container, Form, Row, Col } from "react-bootstrap";
 import { useLocation, useHistory } from "react-router-dom";
 import styles from "../../styles/IssueDetail.module.css";
 import axios from "axios";
