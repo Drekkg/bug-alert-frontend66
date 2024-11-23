@@ -85,6 +85,7 @@ function AddProject({ addProject }) {
                   placeholder="Project Name"
                   name="title"
                   value={project.title}
+                  required
                 />
               </Form.Group>
 
@@ -100,6 +101,7 @@ function AddProject({ addProject }) {
                   placeholder="Project Description"
                   name="description"
                   value={project.description}
+                  required
                 />
               </Form.Group>
 

@@ -1,7 +1,7 @@
 
 span {
-    font-size: .9rem;
-    color: #47565cfd;
+    font-size: 1rem;
+    color: #5c475cfd;
     padding-right: 1rem;
    
 }
@@ -35,7 +35,7 @@ span {
     margin: 1rem;
     cursor: pointer;
     color:  #dadadf;
-    font-size: .8rem;
+    font-size: 1rem;
     font-weight: 600;
     text-align: center;
     text-decoration: none;
@@ -44,12 +44,14 @@ span {
     border-radius: .3rem;
 }
 .buttonContainer {
+    margin-top: 1rem;
+    border-top: solid 1px rgb(204, 199, 199);
     background-color: rgb(240 241 242);
 }
 
 .issueButton:focus {
-    background-color:#7195b9;
-    color: black
+    background-color: #445261;
+    color:  #dadadf;
 }
 
 

@@ -34,7 +34,7 @@ function ProjectIssues({
 
   const issueAddAlert = (
     <div className={styles.Backdrop}>
-      <Alert variant="success" className={styles.AlertModal}>
+      <Alert variant="info" className={styles.AlertModal}>
         <Alert.Heading>Issue Added</Alert.Heading>
         <p>Issue has been added successfully</p>
         <Button onClick={() => setShowAlert(false)} variant="success" block>
