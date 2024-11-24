@@ -19,7 +19,6 @@ function ProjectIssues({
   const [noIssues, setNoIssues] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const [issue, setIssue] = useState({
     issue: "",
     console_error: "",
@@ -29,8 +28,8 @@ function ProjectIssues({
     resolved: false,
   });
 
-  const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Add an Issue";
 
+  const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Add an Issue";
   const issueAddAlert = (
     <div className={styles.Backdrop}>
       <Alert variant="info" className={styles.AlertModal}>
