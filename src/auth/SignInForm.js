@@ -3,6 +3,7 @@ import { Form, Container, Button, Alert } from "react-bootstrap";
 import { useHistory, Link } from "react-router-dom";
 import styles from "../styles/SignInForm.module.css";
 import axios from "axios";
+import { useSetLoggedinUser } from "../contexts/CurrentUserContext";
 
 function SignInForm({ addUser }) {
   const history = useHistory();
@@ -16,6 +17,7 @@ function SignInForm({ addUser }) {
     username: "",
     password: "",
   });
+
   const { username, password } = user;
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,15 +50,15 @@ function SignInForm({ addUser }) {
       </Alert>
     </div>
   );
-
+  const loggedinUser = useSetLoggedinUser();
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/dj-rest-auth/login/", user);
+      const { data } = await axios.post("/dj-rest-auth/login/", user);
+      loggedinUser(data.user);
       addUser(user);
       setAlertShow(true);
     } catch (err) {
-      console.log("err", err.response?.data);
       setErrors(err.response?.data);
     }
   };

@@ -28,7 +28,6 @@ function ProjectIssues({
     resolved: false,
   });
 
-
   const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Add an Issue";
   const issueAddAlert = (
     <div className={styles.Backdrop}>

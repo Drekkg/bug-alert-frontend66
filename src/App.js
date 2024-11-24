@@ -20,8 +20,8 @@ function App() {
       prevProjects.map((project) => (project.id === updatedProject.id ? updatedProject : project))
     );
   };
-
   const [currentUser, setCurrentUser] = useState([]);
+
   const addUser = (user) => {
     setCurrentUser(user);
   };

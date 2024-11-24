@@ -4,7 +4,12 @@ import { NavLink, useHistory } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
+import { useLoggedinUser } from "../contexts/CurrentUserContext";
+
 const NavBar = ({ currentUser, logUserOut }) => {
+  const loggedUser = useLoggedinUser();
+  console.log(loggedUser?.username);
+
   const [newUser, setNewUser] = useState(currentUser);
   const [logoutAlert, setLogoutAlert] = useState(false);
 
@@ -13,8 +18,8 @@ const NavBar = ({ currentUser, logUserOut }) => {
   useEffect(() => {
     setNewUser({ username: currentUser.username });
   }, [currentUser]); //eslint-disable-line
-  const history = useHistory();
 
+  const history = useHistory();
   const handleLogout = () => {
     setLogoutAlert(!logoutAlert);
   };
@@ -96,14 +101,15 @@ const NavBar = ({ currentUser, logUserOut }) => {
               Bug Alert<i className="fa-solid fa-crosshairs"></i>
             </NavLink>
           </Navbar.Brand>
-          {newUser.username ? (
+          {loggedUser?.username ? (
             <div className={styles.user} to="/">
-              User: <span className={styles.userName}>{newUser.username}</span>
+              User: <span className={styles.userName}>{loggedUser?.username}</span>
             </div>
           ) : null}
+
           <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} />
           <Navbar.Collapse id="basic-navbar-nav">
-            {newUser.username ? loggedInUser : loggedOutUser}
+            {loggedUser?.username ? loggedInUser : loggedOutUser}
             <div className="ml-auto"></div>
           </Navbar.Collapse>
         </Container>

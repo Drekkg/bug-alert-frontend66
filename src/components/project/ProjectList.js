@@ -5,6 +5,7 @@ import { Container, Button, Card, Modal, Alert } from "react-bootstrap";
 import ProjectIssues from "./ProjectIssues";
 import { useLocation, useHistory, NavLink } from "react-router-dom";
 import LoadingBadge from "../LoadingBadge";
+import { useLoggedinUser } from "../../contexts/CurrentUserContext";
 
 function ProjectList({ projects, currentUser }) {
   const [projectData, setProjectData] = useState(null);
@@ -17,6 +18,7 @@ function ProjectList({ projects, currentUser }) {
   const [Loading, setLoading] = useState(true);
   const [backgroundChange, setBackgroundChange] = useState(false);
   const history = useHistory();
+  const loggedUser = useLoggedinUser();
 
   const handleClose = () => setShowDeleteModal(false);
 
@@ -84,7 +86,7 @@ function ProjectList({ projects, currentUser }) {
         Bug Alert<i className="fa-solid fa-crosshairs"></i>
         <span>Keep track of what needs to be fixed</span>
       </h2>
-      {!currentUser.username && (
+      {!loggedUser?.username && (
         <h4 className={styles.banner}>
           Please{" "}
           <NavLink className={styles.navBarLinks} to="/signinform">
@@ -160,7 +162,7 @@ function ProjectList({ projects, currentUser }) {
               </Card.Text>
             </div>
             <div className={styles.buttonContainer}>
-              {currentUser.username && (
+              {loggedUser?.username && (
                 <div className={`d-flex justify-content-center`}>
                   <Button
                     className={styles.issueButton}
@@ -174,7 +176,7 @@ function ProjectList({ projects, currentUser }) {
                 </div>
               )}
 
-              {currentUser.username === project.owner && (
+              {loggedUser?.username === project.owner && (
                 <>
                   <Button
                     className={styles.deleteButton}
@@ -205,7 +207,7 @@ function ProjectList({ projects, currentUser }) {
 
               {openProjectId === project.id && (
                 <ProjectIssues
-                  currentUser={currentUser}
+                  currentUser={loggedUser}
                   ProjectId={project.id}
                   routeBack={handleRouteBack}
                   projectTitle={project.title}
