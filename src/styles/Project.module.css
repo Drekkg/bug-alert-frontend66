@@ -18,6 +18,7 @@ span {
 
 .projectCardBody {
     font-size: 1.4rem;
+ 
 }
 
 .projectCard{
@@ -101,7 +102,10 @@ span {
     background-color: aliceblue;
     border: 1px solid black;
 }
-
+.card-body {
+    background-color: aquamarine;
+  }
+  
 .AlertModal {
     z-index:10001;
      left: 20%;
@@ -125,5 +129,6 @@ span {
     
      .projectCardBody {
             font-size: 1rem;
+            padding: 0rem;
     }
    }

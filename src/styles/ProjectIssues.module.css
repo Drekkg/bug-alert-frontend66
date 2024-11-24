@@ -139,7 +139,6 @@
    z-index: 10000; 
  }
 
-
  @media (max-width: 450px) { 
   .issueNr {
     font-size: .9rem;
