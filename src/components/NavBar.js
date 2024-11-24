@@ -4,24 +4,34 @@ import { NavLink, useHistory } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
-import { useLoggedinUser } from "../contexts/CurrentUserContext";
+import { useLoggedinUser, useSetLoggedinUser } from "../contexts/CurrentUserContext";
+import axios from "axios";
 
-const NavBar = ({ currentUser, logUserOut }) => {
+const NavBar = ({ currentUser }) => {
   const loggedUser = useLoggedinUser();
+  const setLoggedUser = useSetLoggedinUser();
+
   console.log(loggedUser?.username);
 
-  const [newUser, setNewUser] = useState(currentUser);
+  // const [newUser, setNewUser] = useState(currentUser);
   const [logoutAlert, setLogoutAlert] = useState(false);
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
-  useEffect(() => {
-    setNewUser({ username: currentUser.username });
-  }, [currentUser]); //eslint-disable-line
-
+  // useEffect(() => {
+  //   setNewUser({ username: currentUser.username });
+  // }, [currentUser]); //eslint-disable-line
   const history = useHistory();
+
   const handleLogout = () => {
     setLogoutAlert(!logoutAlert);
+  };
+  const logUserOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setLoggedUser(null);
+      setLogoutAlert(!logoutAlert);
+    } catch (err) {}
   };
 
   const loggedInUser = (
@@ -79,7 +89,6 @@ const NavBar = ({ currentUser, logUserOut }) => {
           size="sm"
           className={styles.logoutButton}
           onClick={() => {
-            setNewUser({});
             logUserOut();
             window.location.reload(true);
           }}
