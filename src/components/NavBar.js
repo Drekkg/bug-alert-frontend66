@@ -26,11 +26,12 @@ const NavBar = ({ currentUser }) => {
   const handleLogout = () => {
     setLogoutAlert(!logoutAlert);
   };
+
   const logUserOut = async () => {
     try {
+      setLogoutAlert(!logoutAlert);
       await axios.post("dj-rest-auth/logout/");
       setLoggedUser(null);
-      setLogoutAlert(!logoutAlert);
     } catch (err) {}
   };
 
@@ -78,7 +79,7 @@ const NavBar = ({ currentUser }) => {
           className={styles.goBackButton}
           onClick={() => {
             setLogoutAlert(false);
-            history.goBack();
+            history.push("/");
           }}
           variant="info"
           block
@@ -90,7 +91,6 @@ const NavBar = ({ currentUser }) => {
           className={styles.logoutButton}
           onClick={() => {
             logUserOut();
-            window.location.reload(true);
           }}
           variant="warning"
           block
