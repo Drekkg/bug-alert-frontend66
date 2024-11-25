@@ -42,7 +42,7 @@ function SignInForm({ addUser }) {
             setAlertShow(false);
             history.push("/");
           }}
-          variant="success"
+          variant="info"
           block
         >
           Close

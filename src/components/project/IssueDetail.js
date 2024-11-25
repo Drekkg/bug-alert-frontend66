@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button, Card, Container, Form, Row, Col } from "react-bootstrap";
 import { useLocation, useHistory } from "react-router-dom";
 import styles from "../../styles/IssueDetail.module.css";
-import axios from "axios";
 import LoadingBadge from "../LoadingBadge";
+import { axiosRes } from "../../api/axiosDefaults";
 
 const IssueDetail = (currentUser) => {
   const [triggerFetch, setTriggerFetch] = useState(false);
@@ -46,7 +46,7 @@ const IssueDetail = (currentUser) => {
     const fetchComments = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("/comments/");
+        const response = await axiosRes.get("/comments/");
         setIssueDetailData(response.data);
       } catch (error) {
         console.error("Error fetching comments:", error);
@@ -60,7 +60,7 @@ const IssueDetail = (currentUser) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`/comments/`, enteredDetailData);
+      await axiosRes.post(`/comments/`, enteredDetailData);
       setTriggerFetch(!triggerFetch);
       setEnteredDetailData({
         comment: "",
@@ -68,13 +68,13 @@ const IssueDetail = (currentUser) => {
         issue_id: issue.id,
       });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response) {
-        console.error("Error response:", err.response.data);
+        // console.error("Error response:", err.response.data);
       } else if (err.request) {
-        console.error("Error request:", err.request);
+        // console.error("Error request:", err.request);
       } else {
-        console.error("Error message:", err.message);
+        // console.error("Error message:", err.message);
       }
     }
     setTriggerFetch((prev) => !prev);
@@ -87,20 +87,19 @@ const IssueDetail = (currentUser) => {
     <Container>
       <div className={styles.project}>
         <h4 className={styles.issueNr}>
-          {projectTitle}
-          <span> ## {issue.id}</span>
+          {projectTitle} <span> ## {issue.id}</span>
         </h4>
         <div className={styles.issueContent}>
           <Row>
             <Col>
-              Logged By:
+              Logged By:{" "}
               <span className={styles.colAlign}>
                 <strong>{issue.owner}</strong>
               </span>
             </Col>
             <Col></Col>
             <Col>
-              Date:
+              Date:{" "}
               <span className={styles.colAlign}>
                 <strong>{issue.created_on}</strong>
               </span>
@@ -116,7 +115,7 @@ const IssueDetail = (currentUser) => {
           </Row>
           <Row>
             <Col>
-              Console Error:
+              Console Error:{" "}
               <span className={styles.colAlign}>
                 <strong>{issue.console_error}</strong>
               </span>
@@ -125,7 +124,7 @@ const IssueDetail = (currentUser) => {
 
           <Row className={styles.rowAlign}>
             <Col>
-              Repeatable:
+              Repeatable:{" "}
               <span className={styles.colAlign}>
                 <strong>{issue.repeatable ? "Yes" : "No"}</strong>
               </span>
@@ -159,7 +158,7 @@ const IssueDetail = (currentUser) => {
           </Form.Group>
 
           <Button variant="primary" className={styles.enterButton} type="submit">
-            Submit
+            Enter
           </Button>
         </Form>
         <div>

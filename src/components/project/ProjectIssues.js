@@ -3,15 +3,15 @@ import { Button, Card, Form, Alert, Row, Col, Container, NavLink } from "react-b
 import styles from "../../styles/ProjectIssues.module.css";
 import LoadingBadge from "../LoadingBadge";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { axiosReq } from "../../api/axiosDefaults";
 
 function ProjectIssues({
-  onResolvedChange,
+  // onResolvedChange,
   currentUser,
   projectOwner,
-  onOpenProject,
+  // onOpenProject,
   ProjectId,
-  routeBack,
+  // routeBack,
   projectTitle,
 }) {
   const [showIssueForm, setShowIssueForm] = useState(false);
@@ -34,7 +34,7 @@ function ProjectIssues({
       <Alert variant="info" className={styles.AlertModal}>
         <Alert.Heading>Issue Added</Alert.Heading>
         <p>Issue has been added successfully</p>
-        <Button onClick={() => setShowAlert(false)} variant="success" block>
+        <Button onClick={() => setShowAlert(false)} variant="info" block>
           Close
         </Button>
       </Alert>
@@ -65,17 +65,17 @@ function ProjectIssues({
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`/issues/projects/${ProjectId}/`, issue);
+      await axiosReq.post(`/issues/projects/${ProjectId}/`, issue);
 
-      console.log("issue added successfully", response.data);
+      // console.log("issue added successfully", response.data);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response) {
-        console.error("Error response:", err.response.data);
+        // console.error("Error response:", err.response.data);
       } else if (err.request) {
-        console.error("Error request:", err.request);
+        // console.error("Error request:", err.request);
       } else {
-        console.error("Error message:", err.message);
+        // console.error("Error message:", err.message);
       }
     }
 
@@ -94,7 +94,7 @@ function ProjectIssues({
 
   useEffect(() => {
     setLoading(true);
-    axios
+    axiosReq
       .get(`/issues/projects/${ProjectId}`)
       .then((response) => setIssueData(response.data))
       .catch((error) => console.error(error))
@@ -121,7 +121,7 @@ function ProjectIssues({
 
   const handleResolvePut = async (updatedIssue, issueToResolve) => {
     try {
-      await axios.put(`/issues/${issueToResolve}/`, updatedIssue);
+      await axiosReq.put(`/issues/${issueToResolve}/`, updatedIssue);
     } catch {}
   };
 

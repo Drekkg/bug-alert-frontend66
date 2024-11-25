@@ -11,8 +11,6 @@ const NavBar = ({ currentUser }) => {
   const loggedUser = useLoggedinUser();
   const setLoggedUser = useSetLoggedinUser();
 
- 
-
   const [logoutAlert, setLogoutAlert] = useState(false);
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
@@ -28,7 +26,8 @@ const NavBar = ({ currentUser }) => {
       setLogoutAlert(!logoutAlert);
       await axios.post("dj-rest-auth/logout/");
       setLoggedUser(null);
-    } catch (err) { }
+      alert("You have successfully Logged Out!");
+    } catch (err) {}
   };
 
   const loggedInUser = (

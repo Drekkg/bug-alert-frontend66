@@ -50,7 +50,7 @@ function SignUpForm() {
               setAlertShow(false);
               history.push("/signinform");
             }}
-            variant="success"
+            variant="info"
             block
           >
             Sign In
@@ -64,7 +64,7 @@ function SignUpForm() {
       <Container className={styles.SignUpForm}>
         <h1>Sign Up</h1>
         <h3>{alertShow && alert}</h3>
-        <Form onSubmit={submitHandler}>
+        <Form onSubmit={submitHandler} autoComplete="off">
           <Form.Group controlId="userName">
             <Form.Label>Username</Form.Label>
             <Form.Text className="text-muted">Please enter a username.</Form.Text>
@@ -73,10 +73,10 @@ function SignUpForm() {
                 {message}
               </Alert>
             ))}
-
             <Form.Control
               type="text"
               onChange={handleChange}
+              autoComplete="off"
               placeholder="Enter you username"
               name="username"
               value={username}
@@ -85,7 +85,9 @@ function SignUpForm() {
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Text className="text-muted">Please create a password.</Form.Text>
+            <Form.Text className="text-muted">
+              Please create a password (at least 8 Characters: Numbers and Letters ).
+            </Form.Text>
             {errors.password1?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}

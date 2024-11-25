@@ -120,6 +120,7 @@
 }
 
 .AlertModal {
+  background-color: rgb(221, 215, 220);;
   z-index:10001;
    left: 20%;
    top: 10%;

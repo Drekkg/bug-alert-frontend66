@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import styles from "../../styles/Project.module.css";
 import { Container, Button, Card, Modal, Alert } from "react-bootstrap";
 import ProjectIssues from "./ProjectIssues";
 import { useLocation, useHistory, NavLink } from "react-router-dom";
 import LoadingBadge from "../LoadingBadge";
 import { useLoggedinUser } from "../../contexts/CurrentUserContext";
+import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 
 function ProjectList({ projects, currentUser }) {
   const [projectData, setProjectData] = useState(null);
@@ -51,7 +51,7 @@ function ProjectList({ projects, currentUser }) {
 
   const deleteProject = async (deleteProjectId) => {
     try {
-      await axios.delete(`projects/${deleteProjectId}/`);
+      await axiosRes.delete(`projects/${deleteProjectId}/`);
       setShowDeleteModal(false);
       setTriggerEffect(!triggerEffect);
       setShowAlert(true);
@@ -62,7 +62,7 @@ function ProjectList({ projects, currentUser }) {
 
   useEffect(() => {
     setLoading(true);
-    axios
+    axiosReq
       .get("/projects/")
       .then((response) => setProjectData(response.data))
       .catch((error) => console.error("Error fetching project data:", error))

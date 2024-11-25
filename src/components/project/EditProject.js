@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Form, Row, Col, Alert } from "react-bootstrap";
 import { useParams, useHistory } from "react-router-dom";
-import axios from "axios";
+
 import styles from "../../styles/Project.module.css";
+import { axiosReq } from "../../api/axiosDefaults";
 
 const EditProject = ({ updateProject }) => {
   const { projectId } = useParams();
@@ -23,15 +24,15 @@ const EditProject = ({ updateProject }) => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get(`/projects/`);
+        const response = await axiosReq.get(`/projects/`);
         const matchingProject = response.data.find((project) => project.id === parseInt(projectId));
         if (matchingProject) {
           setProject(matchingProject);
         } else {
-          console.error("Project not found");
+          // console.error("Project not found");
         }
       } catch (error) {
-        console.error("Error fetching project data:", error);
+        // console.error("Error fetching project data:", error);
       }
     };
 
@@ -48,29 +49,24 @@ const EditProject = ({ updateProject }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await axios.put(`/projects/${projectId}/`, project);
-
+      const response = await axiosReq.put(`/projects/${projectId}/`, project);
       setShowAlert(!showAlert);
       updateProject(response.data);
     } catch (err) {
       if (err.response) {
-        // Server responded with a status other than 2xx
-        console.error("Error response:", err.response.data);
+        // console.error("Error response:", err.response.data);
       } else if (err.request) {
-        // Request was made but no response received
-        console.error("Error request:", err.request);
+        // console.error("Error request:", err.request);
       } else {
-        // Something else happened while setting up the request
-        console.error("Error message:", err.message);
+        // console.error("Error message:", err.message);
       }
     }
   };
 
   const updateAlert = (
     <div className={styles.Backdrop}>
-      <Alert variant="success" className={styles.AlertModal}>
+      <Alert variant="info" className={styles.AlertModal}>
         <Alert.Heading>
           {" "}
           Bug Alert <i className="fa-solid fa-crosshairs"></i>
@@ -84,7 +80,7 @@ const EditProject = ({ updateProject }) => {
             setShowAlert(false);
             history.push("/");
           }}
-          variant="success"
+          variant="info"
           block
         >
           Close

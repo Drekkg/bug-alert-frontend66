@@ -33,18 +33,14 @@ function AddProject({ addProject }) {
     e.preventDefault();
 
     try {
-      const response = await axios.post("/projects/", project);
-      console.log(response);
-
+      await axios.post("/projects/", project);
       setShowAlert(true);
     } catch (err) {
       if (err.response) {
-        // Server responded with a status other than 2xx
       } else if (err.request) {
-        // Request was made but no response received
-        console.error("Error request:", err.request);
+        // console.error("Error request:", err.request);
       } else {
-        console.log.error("Error message:", err.message);
+        // console.log.error("Error message:", err.message);
       }
     }
     addProject(project);
@@ -60,7 +56,9 @@ function AddProject({ addProject }) {
       <Alert variant="info" className={styles.AlertModal}>
         <Alert.Heading>Project Added</Alert.Heading>
         <p>The Project has been added successfully</p>
-        <button onClick={handleClickAlert}>Close</button>
+        <button onClick={handleClickAlert} variant="info">
+          Close
+        </button>
       </Alert>
     </div>
   );
