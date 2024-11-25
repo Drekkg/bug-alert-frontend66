@@ -13,14 +13,10 @@ const NavBar = ({ currentUser }) => {
 
   console.log(loggedUser?.username);
 
-  // const [newUser, setNewUser] = useState(currentUser);
   const [logoutAlert, setLogoutAlert] = useState(false);
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
-  // useEffect(() => {
-  //   setNewUser({ username: currentUser.username });
-  // }, [currentUser]); //eslint-disable-line
   const history = useHistory();
 
   const handleLogout = () => {
