@@ -22,6 +22,7 @@ export const CurrentUserProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   useEffect(() => {
     handleMount();
   }, []);
@@ -32,31 +33,32 @@ export const CurrentUserProvider = ({ children }) => {
         try {
           await axios.post("/dj-rest-auth/token/refresh/");
         } catch (err) {
-          setLoggedinUser((prevUser) => {
-            if (prevUser) {
+          setLoggedinUser((prevCurrentUser) => {
+            if (prevCurrentUser) {
               history.push("/signin");
             }
             return null;
           });
+
           return config;
         }
         return config;
       },
       (err) => {
-        return Promise.rejsct(err);
+        return Promise.reject(err);
       }
     );
 
     axiosRes.interceptors.response.use(
       (response) => response,
       async (err) => {
-        if (err.respnse?.status === 401) {
+        if (err.response?.status === 401) {
           try {
             await axios.post("/dj-rest-auth/token/refresh/");
           } catch (err) {
-            setLoggedinUser((prevUser) => {
-              if (prevUser) {
-                history.push("signin");
+            setLoggedinUser((prevCurrentUser) => {
+              if (prevCurrentUser) {
+                history.push("/signin");
               }
               return null;
             });

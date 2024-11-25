@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Navbar, Container, Nav, Button, Modal } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
@@ -11,7 +11,7 @@ const NavBar = ({ currentUser }) => {
   const loggedUser = useLoggedinUser();
   const setLoggedUser = useSetLoggedinUser();
 
-  console.log(loggedUser?.username);
+ 
 
   const [logoutAlert, setLogoutAlert] = useState(false);
 
@@ -28,7 +28,7 @@ const NavBar = ({ currentUser }) => {
       setLogoutAlert(!logoutAlert);
       await axios.post("dj-rest-auth/logout/");
       setLoggedUser(null);
-    } catch (err) {}
+    } catch (err) { }
   };
 
   const loggedInUser = (
