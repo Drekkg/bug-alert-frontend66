@@ -44,14 +44,13 @@ export const CurrentUserProvider = ({ children }) => {
       },
       (err) => {
         return Promise.rejsct(err);
-      },
-      [history]
+      }
     );
 
     axiosRes.interceptors.response.use(
       (response) => response,
       async (err) => {
-        if (err.respnse?.status == 401) {
+        if (err.respnse?.status === 401) {
           try {
             await axios.post("/dj-rest-auth/token/refresh/");
           } catch (err) {
@@ -67,7 +66,7 @@ export const CurrentUserProvider = ({ children }) => {
         return Promise.reject(err);
       }
     );
-  });
+  }, [history]);
 
   return (
     <CurrentUserContext.Provider value={loggedinUser}>
