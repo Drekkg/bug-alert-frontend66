@@ -1,5 +1,7 @@
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect, createContext, useContext, useMemo } from "react";
 import axios from "axios";
+import { axiosRes } from "../api/axiosDefaults";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -9,9 +11,13 @@ export const useSetLoggedinUser = () => useContext(SetCurrentUserContext);
 
 export const CurrentUserProvider = ({ children }) => {
   const [loggedinUser, setLoggedinUser] = useState(null);
+
+  const history = useHistory();
+
+
   const handleMount = async () => {
     try {
-      const { data } = await axios.get("dj-rest-auth/user/");
+      const { data } = await axiosRes.get("dj-rest-auth/user/");
       setLoggedinUser(data);
     } catch (err) {
       console.log(err);
@@ -20,6 +26,29 @@ export const CurrentUserProvider = ({ children }) => {
   useEffect(() => {
     handleMount();
   }, []);
+
+  useMemo(() => {
+    axiosRes.interceptors.response.use(
+      (response) => response,
+      async (err) => {
+        if (err.respnse?.status == 401) {
+          try {
+            await axios.post('/dj-rest-auth/token/refresh/')
+          } catch (err) {
+            setLoggedinUser(prevUser => {
+              if (prevUser) {
+                history.push('signin')
+              }
+              return null
+            })
+          }
+          return axios(err.config)
+        }
+        return Promise.reject(err);
+      }
+
+    )
+  })
 
   return (
     <CurrentUserContext.Provider value={loggedinUser}>
