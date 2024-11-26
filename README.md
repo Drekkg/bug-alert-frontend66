@@ -79,6 +79,29 @@ This page displays the issues that have been logged to each project.
 
 ![project issue image](src/assets/project_issue.png)
 
+**Issue Detail Page**
+The issue detail displays all the information of the project detail page, but also
+including:
+
+- A back to Issues Button:
+  Takes the user back to the project Issues page
+- A response Form:
+  Here the user can enter any additional information or comments regarding the issue.
+  Also any steps taken to rectify the problem/solutions/fixes/workarounds
+- A button to enter and display the information.
+- Comments box:
+  A field that lists all comments and information that have been entered.
+  including the username, time and date.
+
+**Add Project Page**
+The add project page is where a user can add a new project.
+
+- it contains the relative fields in the form.
+  Project Name
+  Project Description
+  Project URL
+  GitHub URL
+
 ## Installation
 
 To install the Bug Alert frontend application, follow these steps:

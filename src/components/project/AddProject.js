@@ -126,7 +126,7 @@ function AddProject({ addProject }) {
                   type="text"
                   onChange={handleChange}
                   maxLength="150"
-                  placeholder="Project URL"
+                  placeholder="Github URL"
                   name="githubURL"
                   value={project.githubURL}
                 />
