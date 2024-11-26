@@ -30,8 +30,54 @@ The Sign in page contains the form to sign in. It also contains 2 buttons: one t
 The sign up page contains a form for the user to create an account.
 It contains 2 buttons: a submit button to sign up and a button to close the form. It also contains a link to the sign in page.
 
-- Real-time updates
-- Customizable notifications
+**Main Page - Logged out**
+
+The main page in a logged out state contains a banner informing the user to either sign in or sign up. They are links that lead to the relative page.
+An un authorised used can view the list of projects on the application, but any of the specific details.
+
+- Each project header card will contain:
+  - a description of the project.
+  - A link to the project if supplied.
+  - A link to the Github repository if supplied.
+  - The owner of the project.
+  - The date the project was added.
+
+![main page logged out](src/assets/project_page_logged_out.png)
+
+**Main Page Logged in**
+The main page in a logged in state will additionaly display 3 buttons:
+
+- an open the issues Panel button
+  This button will open the list of issues that have been logged for the specific project.
+- an edit Project Button(If the user is the owner of the project)
+  This button will take the user to the edit project form. Here the user can edit the particulars of the project.
+- A delete button(If the user is the owner of the project)
+  This button will allow the user to the delete project.
+  ![mainpage logged in ](src/assets/main_page_logged_in.png)
+
+**Project Issues Page**
+This page displays the issues that have been logged to each project.
+
+- Add an issue button: The add an issue button will take the user to the adda an issue form, where they can log an issue.
+
+- The header contains: The project name and a unique issue number.
+- if the issue has been resolved, a green badge with the word resolved will also be displayed.
+- The main block contains:
+
+  - The name of the user that logged the issue.
+  - A description of the issue
+  - A console error, if one has been uploaded.
+  - The date the issue was logged.
+  - If the issue is repeatable.
+  - A coloured box containing the priority level of the issue.
+
+- The view issue button:
+  - A button that will take the user to the issue details page. Here the user
+    can view and add any additional information regarding the issue.
+- The Close/Re-open button:
+  - If the user is the owner of the project they can set the issue as resolved by clicking the button. Once resolved the button can be used to reopen the issue.
+
+![project issue image](src/assets/project_issue.png)
 
 ## Installation
 
