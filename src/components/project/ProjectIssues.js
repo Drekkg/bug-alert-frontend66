@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Form, Alert, Row, Col, Container, NavLink } from "react-bootstrap";
+import { Button, Card, Form, Alert, Row, Col, Container, Nav } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
 import styles from "../../styles/ProjectIssues.module.css";
 import LoadingBadge from "../LoadingBadge";
-import { Link } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
-function ProjectIssues({
-  // onResolvedChange,
-  currentUser,
-  projectOwner,
-  // onOpenProject,
-  ProjectId,
-  // routeBack,
-  projectTitle,
-}) {
+function ProjectIssues({ currentUser, projectOwner, ProjectId, projectTitle }) {
   const [showIssueForm, setShowIssueForm] = useState(false);
   const [issueData, setIssueData] = useState([]);
   const [noIssues, setNoIssues] = useState(false);
@@ -138,11 +130,14 @@ function ProjectIssues({
       <Container className={styles.Project}>
         <Alert variant="info">
           <Alert.Heading>Please Sign In</Alert.Heading>
-          <p>You need to sign in to view the projects.</p>
+          <p>You need to sign in to view the Project Issues.</p>
+
           <NavLink to="/signinform" className={styles.navBarLinks}>
             Sign In
           </NavLink>
+
           {" or "}
+
           <NavLink to="/signupform" className={styles.navBarLinks}>
             Sign Up
           </NavLink>
@@ -181,7 +176,6 @@ function ProjectIssues({
               required
             />
           </Form.Group>
-
           <Form.Group controlId="Repeatable">
             <Form.Check
               type="checkbox"
@@ -191,7 +185,6 @@ function ProjectIssues({
               onChange={handleChange}
             />
           </Form.Group>
-
           <Form.Group controlId="PriorityLevel">
             <Form.Label>Priority Level</Form.Label>
             <Form.Control
