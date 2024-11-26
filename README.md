@@ -96,146 +96,39 @@ including:
 **Add Project Page**
 The add project page is where a user can add a new project.
 
-- it contains the relative fields in the form.
+- It contains the relative fields in the form.
   Project Name
   Project Description
   Project URL
   GitHub URL
+  ![edit project page](src/assets/edit_project_page.png)
 
-## Installation
+**Add Project Page**
+The add project page contains a form for the relative information.
 
-To install the Bug Alert frontend application, follow these steps:
+- The project name
+- A description of the project
+- The project URL
+- The GitHub Url
+- A submit Button and a close button
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/bug-alert-frontend.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd bug-alert-frontend
-   ```
-3. Install the dependencies:
-   ```bash
-   npm install
-   ```
+![add project image](src/assets/add_project.png)
 
-## Usage
+## UX
 
-To start the development server, run:
+With the design of Bug Alert I strove to keep the design simple, with basic colours and
+typography, with aim of focusing the attention of the user on the informational context.
+While most users would be on full size screens, the app is still fully functional on mobile.
+The idea of using cards that only display details when clicked is an attempt at keeping the UI clean and less cluttered and hopefully less distracting to the user.
+The user can click on pertinent projects and issues without being flooded with irrelevant information.
 
-```bash
-npm start
-```
+- All operations that the user undertakes are confirmed on the front end:
+  - Signing in, signing up, deleting a project, editing a project and logging out are all
+    confirmed with an alert.(With the exception of adding a comment - The spinner alerts the user that their information is being uploaded. Adding an alert seemed irrelevant and just another unneccassary step for the user.)
+  - Data being written and being fetched from the API is always accompanied with a spinner (The Bug Alert Cross-Hair logo) to communicate to the user that there is a process happening in the background.
 
-Open your browser and navigate to `http://localhost:3000` to view the application.
+**Typography**
+For the font I used "Play Fair" from google fonts a sharp easy to read font.
 
-## Contributing
-
-We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) for more information.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For any questions or feedback, please contact us at [support@bugalert.com](mailto:support@bugalert.com).
-
-## Getting Started
-
-### Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-
-- You have installed Node.js and npm.
-- You have a GitHub account.
-- You have internet access.
-
-### Setting Up the Development Environment
-
-1. **Fork the repository**: Click the "Fork" button at the top right of the repository page to create a copy of the repository under your GitHub account.
-
-2. **Clone your fork**: Clone the forked repository to your local machine.
-
-   ```bash
-   git clone https://github.com/yourusername/bug-alert-frontend.git
-   ```
-
-3. **Navigate to the project directory**:
-
-   ```bash
-   cd bug-alert-frontend
-   ```
-
-4. **Install the dependencies**:
-   ```bash
-   npm install
-   ```
-
-### Running Tests
-
-To run the tests, use the following command:
-
-```bash
-npm test
-```
-
-This will execute the test suite and display the results in the terminal.
-
-### Building for Production
-
-To create a production build of the application, run:
-
-```bash
-npm run build
-```
-
-The production-ready files will be generated in the `build` directory.
-
-## Project Structure
-
-The project structure is as follows:
-
-```
-bug-alert-frontend/
-├── public/
-│   ├── index.html
-│   └── ...
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   ├── App.js
-│   ├── index.js
-│   └── ...
-├── .gitignore
-├── package.json
-├── README.md
-└── ...
-```
-
-- **public/**: Contains the static assets and the main HTML file.
-- **src/**: Contains the source code of the application.
-  - **components/**: Reusable UI components.
-  - **pages/**: Page components for different routes.
-  - **services/**: API service functions.
-- **.gitignore**: Specifies files to be ignored by Git.
-- **package.json**: Contains the project metadata and dependencies.
-- **README.md**: The README file you are currently reading.
-
-## Deployment
-
-To deploy the application, you can use any static site hosting service such as Vercel, Netlify, or GitHub Pages. Follow the instructions provided by the hosting service to deploy the `build` directory.
-
-## Acknowledgements
-
-We would like to thank the following open-source projects and libraries that made this project possible:
-
-- [React](https://reactjs.org/)
-- [Redux](https://redux.js.org/)
-- [Axios](https://axios-http.com/)
-- [Jest](https://jestjs.io/)
-
-## Support
-
-If you encounter any issues or have any questions, please open an issue on GitHub or contact us at [support@bugalert.com](mailto:support@bugalert.com).
+**Colours**
+The colour choice in Bug alert was made in the hopes of not distracting the user from the information. The buttons are coloured to draw attention to them. The colours for the different priorities helps make them stick out and help the user to quicjkly decide which issues to tackle. For the alerts i used the standard bootstrap colours with minimal customisation.
