@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.22.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "@babel/core": "^7.22.5",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "axios": "^0.21.4",
     "bootstrap": "^4.6.2",
     "history": "^5.3.0",
@@ -52,5 +51,13 @@
   "engines": {
     "node": "16.19.1",
     "npm": "8.19.3"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-private-property-in-object"
+    ]
   }
 }
