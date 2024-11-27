@@ -180,5 +180,3 @@ in the available time.
 ## Testing
 
 ### Manual Testing
-
-src/assets/test_1.mp4
