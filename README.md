@@ -1,4 +1,4 @@
- Bug Alert
+Bug Alert
 
 ![BUG Alert am i responsive image](src/assets/main_image_responsive.png)
 
@@ -201,9 +201,13 @@ video of the app being tested.
 15. A new user logs.
 16. As they are the owner of the issue and they are aware that the issue has been fixed they mark the issue as resolved.
 
-
 https://github.com/user-attachments/assets/8f188305-6393-45ee-b3f6-18e113691067
 
+Test 2: Add project, edit project and delete project
 
-
-
+1. A signdin user adds a new project.
+2. They click on edit project.
+3. They add some changes to the project and are taken back to the issues page.
+4. They click on delete and are greeted with a delete modal.
+5. After clicking confirm, the project is deleted.
+6. The user is returned to the Project list page.
