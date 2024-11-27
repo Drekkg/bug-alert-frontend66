@@ -47,9 +47,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/preset-env": "^7.22.3",
     "msw": "^0.35.0"
   },
   "engines": {
