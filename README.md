@@ -8,6 +8,18 @@ Bug Alert is a frontend application designed to help developers track bugs and m
 Users can also add comments about specific issues. The owner of an added issue can mark the issue as resolved.
 The goal of Bug Alert is to have a place where all issues are stored, so that teams working on specific projects can be alerted about bugs and therefore have them squashed more efficiently.
 
+## Live Site
+
+https://bug-alert-frontend-b009aeb2d91a.herokuapp.com/
+
+## Repository
+
+https://github.com/Drekkg/bug-alert-frontend66.git
+
+## Author
+
+Derek Garnett
+
 ## Features
 
 **Navigation Bar**
@@ -114,10 +126,16 @@ The add project page contains a form for the relative information.
 
 ![add project image](src/assets/add_project.png)
 
+\*\*Future Features
+
+- The ability to search projects and issues is a definite must for the future.
+- Also the abilility to edit issues and comments.
+- Assigning issues to a specific user.
+
 ## UX
 
-With the design of Bug Alert I strove to keep the design simple, with basic colours and
-typography, with aim of focusing the attention of the user on the informational context.
+I strove to keep the design of Bug Alert simple, with basic colours and
+typography, with the aim of focusing the attention of the user on the informational context.
 While most users would be on full size screens, the app is still fully functional on mobile.
 The idea of using cards that only display details when clicked is an attempt at keeping the UI clean and less cluttered and hopefully less distracting to the user.
 The user can click on pertinent projects and issues without being flooded with irrelevant information.
@@ -128,7 +146,9 @@ The user can click on pertinent projects and issues without being flooded with i
   - Data being written and being fetched from the API is always accompanied with a spinner (The Bug Alert Cross-Hair logo) to communicate to the user that there is a process happening in the background.
 
 **Typography**
-For the font I used "Play Fair" from google fonts a sharp easy to read font.
+For the font I used "Play Fair" from google fonts. A sharp easy to read font.
 
 **Colours**
-The colour choice in Bug alert was made in the hopes of not distracting the user from the information. The buttons are coloured to draw attention to them. The colours for the different priorities helps make them stick out and help the user to quicjkly decide which issues to tackle. For the alerts i used the standard bootstrap colours with minimal customisation.
+The colour choice in Bug alert was made in the hopes of not distracting the user from the information. The buttons are coloured to draw attention to them. The colours for the different priorities helps make them stick out and help the user to quickly decide which issues to tackle. For the alerts I used the standard bootstrap colours with minimal customisation.
+
+## Testing
