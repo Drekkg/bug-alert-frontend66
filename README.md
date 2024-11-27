@@ -200,3 +200,10 @@ video of the app being tested.
 14. They then logout.
 15. A new user logs.
 16. As they are the owner of the issue and they are aware that the issue has been fixed they mark the issue as resolved.
+
+
+https://github.com/user-attachments/assets/8f188305-6393-45ee-b3f6-18e113691067
+
+
+
+
