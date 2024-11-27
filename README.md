@@ -151,4 +151,34 @@ For the font I used "Play Fair" from google fonts. A sharp easy to read font.
 **Colours**
 The colour choice in Bug alert was made in the hopes of not distracting the user from the information. The buttons are coloured to draw attention to them. The colours for the different priorities helps make them stick out and help the user to quickly decide which issues to tackle. For the alerts I used the standard bootstrap colours with minimal customisation.
 
+## Agile Project
+
+https://github.com/users/Drekkg/projects/9
+
+I used the M.o.S.C.o.W principal to help me prioritise what should be included in the application
+in the available time.
+
+#### M - must have:
+
+     - The ability to log user reported issues and bugs.
+     - The ability to create an account
+     - The ability to tie issues to specific projects.
+     - The ability to comment upon issues
+
+#### S - should have:
+
+      - The ability to mark the priority of an issue.
+
+#### C - could have:
+
+      - The ability to mark an issue as resolved
+
+#### W - will not have:
+
+      - The ability to search through issues and projects
+
 ## Testing
+
+### Manual Testing
+
+src/assets/test_1.mp4
