@@ -1,6 +1,5 @@
 # Bug Alert
 
-
 ![BUG Alert am i responsive image](src/assets/main_image_responsive.png)
 
 ## Overview
@@ -183,4 +182,21 @@ in the available time.
 ### Manual Testing
 
 https://github.com/user-attachments/assets/e73f6091-0577-4353-8e22-89833c7c2704
+video of the app being tested.
 
+1.  A new user clicks on the sign up page
+2.  They enter a username.
+3.  They enter a password
+4.  They confirm their password.
+5.  After clicking submit they are taken to the sign in page.
+6.  They enter their username and password and signin.
+7.  After signing in they are taken to the main projects page.
+8.  They click on one of the project and open the issues panel.
+9.  They then click on the add issue button and are taken to the add issue form.
+10. After filling out all the relevant information and hitting add issue they are taken to the issue.
+11. After clicking on view issue they are taken to the comments/response page.
+12. Here the user enters any actions they have taken to fix the issue and or any comments.
+13. The user the clicks on the back to issues button.
+14. They then logout.
+15. A new user logs.
+16. Aas they are the owner of the issue and they are aware that the issue has been fixed they mark the issue as resolved.
