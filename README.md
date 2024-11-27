@@ -232,3 +232,19 @@ The app scored over 90 in the lighthouse Accessibility test.
 ## Validation
 
 The jsx linter ES lint(built in React) revealed no problems.
+
+## Bugs and Issues
+
+I encountered multiple and continuous dependancy problems while developing using the Code Institute React template, 2 or 3 started projects had to be abandoned and restarted.
+Even late in the development breaking dependancies caused me to lose a lot of time.
+
+### Bugs
+
+I started using Bug Alert myself while I was still building the app.
+A list of fixed bugs can be found in the Project "Bug Alert" of the deployed app.
+
+### known Issues and console errors
+
+- unavoidable 401 errors in the console.
+- ProjectIssues.js:89 Warning: Can't perform a React state update on an unmounted component. This error appaers sporadically in the console. Doesn't negatively effect the function of th app.
+- A warning pertaining to the Babel package is apparent in the dev server.
