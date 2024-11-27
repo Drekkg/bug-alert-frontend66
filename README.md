@@ -4,7 +4,7 @@ Bug Alert
 
 ## Overview
 
-Bug Alert is a frontend application designed to help developers track bugs and manage issues in their applications. Users can log in and add a project they want to track. Bugs, issues and console errors can be added. All registered users can add bugs and issues that they have observed. The issues are marked with their relative priority eg. Critical, High, Medium or Low.
+Bug Alert is a frontend application designed to help developers track bugs and manage issues in their applications. Users can log in and add a project they want to track. Bugs, issues and console errors can be added. All registered users can add bugs and issues that they have observed. The issues are marked with their relavant priority eg. Critical, High, Medium or Low.
 Users can also add comments about specific issues. The owner of an added issue can mark the issue as resolved.
 The goal of Bug Alert is to have a place where all issues are stored, so that teams working on specific projects can be alerted about bugs and therefore have them squashed more efficiently.
 
@@ -108,7 +108,7 @@ including:
 **Add Project Page**
 The add project page is where a user can add a new project.
 
-- It contains the relative fields in the form.
+- It contains the relavant fields in the form.
   Project Name
   Project Description
   Project URL
@@ -116,7 +116,7 @@ The add project page is where a user can add a new project.
   ![edit project page](src/assets/edit_project_page.png)
 
 **Add Project Page**
-The add project page contains a form for the relative information.
+The add project page contains a form for the relavant information.
 
 - The project name
 - A description of the project
@@ -211,3 +211,24 @@ Test 2: Add project, edit project and delete project
 4. They click on delete and are greeted with a delete modal.
 5. After clicking confirm, the project is deleted.
 6. The user is returned to the Project list page.
+
+## Responsive Testing
+
+Bug Alert was tested on a variety of hardware devices.
+It looked good and remained functional on the following devices:
+
+- Samsung s20 Plus
+- Samsung s23 Ultra
+- Samsung s6 Tablet
+- 14 inch linux Laptop
+- 27 inch Windows Desktop
+
+## Accessibility
+
+The app scored over 90 in the lighthouse Accessibility test.
+
+![Lighthouse score ](src/assets/accessibility.png)
+
+## Validation
+
+The jsx linter ES lint(built in React) revealed no problems.
