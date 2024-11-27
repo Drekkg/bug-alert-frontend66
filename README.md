@@ -1,4 +1,4 @@
-# Bug Alert
+ Bug Alert
 
 ![BUG Alert am i responsive image](src/assets/main_image_responsive.png)
 
@@ -199,4 +199,4 @@ video of the app being tested.
 13. The user the clicks on the back to issues button.
 14. They then logout.
 15. A new user logs.
-16. Aas they are the owner of the issue and they are aware that the issue has been fixed they mark the issue as resolved.
+16. As they are the owner of the issue and they are aware that the issue has been fixed they mark the issue as resolved.
