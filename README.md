@@ -46,7 +46,7 @@ It contains 2 buttons: a submit button to sign up and a button to close the form
 
 **Main Page - Logged out**
 
-The main page in a logged out state contains a banner informing the user to either sign in or sign up. They are links that lead to the relative page.
+The main page in a logged out state contains a banner informing the user to either sign in or sign up. They are links that lead to the relevant page.
 An un authorised used can view the list of projects on the application, but any of the specific details.
 
 - Each project header card will contain:
