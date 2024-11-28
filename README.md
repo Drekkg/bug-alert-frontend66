@@ -16,6 +16,9 @@ https://bug-alert-frontend-b009aeb2d91a.herokuapp.com/
 
 https://github.com/Drekkg/bug-alert-frontend66.git
 
+## GitHub Project
+https://github.com/users/Drekkg/projects/9
+
 ## Author
 
 Derek Garnett
