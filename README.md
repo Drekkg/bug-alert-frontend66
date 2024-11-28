@@ -282,4 +282,24 @@ A list of fixed bugs can be found in the Project "Bug Alert" of the deployed app
   To prepare the app for deployment there are a couple of things that need to be addressed:
 
   - A procfile at root level containing the following:
-    -web: serve -s build
+    - web: serve -s build
+  - In the package.json file file in the scripts section add:
+
+    - "heroku-prebuild": "npm install -g serve",
+
+  - Log into Heroku or create an account if you don't have one.
+  - Go to the deploy section.
+  - Link your GitHub repo to Heroku.
+  - Cross your fingers and hit deploy.
+  - Once deployed you can view your app by clicking on the view button.
+
+## Credits
+
+- https://stackoverflow.com/ - code solutions
+- https://github.com/Code-Institute-Org/gitpod-full-template - Code Institute Template
+
+- The Moments walkthrough served as a basis for my project.
+- The codebase was adapted for my purposes.
+- Juliia Konovalova my mentor.
+- My partner Christine Steinbach for giving me the time.
+- Kudos to Oisin - Code Institute Tutor - who helped me fix my project after I foolishly updated some dependencies, breaking my project 2 days before submission.
