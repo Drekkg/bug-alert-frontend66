@@ -139,6 +139,12 @@ The add project page contains a form for the relavant information.
 - Also the abilility to edit issues and comments.
 - Assigning issues to a specific user.
 
+## React Components
+
+**Loading Badge**
+
+The loading badge component is custom spinner and is re-used in many of the app containers to display when the API is fetching or sending Data.
+
 ## UX
 
 I strove to keep the design of Bug Alert simple, with basic colours and
