@@ -107,6 +107,8 @@ including:
   A field that lists all comments and information that have been entered.
   including the username, time and date.
 
+  ![issue detail page](src/assets/issue_detail_comment.png)
+
 **Add Project Page**
 The add project page is where a user can add a new project.
 
@@ -207,12 +209,20 @@ https://github.com/user-attachments/assets/8f188305-6393-45ee-b3f6-18e113691067
 
 Test 2: Add project, edit project and delete project
 
-1. A signdin user adds a new project.
+1. A signed in user adds a new project.
 2. They click on edit project.
 3. They add some changes to the project and are taken back to the issues page.
 4. They click on delete and are greeted with a delete modal.
 5. After clicking confirm, the project is deleted.
 6. The user is returned to the Project list page.
+
+All is data written and retrieved from the Bug Alert Django Rest Framework API.
+All data persists and no errors have been observed.
+
+Click here to go to the Back End repository:
+
+Bug Alert DRF 22
+https://github.com/Drekkg/bug-alert-drf22.git
 
 ## Responsive Testing
 
@@ -238,7 +248,7 @@ The jsx linter ES lint(built in React) revealed no problems.
 ## Bugs and Issues
 
 I encountered multiple and continuous dependancy problems while developing using the Code Institute React template, 2 or 3 started projects had to be abandoned and restarted.
-Even late in the development breaking dependancies caused me to lose a lot of time.
+Even late in the development breaking dependencies caused me to lose a lot of time and sleep.
 
 ### Bugs
 
@@ -250,3 +260,14 @@ A list of fixed bugs can be found in the Project "Bug Alert" of the deployed app
 - unavoidable 401 errors in the console.
 - ProjectIssues.js:89 Warning: Can't perform a React state update on an unmounted component. This error appaers sporadically in the console. Doesn't negatively effect the function of th app.
 - A warning pertaining to the Babel package is apparent in the dev server.
+- The sign up form is pre-populated
+
+## Technologies used
+
+- React nvm 20
+- React Bootstrap v4.6
+- Google Fonts
+- Balsamiq
+- GitHub
+- Django Rest Framwork on the backend
+- GitHub co-pilot -
