@@ -46,8 +46,8 @@ It contains 2 buttons: a submit button to sign up and a button to close the form
 
 **Main Page - Logged out**
 
-The main page in a logged out state contains a banner informing the user to either sign in or sign up. They are links that lead to the relevant page.
-An un authorised used can view the list of projects on the application, but any of the specific details.
+The main page in a logged out state contains a banner informing the user to either sign in or sign up. There are links that lead to the relevant page.
+An un authorised user can view the list of projects on the application, but not any of the specific details.
 
 - Each project header card will contain:
   - a description of the project.
@@ -66,13 +66,13 @@ The main page in a logged in state will additionaly display 3 buttons:
 - an edit Project Button(If the user is the owner of the project)
   This button will take the user to the edit project form. Here the user can edit the particulars of the project.
 - A delete button(If the user is the owner of the project)
-  This button will allow the user to the delete project.
+  This button will allow the user to delete the project.
   ![mainpage logged in ](src/assets/main_page_logged_in.png)
 
 **Project Issues Page**
 This page displays the issues that have been logged to each project.
 
-- Add an issue button: The add an issue button will take the user to the adda an issue form, where they can log an issue.
+- Add an issue button: The add an issue button will take the user to the add an issue form, where they can log an issue.
 
 - The header contains: The project name and a unique issue number.
 - if the issue has been resolved, a green badge with the word resolved will also be displayed.
@@ -159,7 +159,7 @@ Project issues page
 
 ![wireframe 2](src/assets/wireframe2.png)
 
-The final design deviated quite substantially from the early wireframes.
+The final design deviated substantially from the early wireframes.
 
 **Typography**
 
@@ -275,7 +275,7 @@ A list of fixed bugs can be found in the Project "Bug Alert" of the deployed app
 ### known Issues and console errors
 
 - unavoidable 401 errors in the console.
-- The sign up form is pre-populated
+- The sign up form is pre-populated.
 
 - A warning pertaining to the Babel package is apparent in the dev server.
 
@@ -332,5 +332,5 @@ As advised in the Moments walkthrough, console logs in the catch blocks are comm
 - The Moments walkthrough served as a basis for my project.
 - The codebase was adapted for my purposes.
 - Juliia Konovalova my mentor.
-- My partner Christine Steinbach for giving me the time.
+- My partner Christine Steinbach.
 - Kudos to Oisin - Code Institute Tutor - who helped me fix my project after I foolishly updated some dependencies, breaking my project 2 days before submission.
