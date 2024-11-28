@@ -85,7 +85,7 @@ function ProjectIssues({ currentUser, projectOwner, ProjectId, projectTitle }) {
   };
 
   useEffect(() => {
-    let isMounted = true; // Add a flag to check if the component is mounted
+    let isMounted = true;
     setLoading(true);
 
     axiosReq
@@ -103,7 +103,7 @@ function ProjectIssues({ currentUser, projectOwner, ProjectId, projectTitle }) {
       });
 
     return () => {
-      isMounted = false; // Cleanup function to set the flag to false when the component unmounts
+      isMounted = false;
     };
   }, [ProjectId, showIssueForm]);
 

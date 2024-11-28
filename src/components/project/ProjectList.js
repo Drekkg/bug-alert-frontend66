@@ -56,7 +56,7 @@ function ProjectList({ projects, currentUser }) {
       setTriggerEffect(!triggerEffect);
       setShowAlert(true);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
