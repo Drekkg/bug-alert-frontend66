@@ -149,7 +149,20 @@ The user can click on pertinent projects and issues without being flooded with i
     confirmed with an alert.(With the exception of adding a comment - The spinner alerts the user that their information is being uploaded. Adding an alert seemed irrelevant and just another unneccassary step for the user.)
   - Data being written and being fetched from the API is always accompanied with a spinner (The Bug Alert Cross-Hair logo) to communicate to the user that there is a process happening in the background.
 
+**Wireframes**
+
+Main project page
+
+![wireframe1](src/assets/wireframe_1.png)
+
+Project issues page
+
+![wireframe 2](src/assets/wireframe2.png)
+
+The final design deviated quite substantially from the early wireframes.
+
 **Typography**
+
 For the font I used "Play Fair" from google fonts. A sharp easy to read font.
 
 **Colours**
