@@ -1,4 +1,4 @@
-.AddProject {
+.addProject {
     background-color: #eaeadb;
     border: 1px solid #dadadf;
     border-radius: 2px;
@@ -11,12 +11,12 @@
 
 }
 
-.CloseButton {
+.closeButton {
     margin: 0 2rem;
 }
 
 
-.Backdrop {
+.backdrop {
     position: fixed;
     top: 0;
     left: 0;

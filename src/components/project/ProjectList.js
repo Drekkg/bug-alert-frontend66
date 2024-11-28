@@ -74,8 +74,8 @@ function ProjectList({ projects, currentUser }) {
   }, [projects, triggerEffect]);
 
   const deleteAlert = (
-    <div className={styles.Backdrop}>
-      <Alert variant="danger">
+    <div className={styles.backdrop}>
+      <Alert variant="danger" className={styles.alertModal}>
         <Alert.Heading>Project Deleted</Alert.Heading>
         <p>The Project has been deleted successfully</p>
         <button onClick={() => setShowAlert(false)}>Close</button>
@@ -84,7 +84,7 @@ function ProjectList({ projects, currentUser }) {
   );
 
   return (
-    <Container className={styles.Project}>
+    <Container className={styles.project}>
       {Loading && <LoadingBadge />}
       <h2>
         Bug Alert<i className="fa-solid fa-crosshairs"></i>

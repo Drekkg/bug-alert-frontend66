@@ -10,13 +10,13 @@ i {
   margin: .3rem;
 }
 
-.NavBar {
+.navBar {
     background-color: rgb(41, 39, 56);
     border: 1px solid gray;
     
 }
 
-.Active i {
+.active i {
     color: #dde1f0;
   }
 

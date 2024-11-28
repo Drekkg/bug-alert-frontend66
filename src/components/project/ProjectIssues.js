@@ -28,8 +28,8 @@ function ProjectIssues({ currentUser, projectOwner, ProjectId, projectTitle }) {
 
   const showIssueFormButton = showIssueForm ? "Close Issue Form" : "Add an Issue";
   const issueAddAlert = (
-    <div className={styles.Backdrop}>
-      <Alert variant="info" className={styles.AlertModal}>
+    <div className={styles.backdrop}>
+      <Alert variant="info" className={styles.alertModal}>
         <Alert.Heading>Issue Added</Alert.Heading>
         <p>Issue has been added successfully</p>
         <Button onClick={() => setShowAlert(false)} variant="info" block>

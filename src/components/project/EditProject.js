@@ -69,8 +69,8 @@ const EditProject = ({ updateProject }) => {
   };
 
   const updateAlert = (
-    <div className={styles.Backdrop}>
-      <Alert variant="info" className={styles.AlertModal}>
+    <div className={styles.backdrop}>
+      <Alert variant="info" className={styles.alertModal}>
         <Alert.Heading>
           {" "}
           Bug Alert <i className="fa-solid fa-crosshairs"></i>
@@ -94,7 +94,7 @@ const EditProject = ({ updateProject }) => {
   );
 
   return (
-    <Container className={styles.Project}>
+    <Container className={styles.project}>
       <h2>Edit Project</h2>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="title">

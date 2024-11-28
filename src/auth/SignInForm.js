@@ -30,8 +30,8 @@ function SignInForm({ addUser }) {
     }));
   };
   const alert = (
-    <div className={styles.Backdrop}>
-      <Alert variant="info" className={styles.AlertModal}>
+    <div className={styles.backdrop}>
+      <Alert variant="info" className={styles.alertModal}>
         <Alert.Heading>
           {" "}
           Bug Alert <i className="fa-solid fa-crosshairs"></i>
@@ -68,7 +68,7 @@ function SignInForm({ addUser }) {
 
   return (
     <div>
-      <Container className={styles.SignInForm}>
+      <Container className={styles.signInForm}>
         <h2>Sign In</h2>
         <h3>{alertShow && alert}</h3>
         {errors.username?.map((message, idx) => (
@@ -88,6 +88,7 @@ function SignInForm({ addUser }) {
               name="username"
               value={username}
               autoComplete="username"
+              required
             />
           </Form.Group>
 
@@ -101,13 +102,14 @@ function SignInForm({ addUser }) {
               name="password"
               value={password}
               autoComplete="current-password"
+              required
             />
           </Form.Group>
 
           <Button variant="success" size="sm" type="submit">
             Sign In
           </Button>
-          <Button variant="warning" size="sm" className={styles.CloseButton} onClick={closeForm}>
+          <Button variant="warning" size="sm" className={styles.closeButton} onClick={closeForm}>
             Close
           </Button>
           {errors.non_field_errors?.map((message, idx) => (

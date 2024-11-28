@@ -55,8 +55,8 @@ function AddProject({ addProject }) {
     });
   };
   const addProjectAlert = (
-    <div className={styles.BackDrop}>
-      <Alert variant="info" className={styles.AlertModal}>
+    <div className={styles.backDrop}>
+      <Alert variant="info" className={styles.alertModal}>
         <Alert.Heading>Project Added</Alert.Heading>
         <p>The Project has been added successfully</p>
         <button onClick={handleClickAlert} variant="info">
@@ -68,7 +68,7 @@ function AddProject({ addProject }) {
 
   return (
     <div>
-      <Container className={styles.AddProject}>
+      <Container className={styles.addProject}>
         {showAlert && addProjectAlert}
         {!showAlert && (
           <div>
@@ -138,7 +138,7 @@ function AddProject({ addProject }) {
               <Button variant="success" type="submit">
                 Submit
               </Button>
-              <Button variant="warning" className={styles.CloseButton} onClick={closeForm}>
+              <Button variant="warning" className={styles.closeButton} onClick={closeForm}>
                 Close
               </Button>
             </Form>

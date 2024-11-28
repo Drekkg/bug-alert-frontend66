@@ -39,8 +39,8 @@ function SignUpForm() {
     }
   };
   const alert = (
-    <div className={styles.Backdrop}>
-      <Alert variant="info" className={styles.AlertModal}>
+    <div className={styles.backdrop}>
+      <Alert variant="info" className={styles.alertModal}>
         <Alert.Heading>You have successfully Signed Up</Alert.Heading>
         <p>
           Thank you for choosing <i className="fa-solid fa-crosshairs"></i>Bug Alert - Please sign
@@ -64,7 +64,7 @@ function SignUpForm() {
   );
   return (
     <div>
-      <Container className={styles.SignUpForm}>
+      <Container className={styles.signUpForm}>
         <h1>Sign Up</h1>
         <h3>{alertShow && alert}</h3>
         <Form onSubmit={submitHandler} autoComplete="off">
@@ -124,7 +124,7 @@ function SignUpForm() {
           <Button variant="success" type="submit">
             Submit
           </Button>
-          <Button variant="warning" className={styles.CloseButton} onClick={closeForm}>
+          <Button variant="warning" className={styles.closeButton} onClick={closeForm}>
             Close
           </Button>
           {errors.non_field_errors?.map((message, idx) => (

@@ -6,7 +6,7 @@ span {
    
 }
 
-.Project {
+.project {
     background-color: #edede9;
     border: 1px solid #dadadf;
     border-radius: 2px;
@@ -106,7 +106,7 @@ span {
     background-color: aquamarine;
   }
   
-.AlertModal {
+.alertModal {
     z-index:10001;
      left: 20%;
      top: 10%;
@@ -115,7 +115,7 @@ span {
      text-align:center;
  }
  
- .Backdrop {
+ .backdrop {
      position: fixed;
      top: 0;
      left: 0;
