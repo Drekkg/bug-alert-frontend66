@@ -42,6 +42,8 @@ The Sign in page contains the form to sign in. It also contains 2 buttons: one t
 The sign up page contains a form for the user to create an account.
 It contains 2 buttons: a submit button to sign up and a button to close the form. It also contains a link to the sign in page.
 
+![sign up form](src/assets/signup_page.png)
+
 **Main Page - Logged out**
 
 The main page in a logged out state contains a banner informing the user to either sign in or sign up. They are links that lead to the relative page.
