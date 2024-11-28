@@ -251,7 +251,7 @@ The jsx linter ES lint(built in React) revealed no problems.
 
 ## Bugs and Issues
 
-I encountered multiple and continuous dependancy problems while developing using the Code Institute React template, 2 or 3 started projects had to be abandoned and restarted.
+I encountered multiple and continuous dependency problems while developing using the Code Institute React template, 2 or 3 started projects had to be abandoned and restarted.
 Even late in the development breaking dependencies caused me to lose a lot of time and sleep.
 
 ### Bugs
