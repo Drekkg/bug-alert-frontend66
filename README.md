@@ -1,4 +1,4 @@
-Bug Alert
+# Bug Alert
 
 ![BUG Alert am i responsive image](src/assets/main_image_responsive.png)
 
