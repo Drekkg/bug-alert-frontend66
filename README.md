@@ -281,6 +281,9 @@ go away.
 After trying to resolve this warning I completely broke my application. Turns out to be an
 issue with Create React App.
 
+**commented out console logs**
+As advised in the Moments walkthrough, console logs in the catch blocks are commented out for easy debugging in the future.
+
 ## Technologies used
 
 - React nvm 20
