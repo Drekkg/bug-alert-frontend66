@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/Project.module.css";
-import { Container, Button, Card, Modal, Alert } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Modal from "react-bootstrap/Modal";
+import Alert from "react-bootstrap/Alert";
 import ProjectIssues from "./ProjectIssues";
 import { useLocation, useHistory, NavLink } from "react-router-dom";
 import LoadingBadge from "../LoadingBadge";

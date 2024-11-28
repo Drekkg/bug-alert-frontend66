@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { Navbar, Container, Nav, Button, Modal } from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
+import Modal from "react-bootstrap/Modal";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
 import { NavLink, useHistory } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";

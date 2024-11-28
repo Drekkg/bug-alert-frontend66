@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Container, Form, Row, Col } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
 import { useLocation, useHistory } from "react-router-dom";
 import styles from "../../styles/IssueDetail.module.css";
 import LoadingBadge from "../LoadingBadge";

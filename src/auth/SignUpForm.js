@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { Form, Container, Button, Alert } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 import { useHistory, Link } from "react-router-dom";
 import styles from "../styles/SignUpForm.module.css";
 import axios from "axios";
