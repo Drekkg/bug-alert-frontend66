@@ -262,9 +262,10 @@ A list of fixed bugs can be found in the Project "Bug Alert" of the deployed app
 ### known Issues and console errors
 
 - unavoidable 401 errors in the console.
-- ProjectIssues.js:89 Warning: Can't perform a React state update on an unmounted component. This error appaers sporadically in the console. Doesn't negatively effect the function of th app.
-- A warning pertaining to the Babel package is apparent in the dev server.
 - The sign up form is pre-populated
+
+- A warning pertaining to the Babel package is apparent in the dev server.
+
   One of your dependencies, babel-preset-react-app, is importing the
   "@babel/plugin-proposal-private-property-in-object" package without
   declaring it in its dependencies. This is currently working because
@@ -276,6 +277,9 @@ is not maintianed anymore. It is thus unlikely that this bug will
 ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.
+
+After trying to resolve this warning I completely broke my application. Turns out to be an
+issue with Create React App.
 
 ## Technologies used
 
