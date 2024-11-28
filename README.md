@@ -155,6 +155,10 @@ For the font I used "Play Fair" from google fonts. A sharp easy to read font.
 **Colours**
 The colour choice in Bug alert was made in the hopes of not distracting the user from the information. The buttons are coloured to draw attention to them. The colours for the different priorities helps make them stick out and help the user to quickly decide which issues to tackle. For the alerts I used the standard bootstrap colours with minimal customisation.
 
+**Icons**
+I purposely chose not to use any icons in this project. Icons that were initialy used were
+removed after the realisation that they just cluttered up the user interface, distracted and confused test users. Icons alone are not enough to convey to users what, for example a button or link does, they always need a label. Therefore having a label and an icon cluttered the U.I making for a negative user experience.
+
 ## Agile Project
 
 https://github.com/users/Drekkg/projects/9
@@ -270,4 +274,12 @@ A list of fixed bugs can be found in the Project "Bug Alert" of the deployed app
 - Balsamiq
 - GitHub
 - Django Rest Framwork on the backend
-- GitHub co-pilot -
+- GitHub Copilot - included in our student
+  GitHub account, I mainly used it to create commit messages.
+
+  ## Deployment
+
+  To prepare the app for deployment there are a couple of things that need to be addressed:
+
+  - A procfile at root level containing the following:
+    -web: serve -s build
