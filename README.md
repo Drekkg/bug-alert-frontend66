@@ -143,7 +143,7 @@ The add project page contains a form for the relavant information.
 
 **Loading Badge**
 
-The loading badge component is custom spinner and is re-used in many of the app containers to display when the API is fetching or sending Data.
+The loading badge component is a custom spinner and is re-used in many of the app containers to display when the API is fetching or sending Data.
 
 ## UX
 
