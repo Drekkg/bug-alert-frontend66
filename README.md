@@ -265,6 +265,17 @@ A list of fixed bugs can be found in the Project "Bug Alert" of the deployed app
 - ProjectIssues.js:89 Warning: Can't perform a React state update on an unmounted component. This error appaers sporadically in the console. Doesn't negatively effect the function of th app.
 - A warning pertaining to the Babel package is apparent in the dev server.
 - The sign up form is pre-populated
+  One of your dependencies, babel-preset-react-app, is importing the
+  "@babel/plugin-proposal-private-property-in-object" package without
+  declaring it in its dependencies. This is currently working because
+  "@babel/plugin-proposal-private-property-in-object" is already in your
+  node_modules folder for unrelated reasons, but it may break at any time.
+
+babel-preset-react-app is part of the create-react-app project, which
+is not maintianed anymore. It is thus unlikely that this bug will
+ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+your devDependencies to work around this error. This will make this message
+go away.
 
 ## Technologies used
 

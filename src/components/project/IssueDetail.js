@@ -43,19 +43,29 @@ const IssueDetail = (currentUser) => {
   };
 
   useEffect(() => {
+    let isMounted = true;
     const fetchComments = async () => {
       try {
         setLoading(true);
         const response = await axiosRes.get("/comments/");
-        setIssueDetailData(response.data);
+        if (isMounted) {
+          setIssueDetailData(response.data);
+        }
       } catch (error) {
         console.error("Error fetching comments:", error);
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
+
     fetchComments();
-  }, [triggerFetch]); //eslint-disable-line
+
+    return () => {
+      isMounted = false;
+    };
+  }, [triggerFetch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

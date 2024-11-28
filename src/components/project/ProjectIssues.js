@@ -85,12 +85,26 @@ function ProjectIssues({ currentUser, projectOwner, ProjectId, projectTitle }) {
   };
 
   useEffect(() => {
+    let isMounted = true; // Add a flag to check if the component is mounted
     setLoading(true);
+
     axiosReq
       .get(`/issues/projects/${ProjectId}`)
-      .then((response) => setIssueData(response.data))
+      .then((response) => {
+        if (isMounted) {
+          setIssueData(response.data);
+        }
+      })
       .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        if (isMounted) {
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false; // Cleanup function to set the flag to false when the component unmounts
+    };
   }, [ProjectId, showIssueForm]);
 
   useEffect(() => {
